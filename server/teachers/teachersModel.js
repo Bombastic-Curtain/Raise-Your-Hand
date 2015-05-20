@@ -13,4 +13,4 @@ var TeacherSchema = new Schema({
 
 };
 
-module.exports = mongoose.model('Student', UserSchema);
+module.exports = mongoose.model('Teacher', UserSchema);
