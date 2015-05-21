@@ -11,7 +11,7 @@
       var access_token =   FB.getAuthResponse()['accessToken'];
 	  console.log("******************** ACCESS TOKEN ***********" + access_token);
 	  window.localStorage.setItem( 'clienttest', access_token);
-	  
+
 
 
     } else if (response.status === 'not_authorized') {
@@ -44,17 +44,6 @@
     version    : 'v2.2' // use version 2.2
   });
 
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
 
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);

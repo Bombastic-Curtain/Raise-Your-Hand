@@ -15,7 +15,4 @@ var TeacherSchema = new Schema({
 
 
 TeacherSchema.plugin(findOrCreate);
-
-
-
 module.exports = mongoose.model('Teacher', TeacherSchema);

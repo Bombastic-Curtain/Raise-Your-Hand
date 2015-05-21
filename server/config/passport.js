@@ -15,37 +15,37 @@ module.exports = function(passport) {
 		clientSecret : process.env.ClientSecret || authConfig.facebookAuth.clientSecret,
 		passReqToCallback: true
 	}, function(req, accessToken, refereshToken, profile, done) {
-		//we need to figure out how to determin if new user is a student or teacher, maybe we could pass in params
-		//with the post request?
+		/*
+			USER ROLE IS PASSED IN FROM THE FRONTEND INSIDE THE HEADER
+			req.headers.user_role = 'teacher' or 'student'
+			-------
+			we grabe basic user information from their facebook profile, which is passed in 
+			in the passport callback 
+		*/
 		var name = profile.displayName;
 		var fbPicture = profile.photos[0].value;
 		var email = profile.emails[0].value;
 
-		console.log("----------------------------------------");
-		console.log("----------------------------------------");
-				console.log(req.headers.class_identification);
-
-		console.log(email);
-		console.log(req.headers.user_role);
-
-		console.log("----------------------------------------");
+		console.log("----------- USER DATA : -----------------");
+		console.log('USER EMAIL ' + email);
+		console.log('USER ROLE ' + req.headers.user_role);
+		console.log('USER NAME ' + name);
 		console.log("----------------------------------------");
 
 
 		if(req.headers.user_role === "student"){
+			/*
+				will refactor to not use Q 
+			*/
 			console.log("-----------------------CREATING STUDENT ---------------------------");
-			console.log(email);
-
 			var findOne = Q.nbind(Student.findOne, Student);
 	    findOne({email: email})
 	      .then(function(user) {
 	        if (user) {
 	        	return user;
 	        } else {
-	        	// create a student
-	        	console.log("---------------- NO USER FOUND, CREATING USER -------------");
+	        	console.log("---------------- NO STUDENT FOUND, CREATING STUDENT -------------");
 	          var create = Q.nbind(Student.create, Student);
-
 	          var newStudent = {
 						  name: name,
 						  fbToken: accessToken,
@@ -56,15 +56,14 @@ module.exports = function(passport) {
 	        }
 	      })
 	      .then(function (user) {
-	      		console.log("!!!!!!!!!!!! USER IS !!!!!!!!!!!!!!!" + user);
-
+	      		console.log("----- CREATED NEW STUDENT , THE STUDENT IS" + user);
 						return done(null, user);
 	      })
 	      .fail(function (error) {
 	      	console.log("******* ERROR ******");
 	      });
 		}else if(req.headers.user_role === "teacher"){
-			console.log("-----------------------CREATING STUDENT ---------------------------");
+			console.log("-----------------------CREATING TEACHER ---------------------------");
 			console.log(email);			
 			var findOne = Q.nbind(Teacher.findOne, Teacher);
 	    findOne({email: email})
@@ -73,9 +72,8 @@ module.exports = function(passport) {
 	        	return user;
 	        } else {
 	        	// create a Teacher
-	        	console.log("---------------- NO USER FOUND, CREATING USER -------------");
+	        	console.log("---------------- NO TEACHER FOUND, CREATING TEACHER -------------");
 	          var create = Q.nbind(Teacher.create, Teacher);
-
 	          var newTeacher = {
 						  name: name,
 						  fbToken: accessToken,
@@ -86,21 +84,13 @@ module.exports = function(passport) {
 	        }
 	      })
 	      .then(function (user) {
-	      		console.log("!!!!!!!!!!!! USER IS !!!!!!!!!!!!!!!" + user);
-
+	      		console.log("----- CREATED NEW TEACHER , THE TEACHER IS" + user);
 						return done(null, user);
 	      })
 	      .fail(function (error) {
 	      	console.log("******* ERROR ******");
 	      });
 		}
-
-
-
-	
-
-
-
 	}
 	));
 }
