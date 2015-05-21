@@ -1,16 +1,21 @@
 'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var findOrCreate = require('mongoose-findorcreate')
+
 
 var TeacherSchema = new Schema({
   name: String,
   fbID: String, 
   fbToken: String,
-  email: { type: String, lowercase: true },
+  email: String,
   fbPicture : String,
   classes: []
 });
 
-};
 
-module.exports = mongoose.model('Teacher', UserSchema);
+TeacherSchema.plugin(findOrCreate);
+
+
+
+module.exports = mongoose.model('Teacher', TeacherSchema);

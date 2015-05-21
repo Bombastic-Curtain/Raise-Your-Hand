@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+    <script src="./facebookLogin.js"></script>
+
+</head>
+  <body>
+
+  <fb:login-button scope="public_profile, email" onlogin="checkLoginState();">
+</fb:login-button>
+
+
+
+<div id="status">
+
+</div>
+<div>
+
+<a id="button" data-role="button"  onclick="addClassTest()">add class test</a>
+<br>
+<br>
+<a  onclick="joinClassTest()">get all my classes </a>
+
+
+
+</div>
+<script type="text/javascript">
+	var apitest = function(){	
+		var token = window.localStorage.getItem('clienttest');
+			$.ajax({
+				type: 'POST',
+				url: 'http://localhost:8000/test',
+
+				headers: {
+						user_role: 'teacher',
+						access_token: token
+				},
+				dataType: 'JSON',
+				data: {
+					user_role: 'teacher',
+					access_token: token
+				} 
+			}).done(function(data){
+				console.log("**************** API TEST REQ MADE ***********");
+				
+
+			});	
+	}
+
+	var addClassTest = function(){	
+		console.log("**** adding class clicked**");
+		var token = window.localStorage.getItem('clienttest');
+			$.ajax({
+				type: 'POST',
+				url: 'http://localhost:8000/api/teachers/addClass',
+				headers: {
+						user_role: 'teacher',
+						access_token: token
+				},
+				dataType: 'JSON',
+				data: {
+					classTitle: 'test class'
+				} 
+			}).done(function(data){
+				console.log("**************** ADD CLASS REQ MADE ***********" );
+				console.dir(data);
+				
+			});	
+	}
+
+	var getClassTest = function(){	
+		console.log("**** adding class clicked**");
+		var token = window.localStorage.getItem('clienttest');
+			$.ajax({
+				type: 'GET',
+				url: 'http://localhost:8000/api/students/getClass',
+				headers: {
+						user_role: 'teacher',
+						access_token: token
+				},
+			}).done(function(data){
+				console.log("**************** GET CLASS REQ MADE ***********" );
+				console.dir(data);
+			});	
+	}
+
+	var joinClassTest = function(){	
+		var token = window.localStorage.getItem('clienttest');
+		console.log("**** join class clicked**" + token);
+
+			$.ajax({
+				type: 'GET',
+				url: 'http://localhost:8000/api/students/joinClass',
+				headers: {
+						class_identification: '4gzt',
+						user_role: 'teacher',
+						access_token: token
+				},
+			}).done(function(data){
+				console.log("**************** GET CLASS REQ MADE ***********" );
+				console.dir(data);
+			});	
+	}
+
+
+</script>
+  </body>
+</html>

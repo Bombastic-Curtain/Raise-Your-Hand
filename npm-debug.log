@@ -1,0 +1,299 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'i',
+1 verbose cli   'mongoose-shortid' ]
+2 info using npm@2.7.4
+3 info using node@v0.12.2
+4 warn package.json Raise-your-hand@0.0.0 No description
+5 warn package.json Raise-your-hand@0.0.0 No repository field.
+6 warn package.json Raise-your-hand@0.0.0 No README data
+7 silly cache add args [ 'mongoose-shortid', null ]
+8 verbose cache add spec mongoose-shortid
+9 silly cache add parsed spec { raw: 'mongoose-shortid',
+9 silly cache add   scope: null,
+9 silly cache add   name: 'mongoose-shortid',
+9 silly cache add   rawSpec: '',
+9 silly cache add   spec: '*',
+9 silly cache add   type: 'range' }
+10 verbose addNamed mongoose-shortid@*
+11 silly addNamed semver.valid null
+12 silly addNamed semver.validRange *
+13 silly addNameRange { name: 'mongoose-shortid', range: '*', hasData: false }
+14 silly mapToRegistry name mongoose-shortid
+15 silly mapToRegistry using default registry
+16 silly mapToRegistry registry https://registry.npmjs.org/
+17 silly mapToRegistry uri https://registry.npmjs.org/mongoose-shortid
+18 verbose addNameRange registry:https://registry.npmjs.org/mongoose-shortid not in flight; fetching
+19 verbose request uri https://registry.npmjs.org/mongoose-shortid
+20 verbose request no auth needed
+21 info attempt registry request try #1 at 5:28:41 PM
+22 verbose request id 85c3ab0295d09ac5
+23 verbose etag "9LPHCUZLJRTNRE8M9SJOKZQUE"
+24 http request GET https://registry.npmjs.org/mongoose-shortid
+25 http 304 https://registry.npmjs.org/mongoose-shortid
+26 silly get cb [ 304,
+26 silly get   { date: 'Thu, 21 May 2015 00:28:42 GMT',
+26 silly get     via: '1.1 varnish',
+26 silly get     'cache-control': 'max-age=60',
+26 silly get     etag: '"9LPHCUZLJRTNRE8M9SJOKZQUE"',
+26 silly get     age: '34',
+26 silly get     connection: 'keep-alive',
+26 silly get     'x-served-by': 'cache-lax1421-LAX',
+26 silly get     'x-cache': 'HIT',
+26 silly get     'x-cache-hits': '1',
+26 silly get     'x-timer': 'S1432168122.178160,VS0,VE0',
+26 silly get     vary: 'Accept' } ]
+27 verbose etag https://registry.npmjs.org/mongoose-shortid from cache
+28 verbose get saving mongoose-shortid to /Users/chent9288/.npm/registry.npmjs.org/mongoose-shortid/.cache.json
+29 silly addNameRange number 2 { name: 'mongoose-shortid', range: '*', hasData: true }
+30 silly addNameRange versions [ 'mongoose-shortid',
+30 silly addNameRange   [ '0.1.0', '0.2.0', '0.2.1', '0.4.0', '0.4.1', '0.4.2' ] ]
+31 verbose addNamed mongoose-shortid@0.4.2
+32 silly addNamed semver.valid 0.4.2
+33 silly addNamed semver.validRange 0.4.2
+34 silly cache afterAdd mongoose-shortid@0.4.2
+35 verbose afterAdd /Users/chent9288/.npm/mongoose-shortid/0.4.2/package/package.json not in flight; writing
+36 verbose afterAdd /Users/chent9288/.npm/mongoose-shortid/0.4.2/package/package.json written
+37 silly install resolved [ { name: 'mongoose-shortid',
+37 silly install resolved     description: 'Short Ids for mongoose',
+37 silly install resolved     author: { name: 'Jason Choy', email: 'jjwchoy@gmail.com' },
+37 silly install resolved     version: '0.4.2',
+37 silly install resolved     contributors: [ [Object], [Object], [Object] ],
+37 silly install resolved     main: './index.js',
+37 silly install resolved     directories: { lib: '.' },
+37 silly install resolved     repository:
+37 silly install resolved      { type: 'git',
+37 silly install resolved        url: 'https://github.com/jjwchoy/mongoose-shortid' },
+37 silly install resolved     keywords: [ 'mongoose' ],
+37 silly install resolved     dependencies: { bignum: '~0.6.1' },
+37 silly install resolved     peerDependencies: { mongoose: '>= 3.5.0 < 4' },
+37 silly install resolved     license: 'MIT',
+37 silly install resolved     bugs: { url: 'https://github.com/jjwchoy/mongoose-shortid/issues' },
+37 silly install resolved     homepage: 'https://github.com/jjwchoy/mongoose-shortid',
+37 silly install resolved     _id: 'mongoose-shortid@0.4.2',
+37 silly install resolved     dist:
+37 silly install resolved      { shasum: '0f51468ebdcca1d30119d3cff533b2f932eeb799',
+37 silly install resolved        tarball: 'http://registry.npmjs.org/mongoose-shortid/-/mongoose-shortid-0.4.2.tgz' },
+37 silly install resolved     _from: 'mongoose-shortid@*',
+37 silly install resolved     _npmVersion: '1.4.3',
+37 silly install resolved     _npmUser: { name: 'jjwchoy', email: 'jjwchoy@gmail.com' },
+37 silly install resolved     maintainers: [ [Object] ],
+37 silly install resolved     _shasum: '0f51468ebdcca1d30119d3cff533b2f932eeb799',
+37 silly install resolved     _resolved: 'https://registry.npmjs.org/mongoose-shortid/-/mongoose-shortid-0.4.2.tgz',
+37 silly install resolved     readme: 'ERROR: No README data found!' } ]
+38 info install mongoose-shortid@0.4.2 into /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand
+39 info installOne mongoose-shortid@0.4.2
+40 verbose installOne of mongoose-shortid to /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand not in flight; installing
+41 verbose lock using /Users/chent9288/.npm/_locks/mongoose-shortid-21506c7b86b286d6.lock for /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+42 silly install write writing mongoose-shortid 0.4.2 to /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+43 silly cache addNamed cb mongoose-shortid@0.4.2
+44 verbose unbuild node_modules/mongoose-shortid
+45 silly gentlyRm /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid is being purged from base /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand
+46 verbose gentlyRm don't care about contents; nuking /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+47 verbose tar unpack /Users/chent9288/.npm/mongoose-shortid/0.4.2/package.tgz
+48 verbose tar unpacking to /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+49 silly gentlyRm /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid is being purged
+50 verbose gentlyRm don't care about contents; nuking /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+51 silly gunzTarPerm modes [ '755', '644' ]
+52 silly gunzTarPerm extractEntry package.json
+53 silly gunzTarPerm extractEntry .npmignore
+54 silly gunzTarPerm extractEntry README.md
+55 silly gunzTarPerm extractEntry LICENSE
+56 silly gunzTarPerm extractEntry index.js
+57 silly gunzTarPerm extractEntry lib/genid.js
+58 silly gunzTarPerm extractEntry lib/index.js
+59 silly gunzTarPerm extractEntry lib/shortid.js
+60 info preinstall mongoose-shortid@0.4.2
+61 silly prepareForInstallMany adding bignum@~0.6.1 from mongoose-shortid dependencies
+62 silly cache add args [ 'bignum@~0.6.1', null ]
+63 verbose cache add spec bignum@~0.6.1
+64 silly cache add parsed spec { raw: 'bignum@~0.6.1',
+64 silly cache add   scope: null,
+64 silly cache add   name: 'bignum',
+64 silly cache add   rawSpec: '~0.6.1',
+64 silly cache add   spec: '>=0.6.1 <0.7.0',
+64 silly cache add   type: 'range' }
+65 verbose addNamed bignum@>=0.6.1 <0.7.0
+66 silly addNamed semver.valid null
+67 silly addNamed semver.validRange >=0.6.1 <0.7.0
+68 silly addNameRange { name: 'bignum', range: '>=0.6.1 <0.7.0', hasData: false }
+69 silly mapToRegistry name bignum
+70 silly mapToRegistry using default registry
+71 silly mapToRegistry registry https://registry.npmjs.org/
+72 silly mapToRegistry uri https://registry.npmjs.org/bignum
+73 verbose addNameRange registry:https://registry.npmjs.org/bignum not in flight; fetching
+74 verbose request uri https://registry.npmjs.org/bignum
+75 verbose request no auth needed
+76 info attempt registry request try #1 at 5:28:41 PM
+77 verbose etag "5D4LEGYKCIYKABALBFRSF93WA"
+78 http request GET https://registry.npmjs.org/bignum
+79 http 304 https://registry.npmjs.org/bignum
+80 silly get cb [ 304,
+80 silly get   { date: 'Thu, 21 May 2015 00:28:42 GMT',
+80 silly get     via: '1.1 varnish',
+80 silly get     'cache-control': 'max-age=60',
+80 silly get     etag: '"5D4LEGYKCIYKABALBFRSF93WA"',
+80 silly get     age: '34',
+80 silly get     connection: 'keep-alive',
+80 silly get     'x-served-by': 'cache-lax1433-LAX',
+80 silly get     'x-cache': 'HIT',
+80 silly get     'x-cache-hits': '1',
+80 silly get     'x-timer': 'S1432168122.317394,VS0,VE0',
+80 silly get     vary: 'Accept' } ]
+81 verbose etag https://registry.npmjs.org/bignum from cache
+82 verbose get saving bignum to /Users/chent9288/.npm/registry.npmjs.org/bignum/.cache.json
+83 silly addNameRange number 2 { name: 'bignum', range: '>=0.6.1 <0.7.0', hasData: true }
+84 silly addNameRange versions [ 'bignum',
+84 silly addNameRange   [ '0.4.0',
+84 silly addNameRange     '0.4.1',
+84 silly addNameRange     '0.5.0',
+84 silly addNameRange     '0.5.1',
+84 silly addNameRange     '0.5.2',
+84 silly addNameRange     '0.5.3',
+84 silly addNameRange     '0.5.4',
+84 silly addNameRange     '0.6.0',
+84 silly addNameRange     '0.6.1',
+84 silly addNameRange     '0.6.2',
+84 silly addNameRange     '0.7.0',
+84 silly addNameRange     '0.8.0',
+84 silly addNameRange     '0.9.0',
+84 silly addNameRange     '0.9.1',
+84 silly addNameRange     '0.9.2',
+84 silly addNameRange     '0.9.3',
+84 silly addNameRange     '0.10.0' ] ]
+85 verbose addNamed bignum@0.6.2
+86 silly addNamed semver.valid 0.6.2
+87 silly addNamed semver.validRange 0.6.2
+88 silly cache afterAdd bignum@0.6.2
+89 verbose afterAdd /Users/chent9288/.npm/bignum/0.6.2/package/package.json not in flight; writing
+90 verbose afterAdd /Users/chent9288/.npm/bignum/0.6.2/package/package.json written
+91 silly install resolved [ { name: 'bignum',
+91 silly install resolved     version: '0.6.2',
+91 silly install resolved     description: 'Arbitrary-precision integer arithmetic using OpenSSL',
+91 silly install resolved     main: './index.js',
+91 silly install resolved     repository:
+91 silly install resolved      { type: 'git',
+91 silly install resolved        url: 'http://github.com/justmoon/node-bignum.git' },
+91 silly install resolved     keywords:
+91 silly install resolved      [ 'openssl',
+91 silly install resolved        'big',
+91 silly install resolved        'bignum',
+91 silly install resolved        'bigint',
+91 silly install resolved        'integer',
+91 silly install resolved        'arithmetic',
+91 silly install resolved        'precision' ],
+91 silly install resolved     author:
+91 silly install resolved      { name: 'Stefan Thomas',
+91 silly install resolved        email: 'justmoon@members.fsf.org',
+91 silly install resolved        url: 'http://www.justmoon.net' },
+91 silly install resolved     devDependencies: { expresso: '>=0.6.0', binary: '>=0.1.7', put: '>=0.0.5' },
+91 silly install resolved     license: 'MIT/X11',
+91 silly install resolved     engine: { node: '>=0.8.0' },
+91 silly install resolved     scripts: { install: 'node-gyp configure build', test: 'expresso' },
+91 silly install resolved     contributors: [ [Object] ],
+91 silly install resolved     bugs: { url: 'https://github.com/justmoon/node-bignum/issues' },
+91 silly install resolved     _id: 'bignum@0.6.2',
+91 silly install resolved     dist:
+91 silly install resolved      { shasum: '73099542d00ac244df3b35744f9ce627dd880505',
+91 silly install resolved        tarball: 'http://registry.npmjs.org/bignum/-/bignum-0.6.2.tgz' },
+91 silly install resolved     _from: 'bignum@>=0.6.1 <0.7.0',
+91 silly install resolved     _npmVersion: '1.3.2',
+91 silly install resolved     _npmUser: { name: 'justmoon', email: 'justmoon@members.fsf.org' },
+91 silly install resolved     maintainers: [ [Object], [Object] ],
+91 silly install resolved     directories: {},
+91 silly install resolved     _shasum: '73099542d00ac244df3b35744f9ce627dd880505',
+91 silly install resolved     _resolved: 'https://registry.npmjs.org/bignum/-/bignum-0.6.2.tgz',
+91 silly install resolved     readme: 'ERROR: No README data found!',
+91 silly install resolved     homepage: 'https://github.com/justmoon/node-bignum' } ]
+92 info install bignum@0.6.2 into /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+93 info installOne bignum@0.6.2
+94 verbose installOne of bignum to /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid not in flight; installing
+95 verbose lock using /Users/chent9288/.npm/_locks/bignum-7e59e421951e911c.lock for /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum
+96 silly install write writing bignum 0.6.2 to /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum
+97 silly cache addNamed cb bignum@0.6.2
+98 verbose unbuild node_modules/mongoose-shortid/node_modules/bignum
+99 silly gentlyRm /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum is being purged from base /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand
+100 verbose gentlyRm don't care about contents; nuking /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum
+101 verbose tar unpack /Users/chent9288/.npm/bignum/0.6.2/package.tgz
+102 verbose tar unpacking to /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum
+103 silly gentlyRm /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum is being purged
+104 verbose gentlyRm don't care about contents; nuking /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum
+105 silly gunzTarPerm modes [ '755', '644' ]
+106 silly gunzTarPerm extractEntry package.json
+107 silly gunzTarPerm extractEntry .npmignore
+108 silly gunzTarPerm extractEntry index.js
+109 silly gunzTarPerm extractEntry .travis.yml
+110 silly gunzTarPerm extractEntry README.markdown
+111 silly gunzTarPerm extractEntry bignum.cc
+112 silly gunzTarPerm extractEntry binding.gyp
+113 silly gunzTarPerm extractEntry examples/gen.js
+114 silly gunzTarPerm extractEntry examples/perfect.js
+115 silly gunzTarPerm extractEntry examples/simple.js
+116 silly gunzTarPerm extractEntry test/big.js
+117 silly gunzTarPerm extractEntry test/buf.js
+118 silly gunzTarPerm extractEntry test/seed.js
+119 info preinstall bignum@0.6.2
+120 silly install resolved []
+121 verbose about to build /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum
+122 info build /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum
+123 verbose linkStuff [ false,
+123 verbose linkStuff   false,
+123 verbose linkStuff   false,
+123 verbose linkStuff   '/Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules' ]
+124 info linkStuff bignum@0.6.2
+125 verbose linkBins bignum@0.6.2
+126 verbose linkMans bignum@0.6.2
+127 verbose rebuildBundles bignum@0.6.2
+128 info install bignum@0.6.2
+129 verbose unsafe-perm in lifecycle true
+130 info bignum@0.6.2 Failed to exec install script
+131 verbose unlock done using /Users/chent9288/.npm/_locks/bignum-7e59e421951e911c.lock for /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum
+132 verbose about to build /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+133 verbose unlock done using /Users/chent9288/.npm/_locks/mongoose-shortid-21506c7b86b286d6.lock for /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+134 verbose stack Error: bignum@0.6.2 install: `node-gyp configure build`
+134 verbose stack Exit status 1
+134 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
+134 verbose stack     at EventEmitter.emit (events.js:110:17)
+134 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:14:12)
+134 verbose stack     at ChildProcess.emit (events.js:110:17)
+134 verbose stack     at maybeClose (child_process.js:1015:16)
+134 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
+135 verbose pkgid bignum@0.6.2
+136 verbose cwd /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand
+137 error Darwin 14.1.0
+138 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "i" "mongoose-shortid"
+139 error node v0.12.2
+140 error npm  v2.7.4
+141 error code ELIFECYCLE
+142 error bignum@0.6.2 install: `node-gyp configure build`
+142 error Exit status 1
+143 error Failed at the bignum@0.6.2 install script 'node-gyp configure build'.
+143 error This is most likely a problem with the bignum package,
+143 error not with npm itself.
+143 error Tell the author that this fails on your system:
+143 error     node-gyp configure build
+143 error You can get their info via:
+143 error     npm owner ls bignum
+143 error There is likely additional logging output above.
+144 verbose exit [ 1, true ]
+145 verbose unbuild node_modules/mongoose-shortid/node_modules/bignum
+146 info preuninstall bignum@0.6.2
+147 info uninstall bignum@0.6.2
+148 verbose unbuild rmStuff bignum@0.6.2 from /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules
+149 verbose unbuild rmStuff in /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules
+150 info postuninstall bignum@0.6.2
+151 silly gentlyRm /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum is being purged from base /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand
+152 verbose gentlyRm don't care about contents; nuking /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum
+153 silly vacuum-fs purging /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules/bignum
+154 silly vacuum-fs removing /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid/node_modules
+155 silly vacuum-fs quitting because other entries in /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+156 verbose unbuild node_modules/mongoose-shortid
+157 info preuninstall mongoose-shortid@0.4.2
+158 info uninstall mongoose-shortid@0.4.2
+159 verbose unbuild rmStuff mongoose-shortid@0.4.2 from /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules
+160 info postuninstall mongoose-shortid@0.4.2
+161 silly gentlyRm /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid is being purged from base /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand
+162 verbose gentlyRm don't care about contents; nuking /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+163 silly vacuum-fs purging /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules/mongoose-shortid
+164 silly vacuum-fs quitting because other entries in /Users/chent9288/Desktop/thesis_project/Raise-Your-Hand/node_modules
