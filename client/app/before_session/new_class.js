@@ -1,4 +1,4 @@
-angular.module('handsy.new_class', [])
+angular.module('queup.new_class', [])
 
 .controller('New_classController', function(){
 

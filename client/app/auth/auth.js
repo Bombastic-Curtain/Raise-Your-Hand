@@ -1,4 +1,4 @@
-angular.module('handsy.auth', [])
+angular.module('queup.auth', [])
 
 .controller('AuthController', function(){
 

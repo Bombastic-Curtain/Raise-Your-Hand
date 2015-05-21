@@ -1,4 +1,4 @@
-angular.module('handsy.class_list', [])
+angular.module('queup.class_list', [])
 
 .controller('Class_listController', function(){
 

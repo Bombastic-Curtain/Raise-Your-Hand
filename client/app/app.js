@@ -1,13 +1,13 @@
-  angular.module('handsy', [
-  'handsy.auth',
-  'handsy.before',
-  'handsy.class_info',
-  'handsy.class_list',
-  'handsy.new_class',
-  'handsy.in_session',
-  'handsy.queue_list',
-  'handsy.student_list',
-  'handsy.class_settings',
+  angular.module('queup', [
+  'queup.auth',
+  'queup.before',
+  'queup.class_info',
+  'queup.class_list',
+  'queup.new_class',
+  'queup.in_session',
+  'queup.queue_list',
+  'queup.student_list',
+  'queup.class_settings',
   'ui.router'
 ])
 .config(function($stateProvider, $urlRouterProvider){
