@@ -1,4 +1,4 @@
-angular.module('handsy.student_list', [])
+angular.module('queup.student_list', [])
 
 .controller('Student_listController', function(){
 
