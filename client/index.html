@@ -2,16 +2,38 @@
 <html ng-app='queup'>
 <head>
   <meta charset="utf-8" />
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.14/angular-ui-router.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="lib/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+  <link rel="stylesheet" href="lib/jasny-bootstrap/dist/css/jasny-bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="styles/style.css">
   <title>Que-up</title>
 </head>
 <body>
 
+<div class="navigationBar">
+  <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+    <a class="navmenu-brand" href="#">Que-up</a>
+    <ul class="nav navmenu-nav">
+      <li class="active"><a ui-sref="/signin">Sign-In</a></li>
+      <li><a ui-sref="before_session">Before Session</a></li>
+      <li><a ui-sref="in_session">In Session</a></li>
+    </ul>
+  </nav>
+  <div class="navbar navbar-default navbar-fixed-top">
+    <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+</div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.14/angular-ui-router.js"></script>
+<div ui-view="main" class="mainContainer"></div>
 
-  <div ui-view></div>
   
   <script src="app/services/services.js"></script>
   <script src="app/auth/auth.js"></script>
