@@ -63,6 +63,6 @@ module.exports = function (app, express) {
 
   require('../teachers/teachersRoutes.js')(teacherRouter);
   require('../students/studentsRoutes.js')(studentRouter, socketio);
-  //require('../classes/classesRoutes.js')(classesRouter);
+  require('../classes/classesRoutes.js')(classesRouter);
 
 };
