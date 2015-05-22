@@ -39,13 +39,13 @@ module.exports = function (app, express) {
   we are currently passing the fbToken back to the server, passport will hit facebook with the token and return a valid user ID and user token
   */
   //======= this does auth, than check if the user is a teacher or student
-  app.use(unless('/socket.io/', passport.authenticate('facebook-token', {session:false})),
-    function (req, res, next) {
-      console.log("******* GOING TO NEXT ---------------- ");
-      console.log(req.user);
-      next();
-    }
-  );
+  // app.use(unless('/socket.io/', passport.authenticate('facebook-token', {session:false})),
+  //   function (req, res, next) {
+  //     console.log("******* GOING TO NEXT ---------------- ");
+  //     console.log(req.user);
+  //     next();
+  //   }
+  // );
 
   app.use('/api/teachers', teacherRouter); 
   app.use('/api/students', studentRouter); 
@@ -53,6 +53,6 @@ module.exports = function (app, express) {
 
   require('../teachers/teachersRoutes.js')(teacherRouter);
   require('../students/studentsRoutes.js')(studentRouter, socketio);
-  //require('../classes/classesRoutes.js')(classesRouter);
+  require('../classes/classesRoutes.js')(classesRouter);
 
 };
