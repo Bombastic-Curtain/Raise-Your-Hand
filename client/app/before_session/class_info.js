@@ -4,3 +4,5 @@ angular.module('queup.class_info', [])
 
 
 });
+
+// todo: add remove class functionality

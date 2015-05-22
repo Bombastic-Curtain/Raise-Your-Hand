@@ -1,4 +1,10 @@
 <div>here in signin!</div>
+
+<fb:login-button scope="public_profile, email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status"></div>
+
 <button><a ui-sref='signup'> Don't have an account? Sign up here.</a></button>
 <button><a ui-sref='before_session'> Go to BEFORE SESSION </a></button>
 <button><a ui-sref='in_session'> Go to IN SESSION </a></button>

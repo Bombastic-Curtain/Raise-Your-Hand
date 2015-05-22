@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="./facebookLogin.js"></script>
+    <!-- CDN FOR SOCKET.IO -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js"></script>
+</head>
+
+<body>
+    <fb:login-button scope="public_profile, email" onlogin="checkLoginState();">
+    </fb:login-button>
+    <div id="status">
+    </div>
+    <div>
+        <a id="button" data-role="button" onclick="addClassTest()">add class test</a>
+        <br>
+        <br>
+        <a onclick="joinClassTest()"> join a class test </a>
+        <br>
+        <br>
+        <a onclick="raiseHandSocket()">raise hand with socket </a>
+    </div>
+    <script type="text/javascript">
+    $(function() {
+        window.socket = io.connect('http://localhost:8000');
+        window.socket.on("newhandraised", function(data) {
+            console.log('---------socket io event---------');
+            console.dir(data);
+        });
+    });
+
+    var raiseHandSocket = function() {
+        console.dir(socket);
+        /*
+			WHEN RASING HAND , WE PASS IN THE USER ID AND THE 
+			CLASS ID THEY ARE RASING THEIR HAND FOR
+		*/
+        window.socket.emit('handraise', {
+            classID: 'a0dx',
+            studentID: '555cd665189e11adce83c2c4'
+        });
+
+    }
+
+    var addClassTest = function() {
+        console.log("**** adding class clicked**");
+        var token = window.localStorage.getItem('clienttest');
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8000/api/teachers/addClass',
+            headers: {
+                user_role: 'teacher',
+                access_token: token
+            },
+            dataType: 'JSON',
+            data: {
+                classTitle: 'test class'
+            }
+        }).done(function(data) {
+            console.log("**************** ADD CLASS REQ MADE ***********");
+            console.dir(data);
+
+        });
+    }
+
+    var getClassTest = function() {
+        console.log("**** adding class clicked**");
+        var token = window.localStorage.getItem('clienttest');
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8000/api/students/getClass',
+            headers: {
+                user_role: 'teacher',
+                access_token: token
+            },
+        }).done(function(data) {
+            console.log("**************** GET CLASS REQ MADE ***********");
+            console.dir(data);
+        });
+    }
+
+    var joinClassTest = function() {
+        var token = window.localStorage.getItem('clienttest');
+        console.log("**** join class clicked**" + token);
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8000/api/students/joinClass',
+            headers: {
+                class_identification: '8181',
+                user_role: 'teacher',
+                access_token: token
+            },
+        }).done(function(data) {
+            console.log("**************** GET CLASS REQ MADE ***********");
+            console.dir(data);
+        });
+    }
+    </script>
+</body>
+
+</html>
