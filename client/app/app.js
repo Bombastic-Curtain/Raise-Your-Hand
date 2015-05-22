@@ -1,9 +1,4 @@
-var defaultNav = { templateUrl: 'navbar.html',
-                   controller: function() {},
-                   controllerAs: 'navBar'};
-
-
-  angular.module('queup', [
+angular.module('queup', [
   'queup.factory',
   'queup.auth',
   'queup.before',
@@ -21,8 +16,7 @@ var defaultNav = { templateUrl: 'navbar.html',
     .state('signup', {
       url: '/signup',
       views: {
-        'nav': defaultNav,
-        'body': {
+        'main': {
           templateUrl: 'app/auth/signup.html',
           controller: 'AuthController'}
       }
@@ -31,8 +25,7 @@ var defaultNav = { templateUrl: 'navbar.html',
     .state('signin', {
       url: '/signin',
       views: {
-        'nav': defaultNav,
-        'body': {
+        'main': {
           templateUrl: 'app/auth/signin.html',
           controller: 'AuthController'
         }
@@ -41,8 +34,7 @@ var defaultNav = { templateUrl: 'navbar.html',
     .state('before_session', {
       url: '/before_session',
       views: {
-        'nav': defaultNav,
-        'body': {
+        'main': {
           templateUrl: 'app/before_session/before_session.html',
           controller: 'Before_sessionController'
         }
@@ -51,8 +43,7 @@ var defaultNav = { templateUrl: 'navbar.html',
     .state('before_session.class_info', {
       url: '/class_info',
       views: {
-        'nav': defaultNav,
-        'body': {
+        'sub': {
           templateUrl: 'app/before_session/class_info.html',
           controller: 'Class_infoController'
         }
@@ -61,8 +52,7 @@ var defaultNav = { templateUrl: 'navbar.html',
     .state('before_session.class_list', {
       url: '/class_list',
       views: {
-        'nav': defaultNav,
-        'body': {
+        'sub': {
           templateUrl: 'app/before_session/class_list.html',
           controller: 'Class_listController'
         }
@@ -71,8 +61,7 @@ var defaultNav = { templateUrl: 'navbar.html',
     .state('before_session.new_class', {
       url: '/new_class',
       views: {
-        'nav': defaultNav,
-        'body': {
+        'sub': {
           templateUrl: 'app/before_session/new_class.html',
           controller: 'New_classController'
         }
@@ -81,8 +70,7 @@ var defaultNav = { templateUrl: 'navbar.html',
     .state('in_session', {
       url: '/in_session',
       views: {
-        'nav': defaultNav,
-        'body': {
+        'main': {
           templateUrl: 'app/in_session/in_session.html',
           controller: 'In_sessionController'
         }
@@ -91,8 +79,7 @@ var defaultNav = { templateUrl: 'navbar.html',
     .state('in_session.queue_list', {
       url: '/queue_list',
       views: {
-        'nav': defaultNav,
-        'body': {
+        'sub': {
           templateUrl: 'app/in_session/queue_list.html',
           controller: 'Queue_listController'
         }
@@ -101,8 +88,7 @@ var defaultNav = { templateUrl: 'navbar.html',
     .state('in_session.student_list', {
       url: '/student_list',
       views: {
-        'nav': defaultNav,
-        'body': {
+        'sub': {
           templateUrl: 'app/in_session/student_list.html',
           controller: 'Student_listController'
         }
@@ -111,8 +97,7 @@ var defaultNav = { templateUrl: 'navbar.html',
     .state('in_session.class_settings', {
       url: '/class_settings',
       views: {
-        'nav': defaultNav,
-        'body': {
+        'sub': {
           templateUrl: 'app/in_session/class_settings.html',
           controller: 'Class_settingsController'
         }
