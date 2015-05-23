@@ -9,8 +9,10 @@ var ClassSchema = new Schema({
   name: String,
   classID: String, 
   teacher: String,
-  assignedStudents: Array,
-  handRaised: Array
+  assignedStudentsID: Array,
+  assignedStudentsName: Array,
+  handRaisedID: Array,
+  handRaisedName: Array
 });
 
 ClassSchema.plugin(findOrCreate);

@@ -15,19 +15,25 @@ module.exports = function (socketio) {
     socketio.on('connection', function (socket) {
         socket.on('handraise', function(data) {
             console.log("--------------- SOCKET IO HAND_RAISED EVENT ----------------------");
-            console.log("clas id" + data.classID);
+            console.log("clas id: " + data.classID);
+            console.log("data passed in is: ", data);
             Classes.findOne({classID : data.classID}, function(err, dbData) {
                 if (!err){ 
-                  console.log("------ class found in DB, for going to add student ID into the table to indicate a student has their hand raised -------")
-                    console.log(JSON.stringify(dbData.handRaised));
-                    if(JSON.stringify(dbData.handRaised).toString().indexOf(data.studentID.toString()) < 0){
-                      console.log("adding the student id to hand raised" + JSON.stringify(dbData.handRaised).indexOf(dbData.handRaised));
-                      dbData.handRaised = dbData.handRaised.concat(data.studentID);
+                  console.log("------ class found in DB, now going to add student ID into the table to indicate a student has their hand raised -------")
+                    console.log(JSON.stringify(dbData.handRaisedID));
+                    console.log('handRaisedName Array: ', dbData.handRaisedName)
+                    if(JSON.stringify(dbData.handRaisedID).toString().indexOf(data.studentID.toString()) < 0){
+                      console.log("adding the student id to hand raised" + JSON.stringify(dbData.handRaisedID).indexOf(dbData.handRaisedID));
+                      dbData.handRaisedID = dbData.handRaisedID.concat(data.studentID);
+                      dbData.handRaisedName = dbData.handRaisedName.concat(data.studentName);
                     }
                     dbData.save(function (err) {
                         if(err) {
                             console.error('ERROR!');
                         }else{
+                          // students.findOne({_:id: new IdObject(data.studentID)}){
+
+                          // }
                           console.log("socketIO sending changed event---------------");
                           /*
                             THIS EMITS A HAND RAISED EVENT TO THE FRONTEND
@@ -48,10 +54,16 @@ module.exports = function (socketio) {
   module.joinClass =function (req, res, next) {
       console.log("---------- inside of join class --> class id = " + req.headers.class_identification);
       Classes.findOne({classID : req.headers.class_identification}, function(err, data) {
+        console.log("classes.findOne data: ", data);
+
           if (!err){ 
             console.log("****** the class the student is trying to join , is found in DB *****")
-              console.log(JSON.stringify(data.assignedStudents));
-              data.assignedStudents = data.assignedStudents.concat(req.user.id);
+              console.log("assignedStudentsID: ", JSON.stringify(data.assignedStudentsID));
+              data.assignedStudentsID = data.assignedStudentsID.concat(req.user.id);
+
+              console.log("assignedStudentsName: ", JSON.stringify(data.assignedStudentsName));
+              data.assignedStudentsName = data.assignedStudentsName.concat(req.user.name);
+
               data.save(function (err) {
                   console.log("---------- student ID added to the class ---------------------");
                   /* 

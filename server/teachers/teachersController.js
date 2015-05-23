@@ -44,5 +44,65 @@ module.exports = {
 
   removeClass: function (req, res, next) {
     
+  },
+
+  getClass: function (req, res, next) {
+    console.log('**********Inside Teachers Controller - get class')
+    console.log("req.user: ", req.user)
+    console.log("req.user.email: ", req.user.email)
+
+    Classes.find({teacher : req.user.email }, function(err, dbData){
+      if(!err){
+        console.log("-------found teacher access token in class collection, dbData below---------");
+        console.log(dbData)
+        
+        var classes = [];
+        for(var i = 0; i < dbData.length; i++){
+          classes.push(dbData[i].name)
+        }
+
+        res.json(classes);
+      } else {
+        throw err;
+      }
+    })
+  },
+
+  getClassInfo: function (req, res, next) {
+    console.log('**********Inside Teachers Controller - Get Class Info')
+    console.log("req.body.className: ", req.body.className)
+
+    Classes.findOne({name : req.body.className }, function(err, dbData){
+      if(!err){
+        console.log("-------found className in classes collection, dbData below---------");
+        console.log(dbData)
+
+        var result = {
+          className: dbData.name,
+          classID: dbData.classID
+        }
+
+        res.json(result);
+      } else {
+        throw err;
+      }
+    })
+  },
+
+  getStudentList: function(req, res, next){
+    console.log("**********Inside Teachers Controller - In Session - Student List - GET request")
+    console.log("req.query: ", req.query)
+    console.log("req.query.className: ", req.query.className)
+
+    Classes.findOne({classID : req.query.classID }, function(err, dbData){
+      if(!err){
+        console.log("-------found className in classes collection, dbData below---------");
+
+        res.json(dbData.assignedStudentsName);
+      } else {
+        throw err;
+      }
+    })
   }
 };
+
