@@ -5,5 +5,5 @@ module.exports = function (app, socketio) {
   studentsController.startHandRaiseSocketListener();
   // app === userRouter injected from middlware.js
   app.get('/joinClass', studentsController.joinClass);
-  app.get('/raiseHand', studentsController.raiseHand);
+  app.post('/raiseHand', studentsController.raiseHand);
 };
