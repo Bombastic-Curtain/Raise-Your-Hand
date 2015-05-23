@@ -14,5 +14,4 @@ var StudentSchema = new Schema({
 });
 
 StudentSchema.plugin(findOrCreate);
-
 module.exports = mongoose.model('Student', StudentSchema);
