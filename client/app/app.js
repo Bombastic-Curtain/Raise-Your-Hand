@@ -1,5 +1,6 @@
 angular.module('queup', [
   'queup.factory',
+  'socket.io',
   'queup.auth',
   'queup.before',
   'queup.class_info',
