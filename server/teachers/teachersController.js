@@ -58,7 +58,7 @@ module.exports = {
         
         var classes = [];
         for(var i = 0; i < dbData.length; i++){
-          classes.push(dbData[i].name)
+          classes.push(dbData[i])
         }
 
         res.json(classes);
@@ -91,10 +91,9 @@ module.exports = {
 
   getStudentList: function(req, res, next){
     console.log("**********Inside Teachers Controller - In Session - Student List - GET request")
-    console.log("req.query: ", req.query)
-    console.log("req.query.className: ", req.query.className)
+    console.log("req.query: ", req.query);
 
-    Classes.findOne({classID : req.query.classID }, function(err, dbData){
+    Classes.findOne({classID : req.query.classid }, function(err, dbData){
       if(!err){
         console.log("-------found className in classes collection, dbData below---------");
 

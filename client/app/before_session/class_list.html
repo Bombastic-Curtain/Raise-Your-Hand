@@ -1,3 +1,9 @@
 <div> Inside CLASS LIST state!</div>
 
-<button ui-sref='before_session.new_class'>Go to new class state (to add circle plus button here) </button>
+<ul>
+  <li class="classListEntry" ng-repeat="class in classList track by $index">
+    <a ng-click='handleClick(class)'>{{ class.name }}</a>
+  </li>
+</ul>
+
+<button ui-sref='before_session.new_class'>Go to add a new class page (to add circle plus button here) </button>
