@@ -21,7 +21,7 @@ module.exports = function (app, express) {
   /*
     THIS NEED TO BE CHANGED TO /../../client TO SERVE UP THE ANGULAR FRONTEND
   */
-  app.use(express.static(__dirname + '/../../test_client'));
+  app.use(express.static(__dirname + '/../../client'));
   app.use(cors());
   require('./passport.js')(passport);
   // ----- excluding the socket.io traffic from auth, socket io auth will be added 

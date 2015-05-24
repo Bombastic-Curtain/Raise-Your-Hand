@@ -32,11 +32,11 @@ angular.module('queup', [
       }
     })
     .state('before_session', {
-      url: '/before_session',
+      url: '/before_session', 
       views: {
         'main': {
           templateUrl: 'app/before_session/before_session.html',
-          controller: 'Before_sessionController'
+          controller: 'Before_sessionController',
         }
       },
     })
@@ -45,7 +45,7 @@ angular.module('queup', [
       views: {
         'sub': {
           templateUrl: 'app/before_session/class_info.html',
-          controller: 'Class_infoController'
+          controller: 'Class_infoController',
         }
       },
     })
