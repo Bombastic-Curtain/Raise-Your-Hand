@@ -26,7 +26,7 @@ module.exports = function (app, express) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
-  
+
   /*
     THIS NEED TO BE CHANGED TO /../../client TO SERVE UP THE ANGULAR FRONTEND
   */
@@ -48,6 +48,7 @@ module.exports = function (app, express) {
   we are currently passing the fbToken back to the server, passport will hit facebook with the token and return a valid user ID and user token
   */
   //======= this does auth, than check if the user is a teacher or student
+
   app.use(unless('/socket.io/', passport.authenticate('facebook-token', {session:false})),
     function (req, res, next) {
       console.log("******* GOING TO NEXT ---------------- ");

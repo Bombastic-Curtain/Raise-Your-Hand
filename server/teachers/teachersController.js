@@ -9,6 +9,7 @@ module.exports = {
   addClass: function (req, res, next) {
       console.log("************** adding class to DBs *************");
       console.log(req.body.classTitle);
+      console.log('req in addClass is:', req)
       //var ObjectId = mongoose.Types.ObjectId;
       //var myObjectId = ObjectId.fromString(req.body.classTitle);
       console.log("----------------> req", req.user);
