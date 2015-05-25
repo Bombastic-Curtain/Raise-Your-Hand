@@ -1,6 +1,10 @@
 angular.module('queup.queue_list', [])
 
-.controller('Queue_listController', function($rootScope, $scope, socket){
+.controller('Queue_listController', function($state, $rootScope, $scope, socket){
+
+  // If there is no current class, redirect to class list 
+  // so things don't break due to undefined currentClass
+  if($rootScope.currentClass === undefined) { $state.go('before_session.class_list'); }
 
   // Get current class info to display, and for sending on server reqs
   $scope.currentClass.name = $rootScope.currentClass.name;
