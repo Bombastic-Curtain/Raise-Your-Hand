@@ -1,7 +1,7 @@
 // =====
 module.exports = {
 	'facebookAuth' : {
-		'clientID' : '295600167230874',
-		'clientSecret' : '996c9657d5550d7963bb16b1488e6c5f'
+		'clientID' : '1599330500309904',
+		'clientSecret' : '91eed3145613266f3d57c33f930e5f02'
 	}
 }
