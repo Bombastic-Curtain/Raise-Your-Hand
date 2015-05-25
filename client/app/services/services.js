@@ -100,7 +100,26 @@ angular.module('queup.factory', [])
     },
 
     update: function() {
+      var token = window.localStorage.getItem('clientToken');
 
+      $http({
+        method: 'GET',
+        url: 'http://localhost:8000/api/teachers/getTeacherData',
+        headers: {
+          user_role: 'teacher',
+          access_token: token
+        }
+      })
+      .success(function(data) {
+        _data.name = data.name;
+        _data.email = data.email;
+        _data.fbPicture = data.fbPicture;
+        _data.classes = data.classes;
+        console.log('successfully loaded teacherData', _data);
+      })
+      .error(function(data, status) {
+        console.log('error in teacherData.update function')
+      })
     }
   }
 });

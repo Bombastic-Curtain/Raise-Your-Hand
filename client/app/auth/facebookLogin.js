@@ -12,8 +12,6 @@
 	  console.log("******************** ACCESS TOKEN ***********" + access_token);
 	  window.localStorage.setItem( 'clientToken', access_token);
 
-
-
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
