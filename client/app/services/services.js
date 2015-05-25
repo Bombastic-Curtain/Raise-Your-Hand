@@ -1,14 +1,16 @@
 angular.module('queup.factory', [])
 
-.factory('queupFactory', function($http){
+.factory('queupFactory', function($http, $rootScope){
+
+  $rootScope.serverURL = 'http://queup.io';
 
   var addNewClass = function(newClassName){
     console.log(newClassName)
     var token = window.localStorage.getItem('clientToken');
-    
+
     return $http({
       method: 'POST',
-      url: 'http://localhost:8000/api/teachers/addClass',
+      url: $rootScope.serverURL + '/api/teachers/addClass',
       headers: {
         user_role: 'teacher',
         access_token: token
@@ -33,7 +35,7 @@ angular.module('queup.factory', [])
     // return new Promise(function(resolve, reject) {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8000/api/teachers/getClassList',
+        url: $rootScope.serverURL + '/api/teachers/getClassList',
         headers: {
           user_role: 'teacher',
           access_token: token
@@ -48,7 +50,7 @@ angular.module('queup.factory', [])
 
     return $http({
       method: 'GET',
-      url: 'http://localhost:8000/api/teachers/getStudentList?classid='+ class_ID,
+      url: $rootScope.serverURL + '/api/teachers/getStudentList?classid='+ class_ID,
       headers: {
         user_role: 'teacher',
         access_token: token
@@ -70,7 +72,7 @@ angular.module('socket.io', [])
 
   // Create connection with server that is within the
   // factory (maintains connection across different views)
-  var socketio = io.connect('http://localhost:8000');
+  var socketio = io.connect( $rootScope.serverURL);
 
   // Wrapped socket.IO methods (on, emit, removeListener(s))
   // so that they can be handled correctly within view scopes
