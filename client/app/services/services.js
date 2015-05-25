@@ -2,7 +2,7 @@ angular.module('queup.factory', [])
 
 .factory('queupFactory', function($http, $rootScope){
 
-  $rootScope.serverURL = 'http://queup.io';
+  $rootScope.serverURL = 'http://localhost:8000';
 
   var addNewClass = function(newClassName){
     console.log(newClassName)
@@ -62,6 +62,46 @@ angular.module('queup.factory', [])
     addNewClass: addNewClass,
     teacherGetClassList: teacherGetClassList,
     teacherGetStudentList: teacherGetStudentList
+  }
+})
+
+.factory('teacherData', function($http) {
+  // private data for teacher information (name, email, classes, etc.)
+  var _data = {
+    name: null,
+    email: null,
+    fbPicture: null,
+    classes: [{name:'math',students:['jim','jason']},{name:'dance',students:['marie','marissa']}],
+    currentClass: null
+  };
+
+  return {
+
+    setCurrentClass: function(value) {
+      _data.currentClass = value;
+    },
+
+    get: function(key) {
+      var dataCopy;
+      // if a key is supplied, return that value
+      // if no argument supplied, just return a deep copy of all teacher data
+      if(key) {
+        // if value is an array, make a deep copy, otherwise make simple copy
+        if(Array.isArray(_data[key])) {
+          dataCopy = angular.copy(_data[key]);
+        } else {
+          dataCopy = _data[key];
+        }
+      } else {
+        dataCopy = angular.copy(_data);
+      }
+
+      return dataCopy;
+    },
+
+    update: function() {
+
+    }
   }
 });
 
