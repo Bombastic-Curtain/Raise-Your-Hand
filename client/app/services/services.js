@@ -2,7 +2,7 @@ angular.module('queup.factory', [])
 
 .factory('queupFactory', function($http, $rootScope){
 
-  $rootScope.serverURL = 'http://queup.io';
+  $rootScope.serverURL = 'http://localhost:8000';
 
   var addNewClass = function(newClassName){
     console.log(newClassName)
@@ -62,6 +62,71 @@ angular.module('queup.factory', [])
     addNewClass: addNewClass,
     teacherGetClassList: teacherGetClassList,
     teacherGetStudentList: teacherGetStudentList
+  }
+})
+
+.factory('teacherData', function($http, queupFactory) {
+  // private data for teacher information (name, email, classes, etc.)
+  var _data = {
+    name: null,
+    email: null,
+    fbPicture: null,
+    classes: [],
+    currentClass: {id: null, name: null},
+    loaded: false,
+    loading: false
+  };
+
+  return {
+
+    set: function(key, value) {
+      _data[key] = value;
+    },
+
+    get: function(key) {
+      var dataCopy;
+      // if a key is supplied, return that value
+      // if no argument supplied, just return a deep copy of all teacher data
+      if(key) {
+        // if value is an array, make a deep copy, otherwise make simple copy
+        if(Array.isArray(_data[key])) {
+          dataCopy = angular.copy(_data[key]);
+        } else {
+          dataCopy = _data[key];
+        }
+      } else {
+        dataCopy = angular.copy(_data);
+      }
+
+      return dataCopy;
+    },
+
+    update: function() {
+      var token = window.localStorage.getItem('clientToken');
+      _data.loading = true;
+      
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:8000/api/teachers/getTeacherData',
+        headers: {
+          user_role: 'teacher',
+          access_token: token
+        }
+      })
+      .success(function(data) {
+        _data.name = data.name;
+        _data.email = data.email;
+        _data.fbPicture = data.fbPicture;
+        _data.classes = data.classes;
+        _data.loaded = true;
+        _data.loading = false;
+        console.log('successfully loaded teacherData', _data);
+      })
+      .error(function(data, status) {
+        console.log('error in teacherData.update function')
+        _data.loading = false;
+      })
+    }
   }
 });
 

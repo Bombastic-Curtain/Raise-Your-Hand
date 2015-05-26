@@ -12,8 +12,6 @@
 	  console.log("******************** ACCESS TOKEN ***********" + access_token);
 	  window.localStorage.setItem( 'clientToken', access_token);
 
-
-
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -37,7 +35,7 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1599330500309904',
+    appId      : '936996249655076',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page

@@ -1,4 +1,5 @@
 var Classes = require('../classes/classesModel.js');
+var Teachers = require('./teachersModel.js');
 var Q    = require('q');
 var jwt  = require('jwt-simple');
 var mongoose = require('mongoose');
@@ -103,6 +104,31 @@ module.exports = {
         throw err;
       }
     })
+  },
+
+  getTeacherData: function(req,res,next) {
+    console.log('***** getTeacherData controller ******');
+    Teachers.findOne({email: req.user.email}, function(err, dbData) {
+      if(!err) {
+
+        Classes.find({teacher: req.user.email}, function(err, classes) {
+          console.log('**** here are classes ****', classes)
+          var classesList = classes;
+
+        console.log('***** found teacher, '+ req.user.email +' returning data ****');
+        var teacherData = {
+          name: dbData.name,
+          email: dbData.email,
+          fbPicture: dbData.fbPicture,
+          classes: classesList
+        };
+        res.json(teacherData);
+          
+        });
+      } else {
+        throw err;
+      }
+    });
   }
 };
 

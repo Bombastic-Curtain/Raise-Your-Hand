@@ -1,22 +1,16 @@
 angular.module('queup.student_list', [])
 
-.controller('Student_listController', function($rootScope, $scope, queupFactory, $state){
-  console.log('******* In student list controller, rootscope current class: ', $rootScope.currentClass)
+.controller('Student_listController', function($scope, queupFactory, $state, teacherData){
+  console.log('******* In student list controller *****')
   
-  queupFactory.teacherGetStudentList($rootScope.currentClass.classID)
-  .success(function(data) { 
-    console.log(data);
+  var currentClass = teacherData.get('currentClass');
+  var classes = teacherData.get('classes');
+  $scope.students = [];
 
-    var students = [];
-
-    data.forEach(function(value){
-      students.push(value);
-    });
-    
-    $scope.studentList = students;
-  })
-  .error(function(err){
-    console.log('error', err)
+  classes.forEach(function(thisClass) {
+    if(thisClass.classID === currentClass.classID) {
+      $scope.students = thisClass.assignedStudentsName;
+    }
   });
 
   $scope.handleClick = function(student){

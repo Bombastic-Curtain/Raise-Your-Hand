@@ -1,9 +1,11 @@
 <div> Inside CLASS LIST state!</div>
 
-<ul>
-  <li class="classListEntry" ng-repeat="class in classList track by $index">
+<ul ng-if="hasClasses">
+  <li class="classListEntry" ng-repeat="class in classes track by $index">
     <a ng-click='handleClick(class)'>{{ class.name }}</a>
   </li>
 </ul>
+
+<div ng-if="noClasses">No Classes</div>
 
 <button ui-sref='before_session.new_class'>Go to add a new class page (to add circle plus button here) </button>
