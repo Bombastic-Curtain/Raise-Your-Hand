@@ -72,7 +72,7 @@ angular.module('queup.factory', [])
     email: null,
     fbPicture: null,
     classes: [],
-    currentClass: {},
+    currentClass: {id: null, name: null},
     loaded: false,
     loading: false
   };
