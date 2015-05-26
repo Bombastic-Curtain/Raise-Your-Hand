@@ -9,8 +9,7 @@ angular.module('queup.queue_list', [])
   if( currentClass.id === null) { $state.go('before_session.class_list'); return; }
 
   // Get current class info to display, and for sending on server reqs
-  $scope.currentClass.name = currentClass.name;
-  $scope.currentClass.classID = currentClass.classID;
+  $scope.currentClass = {id: currentClass.classID, name: currentClass.name};
 
   // Queue currently contains dummy data unless overwritten by an update from the server (.on 'queueList')
   $scope.queue = [{name:'student1',id:'352h24hj2'}, {name:'student2',id:'35asd24hj2'},{name:'student3',id:'35asd24hj2'},{name:'student4',id:'35asd24hj2'}];

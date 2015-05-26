@@ -57,12 +57,25 @@ module.exports = function (app, express) {
     }
   );
 
+  // socket middleware to extract identification data from the initial socket connection
+  socketio.use(function(socket, next) {
+    var handshakeData = socket.request;
+    console.log('handshakeData', handshakeData._query);
+    // make sure the handshake data looks good as before
+    // if error do this:
+      // next(new Error('not authorized');
+    // else just call next
+    next();
+  });
+
   app.use('/api/teachers', teacherRouter); 
   app.use('/api/students', studentRouter); 
   app.use('/api/classes', classesRouter); 
 
   require('../teachers/teachersRoutes.js')(teacherRouter);
   require('../students/studentsRoutes.js')(studentRouter, socketio);
-  require('../classes/classesRoutes.js')(classesRouter);
+
+  require('../sockets.js')(socketio);
+  //require('../classes/classesRoutes.js')(classesRouter);
 
 };
