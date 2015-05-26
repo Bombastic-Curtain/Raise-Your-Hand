@@ -1,6 +1,9 @@
 angular.module('queup.auth', [])
 
 .controller('AuthController', function($scope, teacherData){
+
+  $scope.dataLoaded = false;
+
     // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
 
@@ -14,7 +17,9 @@ angular.module('queup.auth', [])
       var access_token =   FB.getAuthResponse()['accessToken'];
     console.log("******************** ACCESS TOKEN ***********" + access_token);
     window.localStorage.setItem( 'clientToken', access_token);
-    teacherData.update();
+    teacherData.update().then(function() {
+        $scope.dataLoaded = teacherData.get('loaded')
+    });
 
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.

@@ -71,9 +71,10 @@ angular.module('queup.factory', [])
     name: null,
     email: null,
     fbPicture: null,
-    classes: [{name:'math',students:['jim','jason']},{name:'dance',students:['marie','marissa']}],
+    classes: [],
     currentClass: {},
-    loaded: false
+    loaded: false,
+    loading: false
   };
 
   return {
@@ -102,7 +103,8 @@ angular.module('queup.factory', [])
 
     update: function() {
       var token = window.localStorage.getItem('clientToken');
-
+      _data.loading = true;
+      
       return $http({
         method: 'GET',
         url: 'http://localhost:8000/api/teachers/getTeacherData',
@@ -116,10 +118,13 @@ angular.module('queup.factory', [])
         _data.email = data.email;
         _data.fbPicture = data.fbPicture;
         _data.classes = data.classes;
+        _data.loaded = true;
+        _data.loading = false;
         console.log('successfully loaded teacherData', _data);
       })
       .error(function(data, status) {
         console.log('error in teacherData.update function')
+        _data.loading = false;
       })
     }
   }
