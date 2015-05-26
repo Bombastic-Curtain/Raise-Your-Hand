@@ -109,16 +109,22 @@ module.exports = {
   getTeacherData: function(req,res,next) {
     console.log('***** getTeacherData controller ******');
     Teachers.findOne({email: req.user.email}, function(err, dbData) {
-      var teacherData;
       if(!err) {
+
+        Classes.find({teacher: req.user.email}, function(err, classes) {
+          console.log('**** here are classes ****', classes)
+          var classesList = classes;
+
         console.log('***** found teacher, '+ req.user.email +' returning data ****');
-        teacherData = {
+        var teacherData = {
           name: dbData.name,
           email: dbData.email,
           fbPicture: dbData.fbPicture,
-          classes: dbData.classes
+          classes: classesList
         };
         res.json(teacherData);
+          
+        });
       } else {
         throw err;
       }

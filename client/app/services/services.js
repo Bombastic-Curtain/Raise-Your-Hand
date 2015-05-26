@@ -65,20 +65,21 @@ angular.module('queup.factory', [])
   }
 })
 
-.factory('teacherData', function($http) {
+.factory('teacherData', function($http, queupFactory) {
   // private data for teacher information (name, email, classes, etc.)
   var _data = {
     name: null,
     email: null,
     fbPicture: null,
     classes: [{name:'math',students:['jim','jason']},{name:'dance',students:['marie','marissa']}],
-    currentClass: null
+    currentClass: {},
+    loaded: false
   };
 
   return {
 
-    setCurrentClass: function(value) {
-      _data.currentClass = value;
+    set: function(key, value) {
+      _data[key] = value;
     },
 
     get: function(key) {
@@ -102,7 +103,7 @@ angular.module('queup.factory', [])
     update: function() {
       var token = window.localStorage.getItem('clientToken');
 
-      $http({
+      return $http({
         method: 'GET',
         url: 'http://localhost:8000/api/teachers/getTeacherData',
         headers: {

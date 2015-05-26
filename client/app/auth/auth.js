@@ -37,13 +37,13 @@ angular.module('queup.auth', [])
     });
   }
 
-  window.fbAsyncInit = function() {
+ window.fbAsyncInit = function() {
   FB.init({
-    appId      : '295600167230874',
+    appId      : '936996249655076',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.2' // use version 2.2
+    version    : 'v2.3' // use version 2.2
   });
 
 
