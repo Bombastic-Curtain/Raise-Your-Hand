@@ -1,3 +1,18 @@
 .logo-mini {
   background-color: #3c8dbc;
 }
+
+.center {
+  position: relative;
+  margin: auto;
+  padding: 50px;
+}
+
+.top-margin {
+  position: relative;
+  margin-top: 15px;
+}
+
+input {
+  text-align: center;
+}

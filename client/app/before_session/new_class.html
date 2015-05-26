@@ -1,5 +1,6 @@
-<div> Inside NEW CLASS state!</div>
-
-<input type='text' ng-model='newClassName' placeholder='Enter new class name'>
-
-<button ng-click='addNewClass(newClassName)'>Add New Class</button>
+<div class="input-group margin center">
+  <input class="form-control" type='text' ng-model='newClassName' placeholder='Enter new class name'>
+  <div class="center">
+    <button class="btn top-margin-center" ui-sref="before_session.class_list" ng-click='addNewClass(newClassName)'>Add New Class</button>
+  </div>
+</div>
