@@ -13,42 +13,62 @@ module.exports = function (socketio) {
       token based auth -----------------------------------------------------------
       */
     socketio.on('connection', function (socket) {
+        console.log('connected');
         socket.on('handraise', function(data) {
             console.log("--------------- SOCKET IO HAND_RAISED EVENT ----------------------");
             console.log("clas id: " + data.classID);
             console.log("data passed in is: ", data);
             Classes.findOne({classID : data.classID}, function(err, dbData) {
-                if (!err){ 
-                  console.log("------ class found in DB, now going to add student ID into the table to indicate a student has their hand raised -------")
-                    console.log(JSON.stringify(dbData.handRaisedID));
-                    console.log('handRaisedName Array: ', dbData.handRaisedName)
-                    if(JSON.stringify(dbData.handRaisedID).toString().indexOf(data.studentID.toString()) < 0){
-                      console.log("adding the student id to hand raised" + JSON.stringify(dbData.handRaisedID).indexOf(dbData.handRaisedID));
-                      dbData.handRaisedID = dbData.handRaisedID.concat(data.studentID);
-                      dbData.handRaisedName = dbData.handRaisedName.concat(data.studentName);
-                    }
-                    dbData.save(function (err) {
-                        if(err) {
-                            console.error('ERROR!');
-                        }else{
-                          // students.findOne({_:id: new IdObject(data.studentID)}){
+//                 if (!err){ 
+//                   console.log("------ class found in DB, now going to add student ID into the table to indicate a student has their hand raised -------")
+//                     console.log(JSON.stringify(dbData.handRaisedID));
+//                     console.log('handRaisedName Array: ', dbData.handRaisedName)
+//                     if(JSON.stringify(dbData.handRaisedID).toString().indexOf(data.studentID.toString()) < 0){
+//                       console.log("adding the student id to hand raised" + JSON.stringify(dbData.handRaisedID).indexOf(dbData.handRaisedID));
+//                       dbData.handRaisedID = dbData.handRaisedID.concat(data.studentID);
+//                       dbData.handRaisedName = dbData.handRaisedName.concat(data.studentName);
+//                     }
+//                     dbData.save(function (err) {
+//                         if(err) {
+//                             console.error('ERROR!');
+//                         }else{
+//                           // students.findOne({_:id: new IdObject(data.studentID)}){
 
-                          // }
-                          console.log("socketIO sending changed event---------------");
-                          /*
-                            THIS EMITS A HAND RAISED EVENT TO THE FRONTEND
-                          */
-                          socket.emit('newhandraised', { classObj: dbData});
-                        }
-                    });
-                } else {throw err;}
+//                           // }
+//                           console.log("socketIO sending changed event---------------");
+                          
+//                             THIS EMITS A HAND RAISED EVENT TO THE FRONTEND
+                          
+//                           socket.emit('newhandraised', { classObj: dbData});
+//                         }
+//                     });
+//                   console.log("------ class found in DB, for going to add student ID into the table to indicate a student has their hand raised -------")
+//                   console.log(JSON.stringify(dbData.handRaised));
+
+//                   if(JSON.stringify(dbData.handRaised).toString().indexOf(data.studentID.toString()) < 0){
+//                     console.log("adding the student id to hand raised" + JSON.stringify(dbData.handRaised).indexOf(dbData.handRaised));
+//                     dbData.handRaised = dbData.handRaised.concat(data.studentID);
+//                   }
+
+//                   dbData.save(function (err) {
+//                     if(err) {
+//                         console.error('ERROR!');
+//                     }else{
+//                       console.log("socketIO sending changed event---------------");
+//                       /*
+//                         THIS EMITS A HAND RAISED EVENT TO THE FRONTEND
+//                       */
+//                       socket.emit('newhandraised', { classObj: dbData});
+//                     }
+//                   });
+                // } else {throw err;}
             }); 
           });
       });
   };
 
   module.raiseHand = function (req, res, next) {
-    // this is not used anymore
+    console.log("Hand Raised.");
   };
 
   module.joinClass =function (req, res, next) {
