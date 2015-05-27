@@ -15,7 +15,7 @@
             <td>{{ class.name }}</td>
             <td>{{ class.classID }}</td>
             <td>
-              <button class="btn" ui-sref='in_session.student_list'> Start Class </button>
+              <button class="btn" ng-click="handleClick(class)"> Start Class </button>
             </td>
           </tr>
           <tr ng-if="noClasses">

@@ -128,16 +128,23 @@ angular.module('queup.factory', [])
       })
     }
   }
+})
+
+.factory('queueList', function(socket) {
+  socket.on('studentRaisedHand', function(data) {
+    console.log('received student hand raise', data);
+  })
 });
 
 // Socket Factory
 // --------------
 angular.module('socket.io', [])
-.factory('socket', function($rootScope) {
+.factory('socket', function($rootScope, teacherData) {
 
   // Create connection with server that is within the
   // factory (maintains connection across different views)
-  var socketio = io.connect( $rootScope.serverURL);
+  // and send teacher email to associate with socketID on server
+  var socketio = io.connect( $rootScope.serverURL );
 
   // Wrapped socket.IO methods (on, emit, removeListener(s))
   // so that they can be handled correctly within view scopes

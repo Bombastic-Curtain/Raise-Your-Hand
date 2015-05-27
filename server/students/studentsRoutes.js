@@ -1,8 +1,7 @@
 module.exports = function (app, socketio) {
 
   var studentsController = require('./studentsController.js')(socketio);
-  // starting the socketIO listener
-  studentsController.startHandRaiseSocketListener();
+  app.get('/classList', studentsController.classList);
   // app === userRouter injected from middlware.js
   app.post('/joinClass', studentsController.joinClass);
   app.post('/raiseHand', studentsController.raiseHand);
