@@ -15,12 +15,12 @@ angular.module('queup.queue_list', [])
   $scope.currentClass = {id: currentClass.classID, name: currentClass.name};
 
   // Queue currently contains dummy data unless overwritten by an update from the server (.on 'queueList')
-  $scope.queue = [{name:'student1',id:'352h24hj2'}, {name:'student2',id:'35asd24hj2'},{name:'student3',id:'35asd24hj2'},{name:'student4',id:'35asd24hj2'}];
+  $scope.queue = [{name:'student1',email:'352h24hj2'}, {name:'student2',email:'35asd24hj2'},{name:'student3',email:'35asd24hj2'},{name:'student4',email:'35asd24hj2'}];
 
   $scope.handleClick = function(student, index) {
     // Call on student, send id and index in the queue so it can
     // be returned/confirmed as received, then removed from queue
-    socket.emit('callOnStudent', {id: student.id, index: index});
+    socket.emit('callOnStudent', {email: student.name, index: index, classID: currentClass.classID});
   };
 
   var removeFromQueue = function(student) {
@@ -31,14 +31,14 @@ angular.module('queup.queue_list', [])
     console.log('** data from handRaise **',data);
     $scope.queue.push({name:data.email});
     // send confirmation to student that they were added to list
-    socket.emit('studentAddedToQueue', {email: data.email})
+    socket.emit('studentAddedToQueue', {email: data.email, classID: data.classID})
   };
 
   // Listen for queue updates from server
   socket.on('studentRaisedHand', addStudentToList);
 
   // If server confims student receieved call, remove from queue
-  socket.on('studentReceivedCall', removeFromQueue);
+  socket.on('studentConfirmation', removeFromQueue);
 
   // Ask for queue of current class from server when view gets instantiated
   socket.emit('queueRequest', {classID: $scope.currentClass.classID, data: 'give me the queue'});

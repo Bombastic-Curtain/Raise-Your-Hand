@@ -1,6 +1,6 @@
 module.exports = function(socketio) {
   // Create socket in-memory data storage for teacher and student socket ids
-  // and helper functions for checking and saving idsb  
+  // and helper functions for checking and saving ids
   var socketDirectory = {
     teachers: {},  // sample data: {classID: socketID}
     students: {},  // sample data: {student email: socketID}
@@ -23,7 +23,8 @@ module.exports = function(socketio) {
         return this[role][key];
       } else {
         // not found
-        console.log('**** did not find '+ role +' in sockedDirectory')
+        console.log('**** did not find '+ role +' in sockedDirectory');
+        return null;
       }
     } 
   };
@@ -34,10 +35,10 @@ module.exports = function(socketio) {
   socketio.on('connection', function(socket) {
     console.log('kennys socket ********* id:', socket.id);
 
-    socket.on('studentReceivedCall', function(data) {
-      // send message to teacher
-    });
+    // Student Socket Listeners ( Coming from student )
+    // ------------------------------------------------
 
+    // Student pressed raise hand button
     socket.on('handraise', function(data) {
       console.log('** student raised hand **', data);
       console.log('** student socket id **', socket.id);
@@ -48,7 +49,7 @@ module.exports = function(socketio) {
 
         // find teacher socket and send event to teacher
         if(socketDirectory.lookup('teachers', data.classID)) {
-          socketio.to(socketDirectory.lookup('teachers', data.classID)).emit('studentRaisedHand', {email: data.email});
+          socketio.to(socketDirectory.lookup('teachers', data.classID)).emit('studentRaisedHand', {email: data.email, classID: data.classID});
         } else {
           console.log('** error finding teacher socket id **');
         }
@@ -58,6 +59,23 @@ module.exports = function(socketio) {
       }
     });
 
+
+    // Student received notification of Teacher calling on them
+    socket.on('studentReceivedCall', function(data) {
+      // send message to teacher
+      var teacherSocket = socketDirectory.lookup('teachers', data.classID);
+      if(teacherSocket) {
+        socketio.to(teacherSocket).emit('studentConfirmation', data);
+      } else {
+        console.log('*** error: failed student -> teacher called-on confirmation, no teacher socket');
+      }
+    });
+
+
+    // Teacher Socket Listeners ( Coming from teacher )
+    // ------------------------------------------------
+
+    // Teacher is ready for students to raise hands
     socket.on('classReady', function(data) {
       console.log('** teacher connected **', data);
       console.log('** teacher socket id **', socket.id);
@@ -67,17 +85,27 @@ module.exports = function(socketio) {
       }
     });
 
-
-    socket.on('studentAddedToQueue', function() {
-
+    // Teacher has received the student hand raise, now send the student confirmation it was received
+    socket.on('studentAddedToQueue', function(data) {
+      var studentSocket = socketDirectory.lookup('students', data.email);
+      if(studentSocket) {
+        socketio.to(studentSocket).emit('queued', {classID: data.classID});
+      }
     });
 
+    // Teacher is calling on student. Make sure student is connected, tell student they were called on
     socket.on('callOnStudent', function(data) {
       // teacher called on student, send event to student, wait for response, emit confirmation to teacher
-      console.log('teacher called on student with id: ', data.id);
+      console.log('teacher called on student with email: ', data.email);
       console.log(Object.keys(socketio.sockets.connected)); // log current connection ids
 
       // send message to student
+      var studentSocket = socketDirectory.lookup('students', data.email);
+      if(studentSocket) {
+        socketio.to(studentSocket).emit('calledOn',data);
+      } else {
+        console.log('*** error: Calling on Student failed, student socket not found');
+      }
       // look up student socket it in table
       // socketio.to(socketid).emit('callingOnStudent', data) // get socketId from list of socket ids
 
