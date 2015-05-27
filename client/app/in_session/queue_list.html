@@ -1,9 +1,26 @@
-<div>Queue List</div>
 
-<h2>{{ currentClass.name }}</h2>
-<ul>
-  <li ng-repeat="student in queue track by $index">
-    <button ng-click="handleClick(student,$index)">{{ student.name }}</button>
-  </li>
-</ul>
+<!-- <h2>{{ currentClass.name }}</h2> -->
 
+<div class="col-md-6 float-center">
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Queue List</h3>
+    </div>
+    <div class="box-body no-padding">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Student Name</th>
+            <th>Call On Student</th>
+          </tr>
+          <tr ng-repeat="student in queue track by $index">
+            <td>{{ student }}</td>
+            <td>
+              <button class="btn" ng-click="handleClick(student,$index)">Call On Student</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

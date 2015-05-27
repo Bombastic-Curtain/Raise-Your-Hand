@@ -1,10 +1,33 @@
-
-<ul ng-if="hasClasses">
-  <li class="classListEntry" ng-repeat="class in classes track by $index">
-    <a ng-click='handleClick(class)'>{{ class.name }}</a>
-  </li>
-</ul>
-
-<div ng-if="noClasses">No Classes</div>
-
-<button class="btn" ui-sref='before_session.new_class'> Add new class </button>
+<div class="col-md-6 float-center">
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">List of Classes</h3>
+    </div>
+    <div class="box-body no-padding">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Class Name</th>
+            <th>Class Code</th>
+            <th>Start Class Session</th>
+          </tr>
+          <tr ng-if="hasClasses" ng-repeat="class in classes track by $index">
+            <td>{{ class.name }}</td>
+            <td>{{ class.classID }}</td>
+            <td>
+              <button class="btn" ui-sref='in_session.student_list'> Start Class </button>
+            </td>
+          </tr>
+          <tr ng-if="noClasses">
+            <td>Add a class to get started</td>
+          </tr>
+          <tr>
+            <td>
+              <button class="btn" ui-sref='before_session.new_class'> Add new class </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

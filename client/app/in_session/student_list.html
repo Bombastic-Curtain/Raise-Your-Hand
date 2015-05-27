@@ -1,6 +1,24 @@
-<div>Enrolled Students</div>
-<ul>
-  <li ng-repeat="student in students track by $index">
-    <a ng-click='handleClick(student)'>{{ student }}</a>
-  </li>
-</ul>
+
+<div class="col-md-6 float-center">
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Enrolled Students</h3>
+    </div>
+    <div class="box-body no-padding">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Student Name</th>
+            <th>Enrolled Status</th>
+          </tr>
+          <tr ng-repeat="student in students track by $index">
+            <td>{{ student }}</td>
+            <td>
+              <button class="btn bg-green" ng-click=''>Enrolled</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
