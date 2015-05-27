@@ -14,7 +14,7 @@
             <th>Call On Student</th>
           </tr>
           <tr ng-repeat="student in queue track by $index">
-            <td>{{ student }}</td>
+            <td>{{ student.name }}</td>
             <td>
               <button class="btn" ng-click="handleClick(student,$index)">Call On Student</button>
             </td>

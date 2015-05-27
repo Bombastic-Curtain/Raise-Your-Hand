@@ -12,7 +12,7 @@ angular.module('queup.class_list', [])
     console.log('classObj: ', classObj);
     teacherData.set('currentClass', classObj);
 
-    $state.go('before_session.class_info')
+    $state.go('in_session.student_list')
   }
 
 });

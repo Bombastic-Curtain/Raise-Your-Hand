@@ -26,18 +26,29 @@ module.exports = function (socketio) {
   module.joinClass =function (req, res, next) {
       // Create object to hold data for this student
       var studentData = {};
+      var joinedClasses = [];
       // Get Student Data to put in Students array for this class
-      Students.findOne({email: req.body.email}, function(err, data) {
+      Students.findOne({email: req.user.email}, function(err, data) {
         if(!err) {
           if(data) {
+            console.log('student joining class data:', data)
             studentData = {name: data.name ,email: data.email ,fbPicture: data.fbPicture};
+            joinedClasses = data.classIDs;
           } else {
             console.log('*** Did not find student when trying to join class');
+            res.status(500).send('noStudentFound');
           }
         } else {
           console.log('*** error in database trying to find Student to join class');
+          res.status(500).send('studentDatabaseError');
         }
       });
+
+      // Check if student already joined class
+      if(joinedClasses.indexOf(req.body.classID) > -1) {
+        res.status(500).send('alreadyJoinedClass');
+        return;
+      }
 
       console.log("---------- inside of join class --> class id = " + req.body.classID);
       Classes.findOne({classID : req.body.classID}, function(err, data) {
