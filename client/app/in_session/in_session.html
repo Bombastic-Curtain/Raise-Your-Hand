@@ -1,7 +1,50 @@
-<div>Class In Session</div>
+<section class="content-header">
+  <h1>Math 101 is in session</h1>
+</section>
 
-<button><a ui-sref='in_session.queue_list'> Student Queue List </a></button>
-<button><a ui-sref='in_session.student_list'> Enrolled Stuents </a></button>
-<button><a ui-sref='in_session.class_settings'> Class Settings </a></button>
+<section class="content">
+  <div class="row">
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h4>Queue List</h4>
+        </div>
+        <div class="icon">
+          <i class="ion ion-help">
+          </i>
+        </div>
+        <a ui-sref='in_session.queue_list' class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-green">
+        <div class="inner">
+          <h4>Enrolled Students</h4>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person-stalker">
+          </i>
+        </div>
+        <a ui-sref='in_session.student_list' class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-yellow">
+        <div class="inner">
+          <h4>Class Settings</h4>
+        </div>
+        <div class="icon">
+          <i class="ion ion-ios-gear-outline">
+          </i>
+        </div>
+        <a ui-sref='in_session.class_settings' class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
 
 <div ui-view="sub"></div>
