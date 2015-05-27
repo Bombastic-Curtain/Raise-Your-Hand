@@ -38,4 +38,7 @@ a {
   margin: auto;
   width: 60%;
 }
+.small-box {
+  border-radius: 5px;
+}
 
