@@ -10,7 +10,7 @@ var StudentSchema = new Schema({
   fbToken: String,
   email: String,
   fbPicture : String,
-  classes: []
+  classIDs: Array
 });
 
 StudentSchema.plugin(findOrCreate);

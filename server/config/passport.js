@@ -32,7 +32,6 @@ module.exports = function(passport) {
 		console.log('USER NAME ' + name);
 		console.log("----------------------------------------");
 
-
 		if(req.headers.user_role === "student"){
 			/*
 				will refactor to not use Q 

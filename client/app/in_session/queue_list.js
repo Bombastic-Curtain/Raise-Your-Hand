@@ -3,10 +3,13 @@ angular.module('queup.queue_list', [])
 .controller('Queue_listController', function($state, $scope, socket, teacherData){
 
   var currentClass = teacherData.get('currentClass');
-
+  console.log(currentClass);
   // If there is no current class, redirect to class list 
   // so things don't break due to undefined currentClass
   if( currentClass.id === null) { $state.go('before_session.class_list'); return; }
+
+  // emit event to register class id with socket id on server (for routing socket messages from students to teacher)
+  socket.emit('classReady', {classID: currentClass.classID});
 
   // Get current class info to display, and for sending on server reqs
   $scope.currentClass = {id: currentClass.classID, name: currentClass.name};
@@ -24,12 +27,13 @@ angular.module('queup.queue_list', [])
     $scope.queue.splice(student.index,1);
   };
 
-  var populateList = function(data) {
-    $scope.queue = data.queue;
+  var addStudentToList = function(data) {
+    console.log('** data from handRaise **',data);
+    $scope.queue.push({name:data});
   };
 
   // Listen for queue updates from server
-  socket.on('queueList', populateList);
+  socket.on('studentRaisedHand', addStudentToList);
 
   // If server confims student receieved call, remove from queue
   socket.on('studentReceivedCall', removeFromQueue);
@@ -39,7 +43,7 @@ angular.module('queup.queue_list', [])
 
   // Remove listeners to avoid memory leak when user leaves view and comes back
   $scope.$on('$destroy', function() {
-    socket.off('queueList', populateList);
+    socket.off('studentRaisedHand', addStudentToList);
     socket.off('studentReceivedCall', removeFromQueue);
   });
 

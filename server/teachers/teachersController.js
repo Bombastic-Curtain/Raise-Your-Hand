@@ -96,10 +96,10 @@ module.exports = {
     console.log("req.query: ", req.query);
 
     Classes.findOne({classID : req.query.classid }, function(err, dbData){
-      if(!err){
+      if(dbData){
         console.log("-------found className in classes collection, dbData below---------");
 
-        res.json(dbData.assignedStudentsName);
+        res.json({results: dbData.students});
       } else {
         throw err;
       }
