@@ -40,5 +40,6 @@ a {
 }
 .small-box {
   border-radius: 5px;
+  overflow: hidden;
 }
 
