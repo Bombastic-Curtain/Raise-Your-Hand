@@ -23,7 +23,7 @@ module.exports = function(socketio) {
         return this[role][key];
       } else {
         // not found
-        console.log('**** did not find '+ role +' in sockedDirectory');
+        console.log('**** did not find '+ role +' in socketDirectory');
         return null;
       }
     } 
@@ -31,6 +31,7 @@ module.exports = function(socketio) {
 
   // Create reference to where current socket connections are stored
   var connectedSockets = socketio.sockets.connected;
+
 
   socketio.on('connection', function(socket) {
     console.log('kennys socket ********* id:', socket.id);
@@ -62,6 +63,7 @@ module.exports = function(socketio) {
 
     // Student received notification of Teacher calling on them
     socket.on('studentReceivedCall', function(data) {
+      console.log('student received teacher call, passing back data:', data);
       // send message to teacher
       var teacherSocket = socketDirectory.lookup('teachers', data.classID);
       if(teacherSocket) {
@@ -106,8 +108,6 @@ module.exports = function(socketio) {
       } else {
         console.log('*** error: Calling on Student failed, student socket not found');
       }
-      // look up student socket it in table
-      // socketio.to(socketid).emit('callingOnStudent', data) // get socketId from list of socket ids
 
     });
     

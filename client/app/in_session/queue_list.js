@@ -28,10 +28,10 @@ angular.module('queup.queue_list', [])
   };
 
   var addStudentToList = function(data) {
-    console.log('** data from handRaise **',data);
+    console.log('** data from handRaise **', data);
     $scope.queue.push({name:data.email});
     // send confirmation to student that they were added to list
-    socket.emit('studentAddedToQueue', {email: data.email, classID: data.classID})
+    socket.emit('studentAddedToQueue', data)
   };
 
   // Listen for queue updates from server

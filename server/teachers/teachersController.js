@@ -1,5 +1,6 @@
 var Classes = require('../classes/classesModel.js');
 var Teachers = require('./teachersModel.js');
+var Students = require('../students/studentsModel.js');
 var Q    = require('q');
 var jwt  = require('jwt-simple');
 var mongoose = require('mongoose');
