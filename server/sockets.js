@@ -1,8 +1,31 @@
 module.exports = function(socketio) {
   // Create socket in-memory data storage for teacher and student socket ids
-  var socketLookup = {
+  // and helper functions for checking and saving idsb  
+  var socketDirectory = {
     teachers: {},  // sample data: {classID: socketID}
-    students: {}  // sample data: {student email: socketID}
+    students: {},  // sample data: {student email: socketID}
+    save: function(role, key, id) {
+      if(this[role][key]) {
+          if(this[role][key] !== id) {
+            this[role][key] = id;
+            return 'updated';
+          } else {
+            console.log('**** found '+ role +' in socketDirectory');
+            return 'confirmed';
+          }
+        } else {
+          this[role][key] = id;
+          return 'saved';
+        }
+    },
+    lookup: function(role, key) {
+      if(this[role][key]) {
+        return this[role][key];
+      } else {
+        // not found
+        console.log('**** did not find '+ role +' in sockedDirectory')
+      }
+    } 
   };
 
   // Create reference to where current socket connections are stored
@@ -18,21 +41,14 @@ module.exports = function(socketio) {
     socket.on('handraise', function(data) {
       console.log('** student raised hand **', data);
       console.log('** student socket id **', socket.id);
-      console.log(socketLookup);
+      console.log(socketDirectory.students, ' ', socketDirectory.teachers);
       if(data) {
         // save student socketid and email info to in-memory storage if not there, othewise confirm/update
-        if(socketLookup.students[data.email]) {
-          if(socketLookup.students[data.email] !== socket.id) {
-            socketLookup.students[data.email] = socket.id;
-          } else {
-            console.log('**** found student in socketLookup');
-          }
-        } else {
-          socketLookup.students[data.email] = socket.id;
-        }
+        socketDirectory.save('students', data.email, socket.id);
+
         // find teacher socket and send event to teacher
-        if(socketLookup.teachers[data.classID]) {
-          socketio.to(socketLookup.teachers[data.classID]).emit('studentRaisedHand', {email: data.email});
+        if(socketDirectory.lookup('teachers', data.classID)) {
+          socketio.to(socketDirectory.lookup('teachers', data.classID)).emit('studentRaisedHand', {email: data.email});
         } else {
           console.log('** error finding teacher socket id **');
         }
@@ -47,18 +63,13 @@ module.exports = function(socketio) {
       console.log('** teacher socket id **', socket.id);
       if(data) {
         // save teacher socketid and email info to in-memory storage if not there, othewise confirm/update
-        if(socketLookup.teachers[data.classID]) {
-          if(socketLookup.teachers[data.classID] !== socket.id) {
-            socketLookup.teachers[data.classID] = socket.id;
-          } else {
-            console.log('**** found teacher in socketLookup');
-          }
-        } else {
-          socketLookup.teachers[data.classID] = socket.id;
-        } 
-      } else {
-        // no data in emit from student
+        socketDirectory.save('teachers', data.classID, socket.id);
       }
+    });
+
+
+    socket.on('studentAddedToQueue', function() {
+
     });
 
     socket.on('callOnStudent', function(data) {
