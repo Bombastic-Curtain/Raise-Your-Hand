@@ -14,7 +14,7 @@ describe('Teacher Data Factory', function() {
       expect(tdata.set).to.be.a('function');
     })
 
-    it('should be able to modify currentClass property', function() {
+    it('should be able to modify and retrieve its properties', function() {
       tdata.set('currentClass', {name: 'Class Name'});
       expect(tdata.get('currentClass').name).to.equal('Class Name');
     })
