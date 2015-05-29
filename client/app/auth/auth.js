@@ -36,7 +36,7 @@ angular.module('queup.auth', [])
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
-  $scope.checkLoginState = function checkLoginState() {
+  window.checkLoginState = function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
@@ -44,7 +44,7 @@ angular.module('queup.auth', [])
 
  window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1425134197808858',
+    appId      : '1425134197808858', //'718396624937121', localhost key
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page

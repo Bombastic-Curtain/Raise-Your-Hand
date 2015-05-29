@@ -12,7 +12,7 @@
             <th>Enrolled Status</th>
           </tr>
           <tr ng-repeat="student in students track by $index">
-            <td>{{ student }}</td>
+            <td>{{ student.name }}</td>
             <td>
               <button class="btn bg-green" ng-click=''>Enrolled</button>
             </td>
