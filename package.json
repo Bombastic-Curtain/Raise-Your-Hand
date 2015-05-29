@@ -2,13 +2,21 @@
   "name": "Raise-your-hand",
   "version": "0.0.0",
   "devDependencies": {
+    "angular-mocks": "^1.4.0",
+    "chai": "^2.3.0",
     "jasmine": "^2.3.1",
     "jasmine-core": "^2.3.4",
-    "karma": "^0.12.33",
+    "karma": "^0.12.35",
+    "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.12",
-    "karma-jasmine": "^0.3.5"
+    "karma-jasmine": "^0.3.5",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "mocha": "^2.2.5",
+    "phantomjs": "^1.9.17"
   },
   "dependencies": {
+    "angular": "^1.4.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
     "cors": "^2.6.0",
