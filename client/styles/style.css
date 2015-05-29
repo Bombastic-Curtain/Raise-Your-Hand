@@ -1,3 +1,16 @@
+.splash {
+  background-color: black;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100000;
+  top: 0;
+}
+
+.fbLoginButton{
+  z-index: 200000;
+}
+
 input {
   text-align: center;
 }
