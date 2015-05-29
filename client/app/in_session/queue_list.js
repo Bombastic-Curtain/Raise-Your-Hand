@@ -15,7 +15,7 @@ angular.module('queup.queue_list', [])
   $scope.currentClass = {id: currentClass.classID, name: currentClass.name};
 
   // Queue currently contains dummy data unless overwritten by an update from the server (.on 'queueList')
-  $scope.queue = [{name:'student1',email:'352h24hj2'}, {name:'student2',email:'35asd24hj2'},{name:'student3',email:'35asd24hj2'},{name:'student4',email:'35asd24hj2'}];
+  $scope.queue = [];
 
   $scope.handleClick = function(student, index) {
     // Call on student, send id and index in the queue so it can

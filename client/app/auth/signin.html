@@ -1,9 +1,6 @@
-<div>Log in with Facebook</div>
+<div class="center">
+  <fb:login-button scope="public_profile, email" onlogin="checkLoginState();">
+  </fb:login-button>
 
-<fb:login-button scope="public_profile, email" onlogin="checkLoginState();">
-</fb:login-button>
-
-<div id="status"></div>
-<div ng-if="dataLoaded">Data Loaded</div>
-
-<button><a ui-sref='signup'> Don't have an account? Sign up here.</a></button>
+  <div id="status"></div>
+</div>
