@@ -1,6 +1,6 @@
 angular.module('queup.auth', [])
 
-.controller('AuthController', function($scope, teacherData){
+.controller('AuthController', function($scope, $state, teacherData){
 
   $scope.dataLoaded = false;
 
@@ -18,7 +18,9 @@ angular.module('queup.auth', [])
     console.log("******************** ACCESS TOKEN ***********" + access_token);
     window.localStorage.setItem( 'clientToken', access_token);
     teacherData.update().then(function() {
-        $scope.dataLoaded = teacherData.get('loaded')
+      $scope.dataLoaded = teacherData.get('loaded')
+    }).then(function(){
+      $state.go('q.before_session.class_list')
     });
 
     } else if (response.status === 'not_authorized') {

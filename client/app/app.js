@@ -14,15 +14,6 @@ angular.module('queup', [
 ])
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
-    .state('signup', {
-      url: '/signup',
-      views: {
-        'main': {
-          templateUrl: 'app/auth/signup.html',
-          controller: 'AuthController'}
-      }
-      
-    })
     .state('signin', {
       url: '/signin',
       views: {
@@ -32,16 +23,25 @@ angular.module('queup', [
         }
       }
     })
-    .state('before_session', {
-      url: '/before_session', 
+    .state('q', {
+      url:"/q",
       views: {
         'main': {
+          templateUrl: "app/nav.html",
+          controller: 'AuthController'
+        }
+      }
+    })
+    .state('q.before_session', {
+      url: '/before_session', 
+      views: {
+        'nav': {
           templateUrl: 'app/before_session/before_session.html',
           controller: 'Before_sessionController',
         }
       },
     })
-    .state('before_session.class_info', {
+    .state('q.before_session.class_info', {
       url: '/class_info',
       views: {
         'sub': {
@@ -50,7 +50,7 @@ angular.module('queup', [
         }
       },
     })
-    .state('before_session.class_list', {
+    .state('q.before_session.class_list', {
       url: '/class_list',
       views: {
         'sub': {
@@ -59,7 +59,7 @@ angular.module('queup', [
         }
       }, 
     })
-    .state('before_session.new_class', {
+    .state('q.before_session.new_class', {
       url: '/new_class',
       views: {
         'sub': {
@@ -68,16 +68,16 @@ angular.module('queup', [
         }
       },
     })
-    .state('in_session', {
+    .state('q.in_session', {
       url: '/in_session',
       views: {
-        'main': {
+        'nav': {
           templateUrl: 'app/in_session/in_session.html',
           controller: 'In_sessionController'
         }
       },
     })
-    .state('in_session.queue_list', {
+    .state('q.in_session.queue_list', {
       url: '/queue_list',
       views: {
         'sub': {
@@ -86,7 +86,7 @@ angular.module('queup', [
         }
       },
     })
-    .state('in_session.student_list', {
+    .state('q.in_session.student_list', {
       url: '/student_list',
       views: {
         'sub': {
@@ -95,7 +95,7 @@ angular.module('queup', [
         }
       },
     })
-    .state('in_session.class_settings', {
+    .state('q.in_session.class_settings', {
       url: '/class_settings',
       views: {
         'sub': {
