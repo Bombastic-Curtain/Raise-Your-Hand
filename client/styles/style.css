@@ -7,8 +7,28 @@
   top: 0;
 }
 
-.fbLoginButton{
-  z-index: 200000;
+.signin-top {
+  background-color: #18CFAA;
+  color: white;
+  position: relative;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.signin {
+  background-color: #18CFAA;
+  background-image: url("handraise_icon.png");
+  height: 580px;
+  color: white;
+}
+
+.navbar {
+  padding-right: 15px;
+}
+
+.blue-background {
+  background-color: #3c8dbc;
 }
 
 input {
@@ -27,6 +47,8 @@ a {
   position: relative;
   margin: auto;
   padding: 50px;
+  text-align: center;
+  
 }
 
 .top-margin {
