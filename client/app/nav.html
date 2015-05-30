@@ -1,7 +1,7 @@
 <div class="skin-blue sidebar-mini sidebar-collapse">
   <div class="wrapper">
     <header class="main-header">
-      <a class="logo" ui-sref="signin"> <span class="logo-lg"> Que-up </span>
+      <a class="logo" ui-sref="q.before_session.class_list"> <span class="logo-lg"> Que-up </span>
         <span class="logo-mini"> Q-up </span>
       </a>
       <nav class="navbar navbar-static-top" role="navigation">
@@ -9,6 +9,30 @@
         <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
           <span class="sr-only">Toggle navigation</span>
         </a>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu open">
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                <img src="{{teacherPic}}" class="user-image" alt="User Image">
+                <span class="hidden-xs"> {{ teacherName }} </span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="user-header">
+                  <img src="https://s-media-cache-ak0.pinimg.com/originals/c7/8e/9f/c78e9f36072b07767ee7039e66689afc.jpg" class="img-circle" alt="User Image">
+                  <p> {{ teacherName }} </p>
+                </li>
+                <li class="user-footer">
+                  <div class="pull-right">
+                    <a class="btn btn-default btn-flat">Sign Out</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="blue-background">
+              <a ng-click="logout()" class="btn btn-default btn-flat blue-background">Sign Out</a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
     <aside class="main-sidebar">
@@ -22,4 +46,5 @@
   </div>
 </div>
 <div ui-view="nav"></div>
+
 

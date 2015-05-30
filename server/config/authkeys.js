@@ -1,7 +1,7 @@
 // =====
 module.exports = {
 	'facebookAuth' : {
-		'clientID' : '1425134197808858',//'718396624937121', localhost key
-		'clientSecret' : '02c6f7d9cd561b61d7c68a4fe71bdb1f' // 'f5e9acd0b2cbfc6e46066cf185758ef8'
+		'clientID' : '718396624937121', // '1425134197808858', for queup.io
+		'clientSecret' : 'f5e9acd0b2cbfc6e46066cf185758ef8' // '02c6f7d9cd561b61d7c68a4fe71bdb1f' for queup.io
 	}
 }

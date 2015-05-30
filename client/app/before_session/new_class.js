@@ -9,7 +9,7 @@ angular.module('queup.new_class', [])
       console.log("data returning back to new class.js: ");
       console.dir(data);
       teacherData.update().then(function() {
-        $state.go('before_session.class_list');
+        $state.go('q.before_session.class_list');
       })
     })
   };

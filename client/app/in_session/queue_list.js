@@ -6,7 +6,7 @@ angular.module('queup.queue_list', [])
   console.log(currentClass);
   // If there is no current class, redirect to class list 
   // so things don't break due to undefined currentClass
-  if( currentClass.id === null) { $state.go('before_session.class_list'); return; }
+  if( currentClass.id === null) { $state.go('q.before_session.class_list'); return; }
 
   // emit event to register class id with socket id on server (for routing socket messages from students to teacher)
   socket.emit('classReady', {classID: currentClass.classID});

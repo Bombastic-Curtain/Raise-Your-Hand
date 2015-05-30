@@ -2,6 +2,14 @@ angular.module('queup.auth', [])
 
 .controller('AuthController', function($scope, $state, teacherData){
 
+  $scope.logout = function(){
+    FB.logout();
+    $state.go('signin')
+  }
+
+  $scope.teacherName = teacherData.get('name');
+  $scope.teacherPic = teacherData.get('fbPicture');
+
   $scope.dataLoaded = false;
 
     // This is called with the results from from FB.getLoginStatus().
@@ -46,7 +54,7 @@ angular.module('queup.auth', [])
 
  window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1425134197808858', //'718396624937121', localhost key
+    appId      : '718396624937121', // '1425134197808858',  queup.io
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
