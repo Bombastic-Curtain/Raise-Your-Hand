@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="queup" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.14/angular-ui-router.js"></script>
+  <!-- Bootstrap -->
+  <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <!-- Font Awesome Icons -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Ionicons -->
+  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <title>Que-Up</title>
+</head>
+
+<body>
+
+  <div ui-view="main"></div>
+  
+  <script src="app/services/services.js"></script>
+  <script src="app/auth/auth.js"></script>
+  <script src="app/before_session/before_session.js"></script>
+  <script src="app/before_session/class_info.js"></script>
+  <script src="app/before_session/class_list.js"></script>
+  <script src="app/before_session/new_class.js"></script>
+  <script src="app/in_session/in_session.js"></script>
+  <script src="app/in_session/queue_list.js"></script>
+  <script src="app/in_session/student_list.js"></script>
+  <script src="app/in_session/class_settings.js"></script>
+  <!-- CDN FOR SOCKET.IO -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js"></script>
+  <script src="app/app.js"></script>
+  <!-- jQuery -->
+  <script src="lib/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.2 JS -->
+  <script src="lib/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
+
+</body>
+
+</html>
