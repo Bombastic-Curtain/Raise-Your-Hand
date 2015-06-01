@@ -1,7 +1,7 @@
 var teacherController = require('./teachersController.js');
 module.exports = function (app) {
   // app === userRouter injected from middlware.js
-  app.get('/getClassList', teacherController.getClass);
+  app.get('/getClassList', teacherController.getClasses);
   app.get('/getStudentList/:classid?', teacherController.getStudentList);
   app.get('/getTeacherData', teacherController.getTeacherData);
   

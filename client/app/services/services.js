@@ -7,7 +7,7 @@ angular.module('queup.factory', [])
   var addNewClass = function(newClassName){
     console.log(newClassName)
     var token = window.localStorage.getItem('clientToken');
-
+    console.log(token,"TOKEN");
     return $http({
       method: 'POST',
       url: $rootScope.serverURL + '/api/teachers/addClass',
