@@ -8,10 +8,10 @@ var Schema = mongoose.Schema;
 
 
 module.exports = {
+  //Add a class to the database
   addClass: function (req, res, next) {
       console.log("************** adding class to DBs *************");
       console.log(req.body.classTitle);
-      console.log('req in addClass is:', req)
       //var ObjectId = mongoose.Types.ObjectId;
       //var myObjectId = ObjectId.fromString(req.body.classTitle);
       console.log("----------------> req", req.user);
@@ -45,11 +45,13 @@ module.exports = {
     
   },
 
+  // Remove a class from the database
   removeClass: function (req, res, next) {
     
   },
 
-  getClass: function (req, res, next) {
+  // Gets classes for a teacher from the database
+  getClasses: function (req, res, next) {
     console.log('**********Inside Teachers Controller - get class')
     console.log("req.user: ", req.user)
     console.log("req.user.email: ", req.user.email)
@@ -71,6 +73,7 @@ module.exports = {
     })
   },
 
+  // Gets class name and id for a class by class name
   getClassInfo: function (req, res, next) {
     console.log('**********Inside Teachers Controller - Get Class Info')
     console.log("req.body.className: ", req.body.className)
@@ -107,6 +110,7 @@ module.exports = {
     })
   },
 
+  // Gets the name, email, picture and classes for the teacher
   getTeacherData: function(req,res,next) {
     console.log('***** getTeacherData controller ******');
     Teachers.findOne({email: req.user.email}, function(err, dbData) {
