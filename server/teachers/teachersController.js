@@ -35,8 +35,8 @@ module.exports = {
       create(newClass)
       .then(function (classObj) {
         console.log("!!!!!!!!!!!! USER IS !!!!!!!!!!!!!!!" + classObj);
-        //next();
-        res.json(classObj);
+        // next();
+        res.status(201).json(classObj);
       })
       .fail(function (error) {
         console.log("******* ERROR ******  " + error);
