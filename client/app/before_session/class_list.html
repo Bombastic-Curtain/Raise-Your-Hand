@@ -1,33 +1,22 @@
-<div class="col-md-6 float-center">
-  <div class="box">
-    <div class="box-header">
-      <h3 class="box-title">List of Classes</h3>
-    </div>
-    <div class="box-body no-padding">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>Class Name</th>
-            <th>Class Code</th>
-            <th>Start Class Session</th>
-          </tr>
-          <tr ng-if="hasClasses" ng-repeat="class in classes track by $index">
-            <td>{{ class.name }}</td>
-            <td>{{ class.classID }}</td>
-            <td>
-              <button class="btn" ng-click="handleClick(class)"> Start Class </button>
-            </td>
-          </tr>
-          <tr ng-if="noClasses">
-            <td>Add a class to get started</td>
-          </tr>
-          <tr>
-            <td>
-              <button class="btn" ui-sref='q.before_session.new_class'> Add new class </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<h2 class="sub-header">Your Classes</h2>
+<div class="table-responsive">
+  <table id="queueTable" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Class Name</th>
+        <th>ID</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-if="noClasses">
+        <td>Create a class to get started</td>
+      </tr>
+      <tr ng-if="hasClasses" ng-repeat="class in classes track by $index">
+        <td>{{ class.name }}</td>
+        <td>{{ class.classID }}</td>
+        <td><button class="btn btn-default" ng-click="handleClick(class)"> Start Class </button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

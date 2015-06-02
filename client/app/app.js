@@ -18,7 +18,7 @@ angular.module('queup', [
       url: '/signin',
       views: {
         'main': {
-          templateUrl: 'app/auth/signin.html',
+          templateUrl: 'auth/signin.html',
           controller: 'AuthController'
         }
       }
@@ -27,7 +27,7 @@ angular.module('queup', [
       url:"/q",
       views: {
         'main': {
-          templateUrl: "app/nav.html",
+          templateUrl: "nav.html",
           controller: 'AuthController'
         }
       }
@@ -36,7 +36,7 @@ angular.module('queup', [
       url: '/before_session', 
       views: {
         'nav': {
-          templateUrl: 'app/before_session/before_session.html',
+          templateUrl: 'before_session/before_session.html',
           controller: 'Before_sessionController',
         }
       },
@@ -45,7 +45,7 @@ angular.module('queup', [
       url: '/class_info',
       views: {
         'sub': {
-          templateUrl: 'app/before_session/class_info.html',
+          templateUrl: 'before_session/class_info.html',
           controller: 'Class_infoController',
         }
       },
@@ -54,7 +54,7 @@ angular.module('queup', [
       url: '/class_list',
       views: {
         'sub': {
-          templateUrl: 'app/before_session/class_list.html',
+          templateUrl: 'before_session/class_list.html',
           controller: 'Class_listController'
         }
       }, 
@@ -63,7 +63,7 @@ angular.module('queup', [
       url: '/new_class',
       views: {
         'sub': {
-          templateUrl: 'app/before_session/new_class.html',
+          templateUrl: 'before_session/new_class.html',
           controller: 'New_classController'
         }
       },
@@ -72,7 +72,7 @@ angular.module('queup', [
       url: '/in_session',
       views: {
         'nav': {
-          templateUrl: 'app/in_session/in_session.html',
+          templateUrl: 'in_session/in_session.html',
           controller: 'In_sessionController'
         }
       },
@@ -81,7 +81,7 @@ angular.module('queup', [
       url: '/queue_list',
       views: {
         'sub': {
-          templateUrl: 'app/in_session/queue_list.html',
+          templateUrl: 'in_session/queue_list.html',
           controller: 'Queue_listController'
         }
       },
@@ -90,7 +90,7 @@ angular.module('queup', [
       url: '/student_list',
       views: {
         'sub': {
-          templateUrl: 'app/in_session/student_list.html',
+          templateUrl: 'in_session/student_list.html',
           controller: 'Student_listController'
         }
       },
@@ -99,7 +99,7 @@ angular.module('queup', [
       url: '/class_settings',
       views: {
         'sub': {
-          templateUrl: 'app/in_session/class_settings.html',
+          templateUrl: 'in_session/class_settings.html',
           controller: 'Class_settingsController'
         }
       },

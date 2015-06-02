@@ -16,6 +16,8 @@ angular.module('queup.queue_list', [])
 
   // Queue currently contains dummy data unless overwritten by an update from the server (.on 'queueList')
   $scope.queue = [];
+  $scope.hasQuestions = false;
+  $scope.noQuestions = true;
 
   $scope.handleClick = function(student, index) {
     // Call on student, send id and index in the queue so it can
@@ -25,6 +27,10 @@ angular.module('queup.queue_list', [])
 
   var removeFromQueue = function(student) {
     $scope.queue.splice(student.index,1);
+    if($scope.queue.length === 0) {
+      $scope.hasQuestions = false;
+      $scope.noQuestions = true;
+    }
   };
 
   var addStudentToList = function(data) {
@@ -32,6 +38,8 @@ angular.module('queup.queue_list', [])
     $scope.queue.push({name:data.email});
     // send confirmation to student that they were added to list
     socket.emit('studentAddedToQueue', data)
+    $scope.hasQuestions = true;
+    $scope.noQuestions = false;
   };
 
   // Listen for queue updates from server
