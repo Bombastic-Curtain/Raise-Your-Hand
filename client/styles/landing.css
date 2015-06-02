@@ -36,7 +36,7 @@ h6 {
     text-align: center;
     color: #f8f8f8;
     background: #999;
-    /*background: url(../img/intro-bg.jpg) no-repeat center center;*/
+    background: url(classroom.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -168,4 +168,16 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+.smallhand {
+    width: 60px;
+    height: 75px;
+}
+.qContainer {
+    width: 40%;
+    background: rgba(0,0,0,0.9);
+    padding: 20px;
+    border-radius: 30px;
+    border: 3px solid #111;
 }
