@@ -2,8 +2,6 @@
 .sidebar {
   display: block;
 }
-.highlightBox {
-}
 .highlight {
   background: #fafafa;
   width: 100%;
@@ -26,6 +24,10 @@
 }
 .addClass button {
   margin-top: 8px;
+}
+.panel {
+  margin-bottom: 0;
+  border: 0;
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -59,10 +61,6 @@
   background-color: #428bca;
 }
 
-/*
- * Main content
- */
-
 .main {
   padding: 20px;
 }
@@ -79,10 +77,6 @@
 .hideonmobile {
   display: none;
 }
-
-/*
- * Placeholder dashboard ideas
- */
 
 .placeholders {
   padding:0;

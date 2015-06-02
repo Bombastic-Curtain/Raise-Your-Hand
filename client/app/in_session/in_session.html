@@ -1,15 +1,19 @@
 <div class="highlightBox clearfix">
-  <h1>{{ currentClassname }}</h1>
-
-
+  
   <div class="placeholders">
 
     <div class="col-xs-12 col-sm-12 placeholder">
-      <div class="btn-group btn-group-sm highlight">
-        <a ui-sref="q.in_session.queue_list" class="btn btn-default"><span class="spacer"><i class="ion ion-help"></i></span>Queue</a>
-        <a ui-sref="q.in_session.student_list" class="btn btn-default"><span class="spacer"><i class="ion ion-person-stalker"></i></span>Students</a>
+      <div class="panel panel-default">
+          <div class="panel-body"><h1>{{ currentClassname }}</h1></div> 
+          <div class="panel-footer clearfix">
+              <div class="pull-right">
+                  <a ui-sref="q.in_session.queue_list" class="btn btn-default"><span class="spacer"><i class="ion ion-help"></i></span>Queue</a>
+                  <a ui-sref="q.in_session.student_list" class="btn btn-default"><span class="spacer"><i class="ion ion-person-stalker"></i></span>Students</a>
+              </div>
+          </div>
       </div>
     </div>
   </div>
 </div>
+
 <div ui-view="sub"></div>

@@ -2,9 +2,15 @@ angular.module('queup.auth', [])
 
 .controller('AuthController', function($scope, $state, teacherData){
 
-  $scope.logout = function(){
+  $scope.logout =  function(){
     FB.logout();
     $state.go('signin')
+  }
+
+  $scope.login = function() {
+    FB.login(function(response) {
+      statusChangeCallback(response);
+    })
   }
 
   $scope.teacherName = teacherData.get('name');
@@ -73,7 +79,7 @@ angular.module('queup.auth', [])
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src="https://connect.facebook.net/en_US/all.js";
+    js.src="https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
