@@ -36,6 +36,12 @@ angular.module('queup.factory', [])
   }
 })
 
+.factory('auth', function() {
+  var auth = {};
+  auth.loggedIn = false;
+  return auth;
+})
+
 .factory('teacherData', function($http, queupFactory) {
   // private data for teacher information (name, email, classes, etc.)
   var _data = {
