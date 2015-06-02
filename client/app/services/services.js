@@ -21,8 +21,9 @@ angular.module('queup.factory', [])
       }
     })
     .success(function(data){
-      console.dir('success data below:');
+      console.dir('add new class: success data below:');
       console.dir(data);
+      return data;
     })
     .error(function(data){
       console.dir('error data below:');
@@ -30,38 +31,8 @@ angular.module('queup.factory', [])
     })
   };
 
-  var teacherGetClassList = function(){
-    var token = window.localStorage.getItem('clientToken');
-    // return new Promise(function(resolve, reject) {
-      return $http({
-        method: 'GET',
-        url: $rootScope.serverURL + '/api/teachers/getClassList',
-        headers: {
-          user_role: 'teacher',
-          access_token: token
-        }
-      })
-  };
-
-  var teacherGetStudentList = function(class_ID){
-    console.log("class_ID value inside services: ", class_ID);
-
-    var token = window.localStorage.getItem('clientToken');
-
-    return $http({
-      method: 'GET',
-      url: $rootScope.serverURL + '/api/teachers/getStudentList?classid='+ class_ID,
-      headers: {
-        user_role: 'teacher',
-        access_token: token
-      }
-    })
-  };
-
   return {
     addNewClass: addNewClass,
-    teacherGetClassList: teacherGetClassList,
-    teacherGetStudentList: teacherGetStudentList
   }
 })
 
