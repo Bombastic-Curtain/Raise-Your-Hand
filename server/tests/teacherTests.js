@@ -18,7 +18,8 @@ describe('teachersController.js\n', function () {
         path: '/api/teachers/addclass',
         headers: {
           'Content-Type': 'application/json',
-          'access_token': 'CAAUQJumeHtoBABJmiRLJnN0w8c3JlidvFCVXRsNmjWbmK5DCEC40oLlQauqaUng4hF99D7ZBaZAl5tUIN4ysUxuVKTj3hKZAumM4EdLhWkkAXfZAkZCDyzmLHHdZCjuwX3cQiirACwcZB32ZBSl2CoEqMLSsOcc7tITjyE5qBuEZCQS7yxHALZAgN4dhPwrXIHQ5NtpjyazdevuZB475EBbhLYpYxwpc74cMmEZD',
+          // replace with tester's own FB access token (look in browser console when logging in)
+          'access_token': 'CAAKNYLZBjIKEBAJH4D4TVqXZAZBQtqOvqy4tO0hlKvuoiwtWajPScXxdbF5cas5jD1TuA6vuZBCcjWuhLyP5qzANfBSvKVgO7yZA74M3qxp4w9N5TXQ1hrx3N7FzjUJXoUHDke9tnEI7aQU5rlvtqw10mDbWSoIfw0n62lFEb5X2GZBKxMbyNpZBkiuxQcSAaRLMSNpEUK7rhhNU8kNNgS5jNgpDG4mLUsZD',
           'user_role': 'teacher'
         }
       }; 
@@ -26,7 +27,8 @@ describe('teachersController.js\n', function () {
         classTitle: "testClass"
       };
       var request = http.request(options, function (res) {
-        done(res.statusCode.should.equal(201));
+        res.statusCode.should.equal(201);
+        done();
       });
       request.write(JSON.stringify(postData));
       request.end();
@@ -60,7 +62,7 @@ describe('teachersController.js\n', function () {
         path: '/api/teachers/removeClass',
         headers: {
           'Content-Type': 'application/json',
-          'access_token': 'CAAUQJumeHtoBABJmiRLJnN0w8c3JlidvFCVXRsNmjWbmK5DCEC40oLlQauqaUng4hF99D7ZBaZAl5tUIN4ysUxuVKTj3hKZAumM4EdLhWkkAXfZAkZCDyzmLHHdZCjuwX3cQiirACwcZB32ZBSl2CoEqMLSsOcc7tITjyE5qBuEZCQS7yxHALZAgN4dhPwrXIHQ5NtpjyazdevuZB475EBbhLYpYxwpc74cMmEZD',
+          'access_token': 'CAAKNYLZBjIKEBAJH4D4TVqXZAZBQtqOvqy4tO0hlKvuoiwtWajPScXxdbF5cas5jD1TuA6vuZBCcjWuhLyP5qzANfBSvKVgO7yZA74M3qxp4w9N5TXQ1hrx3N7FzjUJXoUHDke9tnEI7aQU5rlvtqw10mDbWSoIfw0n62lFEb5X2GZBKxMbyNpZBkiuxQcSAaRLMSNpEUK7rhhNU8kNNgS5jNgpDG4mLUsZD',
           'user_role': 'teacher'
         }
       };
@@ -94,7 +96,7 @@ describe('teachersController.js\n', function () {
         path: '/api/teachers/addclass',
         headers: {
           'Content-Type': 'application/json',
-          'access_token': 'CAAUQJumeHtoBABJmiRLJnN0w8c3JlidvFCVXRsNmjWbmK5DCEC40oLlQauqaUng4hF99D7ZBaZAl5tUIN4ysUxuVKTj3hKZAumM4EdLhWkkAXfZAkZCDyzmLHHdZCjuwX3cQiirACwcZB32ZBSl2CoEqMLSsOcc7tITjyE5qBuEZCQS7yxHALZAgN4dhPwrXIHQ5NtpjyazdevuZB475EBbhLYpYxwpc74cMmEZD',
+          'access_token': 'CAAKNYLZBjIKEBAJH4D4TVqXZAZBQtqOvqy4tO0hlKvuoiwtWajPScXxdbF5cas5jD1TuA6vuZBCcjWuhLyP5qzANfBSvKVgO7yZA74M3qxp4w9N5TXQ1hrx3N7FzjUJXoUHDke9tnEI7aQU5rlvtqw10mDbWSoIfw0n62lFEb5X2GZBKxMbyNpZBkiuxQcSAaRLMSNpEUK7rhhNU8kNNgS5jNgpDG4mLUsZD',
           'user_role': 'teacher'
         }
       }; 
@@ -111,7 +113,7 @@ describe('teachersController.js\n', function () {
         method: 'GET',
         path: '/api/teachers/getClassList',
         headers: {
-          'access_token': 'CAAUQJumeHtoBABJmiRLJnN0w8c3JlidvFCVXRsNmjWbmK5DCEC40oLlQauqaUng4hF99D7ZBaZAl5tUIN4ysUxuVKTj3hKZAumM4EdLhWkkAXfZAkZCDyzmLHHdZCjuwX3cQiirACwcZB32ZBSl2CoEqMLSsOcc7tITjyE5qBuEZCQS7yxHALZAgN4dhPwrXIHQ5NtpjyazdevuZB475EBbhLYpYxwpc74cMmEZD',
+          'access_token': 'CAAKNYLZBjIKEBAJH4D4TVqXZAZBQtqOvqy4tO0hlKvuoiwtWajPScXxdbF5cas5jD1TuA6vuZBCcjWuhLyP5qzANfBSvKVgO7yZA74M3qxp4w9N5TXQ1hrx3N7FzjUJXoUHDke9tnEI7aQU5rlvtqw10mDbWSoIfw0n62lFEb5X2GZBKxMbyNpZBkiuxQcSAaRLMSNpEUK7rhhNU8kNNgS5jNgpDG4mLUsZD',
           'user_role': 'teacher'
         }
       };
@@ -120,6 +122,7 @@ describe('teachersController.js\n', function () {
         statusCode = res.statusCode;
         res.on('data', function (chunk) {
           data += chunk.toString();
+          console.log('before data: ',data)
           classes = JSON.parse(data); 
           done();
         });
@@ -159,7 +162,7 @@ describe('teachersController.js\n', function () {
           path: '/api/teachers/getTeacherData',
           headers: {
             'Content-Type': 'application/json',
-            'access_token': 'CAAUQJumeHtoBABJmiRLJnN0w8c3JlidvFCVXRsNmjWbmK5DCEC40oLlQauqaUng4hF99D7ZBaZAl5tUIN4ysUxuVKTj3hKZAumM4EdLhWkkAXfZAkZCDyzmLHHdZCjuwX3cQiirACwcZB32ZBSl2CoEqMLSsOcc7tITjyE5qBuEZCQS7yxHALZAgN4dhPwrXIHQ5NtpjyazdevuZB475EBbhLYpYxwpc74cMmEZD',
+            'access_token': 'CAAKNYLZBjIKEBAJH4D4TVqXZAZBQtqOvqy4tO0hlKvuoiwtWajPScXxdbF5cas5jD1TuA6vuZBCcjWuhLyP5qzANfBSvKVgO7yZA74M3qxp4w9N5TXQ1hrx3N7FzjUJXoUHDke9tnEI7aQU5rlvtqw10mDbWSoIfw0n62lFEb5X2GZBKxMbyNpZBkiuxQcSAaRLMSNpEUK7rhhNU8kNNgS5jNgpDG4mLUsZD',
             'user_role': 'teacher'
           }
         };
@@ -185,6 +188,7 @@ describe('teachersController.js\n', function () {
       teacher.should.be.an.Object;
     });
     it('Object should have a name, email, picture and classes property', function (done) {
+      console.log('OKOK')
       should.exist(teacher.name);
       should.exist(teacher.email);
       should.exist(teacher.fbPicture);
