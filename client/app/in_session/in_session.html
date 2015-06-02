@@ -1,50 +1,15 @@
-<section class="content-header">
-  <h1>{{ currentClassname }} is in session</h1>
-</section>
+<div class="highlightBox clearfix">
+  <h1>{{ currentClassname }}</h1>
 
-<section class="content">
-  <div class="row">
-    <div class="col-lg-3 col-xs-6">
-      <div class="small-box bg-aqua">
-        <div class="inner">
-          <h4>Queue List</h4>
-        </div>
-        <div class="icon">
-          <i class="ion ion-help">
-          </i>
-        </div>
-        <a ui-sref='q.in_session.queue_list' class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+
+  <div class="placeholders">
+
+    <div class="col-xs-12 col-sm-12 placeholder">
+      <div class="btn-group btn-group-sm highlight">
+        <a ui-sref="q.in_session.queue_list" class="btn btn-default"><span class="spacer"><i class="ion ion-help"></i></span>Queue</a>
+        <a ui-sref="q.in_session.student_list" class="btn btn-default"><span class="spacer"><i class="ion ion-person-stalker"></i></span>Students</a>
       </div>
     </div>
-
-    <div class="col-lg-3 col-xs-6">
-      <div class="small-box bg-green">
-        <div class="inner">
-          <h4>Enrolled Students</h4>
-        </div>
-        <div class="icon">
-          <i class="ion ion-person-stalker">
-          </i>
-        </div>
-        <a ui-sref='q.in_session.student_list' class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-
-    <div class="col-lg-3 col-xs-6">
-      <div class="small-box bg-yellow">
-        <div class="inner">
-          <h4>Class Settings</h4>
-        </div>
-        <div class="icon">
-          <i class="ion ion-ios-gear-outline">
-          </i>
-        </div>
-        <a ui-sref='q.in_session.class_settings' class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-
-
   </div>
-</section>
-
+</div>
 <div ui-view="sub"></div>

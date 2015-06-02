@@ -1,24 +1,20 @@
-
-<div class="col-md-6 float-center">
-  <div class="box">
-    <div class="box-header">
-      <h3 class="box-title">Enrolled Students</h3>
-    </div>
-    <div class="box-body no-padding">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>Student Name</th>
-            <th>Enrolled Status</th>
-          </tr>
-          <tr ng-repeat="student in students track by $index">
-            <td>{{ student.name }}</td>
-            <td>
-              <button class="btn bg-green" ng-click=''>Enrolled</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<div class="table-responsive">
+  <table id="queueTable" class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-if="noStudents">
+        <td></td>
+        <td>No Students Registered</td>
+      </tr>
+      <tr ng-if="hasStudents" ng-repeat="student in students track by $index">
+        <td><img class="studentPic" src="{{ student.fbPicture }}"></td>
+        <td>{{ student.name }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

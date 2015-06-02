@@ -1,50 +1,56 @@
-<div class="skin-blue sidebar-mini sidebar-collapse">
-  <div class="wrapper">
-    <header class="main-header">
-      <a class="logo" ui-sref="q.before_session.class_list"> <span class="logo-lg"> Que-up </span>
-        <span class="logo-mini"> Q-up </span>
-      </a>
-      <nav class="navbar navbar-static-top" role="navigation">
-        <!-- Sidebar toggle button-->
-        <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
-          <span class="sr-only">Toggle navigation</span>
-        </a>
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <li class="dropdown user user-menu open">
-              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                <img src="{{teacherPic}}" class="user-image" alt="User Image">
-                <span class="hidden-xs"> {{ teacherName }} </span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="user-header">
-                  <img src="https://s-media-cache-ak0.pinimg.com/originals/c7/8e/9f/c78e9f36072b07767ee7039e66689afc.jpg" class="img-circle" alt="User Image">
-                  <p> {{ teacherName }} </p>
-                </li>
-                <li class="user-footer">
-                  <div class="pull-right">
-                    <a class="btn btn-default btn-flat">Sign Out</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="blue-background">
-              <a ng-click="logout()" class="btn btn-default btn-flat blue-background">Sign Out</a>
-            </li>
-          </ul>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+          <nav class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <span class="visible-xs navbar-brand">Sidebar menu</span>
+              </div>
+              <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                <div class="sidebar-header hideonmobile">Q-Up</div>
+                <div class="teacherInfo hideonmobile">
+                  <img class="studentPic" src="{{ teacherPic }}">
+                  <div>{{ teacherName }}</div>
+                </div>
+                <ul class="nav navbar-nav">
+                  <li><a ui-sref="q.before_session.class_list">Class List</a></li>
+                  <li><a ui-sref="q.before_session.new_class">Add Class</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Action</a></li>
+                      <li><a href="#">Another action</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li class="dropdown-header">Nav header</li>
+                      <li><a href="#">Separated link</a></li>
+                      <li><a href="#">One more separated link</a></li>
+                    </ul>
+                  </li>
+                  <li ng-click="logout()"><a href="#/signin">Log Out</a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </nav>
         </div>
-      </nav>
-    </header>
-    <aside class="main-sidebar">
-      <section class="sidebar">
-        <ul class="sidebar-menu">
-          <li><a ui-sref="q.before_session.class_list">Classes Menu</a></li>
-          <li><a ui-sref="q.in_session">Class in Session</a></li>
-        </ul>
-      </section>
-    </aside>
+
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-xs-12 col-sm-8">
+          <div ui-view="nav"></div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+        <div ui-view="panel">
+        </div>
+
+      </div>
+    </div>
   </div>
-</div>
-<div ui-view="nav"></div>
 
 

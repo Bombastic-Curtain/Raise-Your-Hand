@@ -1,26 +1,27 @@
-
-<!-- <h2>{{ currentClass.name }}</h2> -->
-
-<div class="col-md-6 float-center">
-  <div class="box">
-    <div class="box-header">
-      <h3 class="box-title">Queue List</h3>
-    </div>
-    <div class="box-body no-padding">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>Student Name</th>
-            <th>Call On Student</th>
-          </tr>
-          <tr ng-repeat="student in queue track by $index">
-            <td>{{ student.name }}</td>
-            <td>
-              <button class="btn" ng-click="handleClick(student,$index)">Call On Student</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<h2 class="sub-header">These People Have Questions:</h2>
+<div class="table-responsive">
+  <table id="queueTable" class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Call</th>
+        <th>Waiting</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-if="noQuestions">
+        <td></td>
+        <td>No Questions Yet</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr ng-if="hasQuestions" ng-repeat="student in queue track by $index">
+        <td><img src="{{ student.fbPicture }}" class="studentPic"></td>
+        <td>{{ student.name }}</td>
+        <td><button class="btn btn-default" ng-click="handleClick(student,$index)">Call</button></td>
+        <td>4min 34sec</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
