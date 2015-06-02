@@ -12,8 +12,10 @@
     "karma-jasmine": "^0.3.5",
     "karma-mocha": "^0.1.10",
     "karma-phantomjs-launcher": "^0.2.0",
+    "karma-sinon": "^1.0.4",
     "mocha": "^2.2.5",
-    "phantomjs": "^1.9.17"
+    "phantomjs": "^1.9.17",
+    "sinon": "^1.14.1"
   },
   "dependencies": {
     "angular": "^1.4.0",

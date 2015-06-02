@@ -37,7 +37,7 @@ describe('Teacher Data Factory', function() {
       expect(tdata.get('currentClass').name).to.equal('Class Name');
     });
 
-    it('should return copies of property values, not the values themselves', function() {
+    xit('should return copies of property values, not the values themselves', function() {
       var classObj = {name:'Math 53'};
       tdata.set('currentClass', classObj);
       expect(tdata.get('currentClass')).to.not.equal(classObj);
@@ -65,6 +65,57 @@ describe('Teacher Data Factory', function() {
       });
       $httpBackend.flush();
     });
-
   });
 });
+
+describe('Queup Factory', function() {
+
+  var queup, $httpBackend, response;
+
+  beforeEach(module('queup'));
+  beforeEach(inject(function($injector) {
+    queup = $injector.get('queupFactory');
+    $httpBackend = $injector.get('$httpBackend');
+  }));
+
+  describe('queupFactory functions', function() {
+    it('should have a addNewClass function', function() {
+      expect(queup.addNewClass).to.be.a('function');
+    });
+
+    it('should add a class', function(){
+      $httpBackend.expectPOST('http://localhost:8000/api/teachers/addClass', '{"classTitle":"class name"}').respond(201, 'OK')      
+      queup.addNewClass('class name').then(function(data){
+        expect(data.data).to.equal('OK');
+      })
+      $httpBackend.flush();
+    })
+  });
+});
+
+// describe('Socket Factory', function() {
+
+//   var socket;
+
+//   beforeEach(module('queup'));
+//   beforeEach(inject(function ($injector) {
+//     socket = $injector.get('socket');
+//   }));
+
+//   describe('socket factory functionality', function() {
+
+
+//     it("should emit and call its call back", function(){
+//       // var callback = sinon.spy();
+//       // var proxy = queup.addNewClass(callback);
+//       // var className = "testing class";
+
+//       // proxy.call()
+
+//       // assert(callback.called);
+//     });
+//   })
+// });
+
+
+
