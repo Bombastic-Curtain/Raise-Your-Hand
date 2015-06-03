@@ -13,6 +13,19 @@ angular.module('queup', [
   'ui.router'
 ])
 .config(function($stateProvider, $urlRouterProvider){
+  
+  var authenticate = function($q, auth, teacherData) {
+    var deferred = $q.defer();
+    if(auth.loggedIn) {
+      deferred.resolve('Logged In');
+      console.log('logged in')
+    } else {
+      deferred.reject('Not Logged In');
+      console.log('not logged in')
+    }
+    return deferred.promise;
+  };
+
   $stateProvider
     .state('signin', {
       url: '/signin',
@@ -40,6 +53,9 @@ angular.module('queup', [
           controller: 'Before_sessionController',
         }
       },
+      resolve: {
+        authenticate: authenticate
+      }
     })
     .state('q.before_session.class_info', {
       url: '/class_info',
@@ -76,6 +92,9 @@ angular.module('queup', [
           controller: 'In_sessionController'
         }
       },
+      resolve: {
+        authenticate: authenticate
+      }
     })
     .state('q.in_session.queue_list', {
       url: '/queue_list',
@@ -107,3 +126,9 @@ angular.module('queup', [
 
   $urlRouterProvider.otherwise('/signin');
 })
+.run(function ($rootScope, $state) {
+  $rootScope.$on('$stateChangeError', function () {
+    // Redirect to login page
+    $state.go('signin');
+  });
+});
