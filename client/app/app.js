@@ -14,15 +14,16 @@ angular.module('queup', [
 ])
 .config(function($stateProvider, $urlRouterProvider){
   
-  var authenticate = function($q, auth, teacherData) {
+  var authenticate = function($q, auth) {
     var deferred = $q.defer();
     if(auth.loggedIn) {
-      deferred.resolve('Logged In');
+      deferred.resolve();
       console.log('logged in')
     } else {
       deferred.reject('Not Logged In');
       console.log('not logged in')
     }
+    console.log(deferred.promise)
     return deferred.promise;
   };
 
@@ -43,6 +44,9 @@ angular.module('queup', [
           templateUrl: "nav.html",
           controller: 'AuthController'
         }
+      },
+      resolve: {
+        authenticate: authenticate
       }
     })
     .state('q.before_session', {
@@ -52,9 +56,6 @@ angular.module('queup', [
           templateUrl: 'before_session/before_session.html',
           controller: 'Before_sessionController',
         }
-      },
-      resolve: {
-        authenticate: authenticate
       }
     })
     .state('q.before_session.class_info', {
@@ -64,7 +65,7 @@ angular.module('queup', [
           templateUrl: 'before_session/class_info.html',
           controller: 'Class_infoController',
         }
-      },
+      }
     })
     .state('q.before_session.class_list', {
       url: '/class_list',
@@ -73,7 +74,7 @@ angular.module('queup', [
           templateUrl: 'before_session/class_list.html',
           controller: 'Class_listController'
         }
-      }, 
+      }
     })
     .state('q.before_session.new_class', {
       url: '/new_class',
@@ -82,7 +83,7 @@ angular.module('queup', [
           templateUrl: 'before_session/new_class.html',
           controller: 'New_classController'
         }
-      },
+      }
     })
     .state('q.in_session', {
       url: '/in_session',
@@ -91,9 +92,6 @@ angular.module('queup', [
           templateUrl: 'in_session/in_session.html',
           controller: 'In_sessionController'
         }
-      },
-      resolve: {
-        authenticate: authenticate
       }
     })
     .state('q.in_session.queue_list', {
@@ -103,7 +101,7 @@ angular.module('queup', [
           templateUrl: 'in_session/queue_list.html',
           controller: 'Queue_listController'
         }
-      },
+      }
     })
     .state('q.in_session.student_list', {
       url: '/student_list',
@@ -112,7 +110,7 @@ angular.module('queup', [
           templateUrl: 'in_session/student_list.html',
           controller: 'Student_listController'
         }
-      },
+      }
     })
     .state('q.in_session.class_settings', {
       url: '/class_settings',
@@ -121,13 +119,14 @@ angular.module('queup', [
           templateUrl: 'in_session/class_settings.html',
           controller: 'Class_settingsController'
         }
-      },
+      }
     })
 
   $urlRouterProvider.otherwise('/signin');
 })
 .run(function ($rootScope, $state) {
-  $rootScope.$on('$stateChangeError', function () {
+  $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+    console.log('there has been error!', event, toState, toParams, fromState, fromParams, error)
     // Redirect to login page
     $state.go('signin');
   });

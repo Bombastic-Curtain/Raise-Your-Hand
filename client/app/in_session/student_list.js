@@ -6,23 +6,19 @@ angular.module('queup.student_list', [])
   $scope.noStudents = true;
   $scope.hasStudents = false;
 
-  teacherData.update().then(function() {
-    var currentClass = teacherData.get('currentClass');
-    var classes = teacherData.get('classes');
-    $scope.className = currentClass.name;
+  var currentClass = teacherData.get('currentClass');
+  var classes = teacherData.get('classes');
+  $scope.className = currentClass.name;
 
-    classes.forEach(function(thisClass) {
-      if(thisClass.classID === currentClass.classID) {
-        if(currentClass.students.length > 0) {
-          $scope.students = currentClass.students;
-          $scope.noStudents = false;
-          $scope.hasStudents = true;
-        }
+  classes.forEach(function(thisClass) {
+    if(thisClass.classID === currentClass.classID) {
+      if(currentClass.students.length > 0) {
+        $scope.students = currentClass.students;
+        $scope.noStudents = false;
+        $scope.hasStudents = true;
       }
-    });
-
-
-  })
+    }
+  });
 
   $scope.handleClick = function(student){
 
