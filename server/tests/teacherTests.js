@@ -188,7 +188,6 @@ describe('teachersController.js\n', function () {
       teacher.should.be.an.Object;
     });
     it('Object should have a name, email, picture and classes property', function (done) {
-      console.log('OKOK')
       should.exist(teacher.name);
       should.exist(teacher.email);
       should.exist(teacher.fbPicture);
