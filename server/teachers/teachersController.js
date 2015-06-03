@@ -17,6 +17,7 @@ module.exports = {
       console.log("----------------> req", req.user);
       var create = Q.nbind(Classes.create, Classes);
       var teacherID = req.user.email;
+      var teacherPic = req.user.fbPicture;
       console.log("-----------> user email " + teacherID);
       //--------------------------------- THIS WILL BE REFACTORED -------------------------------
       var makeid = function(){
@@ -30,6 +31,7 @@ module.exports = {
       var newClass = {
         name: req.body.classTitle,
         teacher: teacherID,
+        teacherPic: teacherPic,
         classID: classId
       };
       create(newClass)

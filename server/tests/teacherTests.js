@@ -62,7 +62,7 @@ describe('teachersController.js\n', function () {
         path: '/api/teachers/removeClass',
         headers: {
           'Content-Type': 'application/json',
-          'access_token': 'CAAKNYLZBjIKEBAJH4D4TVqXZAZBQtqOvqy4tO0hlKvuoiwtWajPScXxdbF5cas5jD1TuA6vuZBCcjWuhLyP5qzANfBSvKVgO7yZA74M3qxp4w9N5TXQ1hrx3N7FzjUJXoUHDke9tnEI7aQU5rlvtqw10mDbWSoIfw0n62lFEb5X2GZBKxMbyNpZBkiuxQcSAaRLMSNpEUK7rhhNU8kNNgS5jNgpDG4mLUsZD',
+          'access_token': 'CAAUQJumeHtoBAMTNjcDLgPuu3ftoZCDWmybLzQ0rtTarUrDKY1QVmHW5ovmkaMU4uqJ10c08Q4gZA3WakjNdn475McTfOE0hwkCjQIwlGyK8tpJqCiiLqtQEZBUgXofFfLdXEhEKQ6NO5JjV3HXosQsWPzNDxcL3CZB0XnSPbvAvNKQ4fKs7xrbk2K2V8BLfIYyLVIZAY3FGBHCZBlqUIFXFucCu1Sqm8ZD',
           'user_role': 'teacher'
         }
       };
@@ -96,7 +96,7 @@ describe('teachersController.js\n', function () {
         path: '/api/teachers/addclass',
         headers: {
           'Content-Type': 'application/json',
-          'access_token': 'CAAKNYLZBjIKEBAJH4D4TVqXZAZBQtqOvqy4tO0hlKvuoiwtWajPScXxdbF5cas5jD1TuA6vuZBCcjWuhLyP5qzANfBSvKVgO7yZA74M3qxp4w9N5TXQ1hrx3N7FzjUJXoUHDke9tnEI7aQU5rlvtqw10mDbWSoIfw0n62lFEb5X2GZBKxMbyNpZBkiuxQcSAaRLMSNpEUK7rhhNU8kNNgS5jNgpDG4mLUsZD',
+          'access_token': 'CAAUQJumeHtoBAMTNjcDLgPuu3ftoZCDWmybLzQ0rtTarUrDKY1QVmHW5ovmkaMU4uqJ10c08Q4gZA3WakjNdn475McTfOE0hwkCjQIwlGyK8tpJqCiiLqtQEZBUgXofFfLdXEhEKQ6NO5JjV3HXosQsWPzNDxcL3CZB0XnSPbvAvNKQ4fKs7xrbk2K2V8BLfIYyLVIZAY3FGBHCZBlqUIFXFucCu1Sqm8ZD',
           'user_role': 'teacher'
         }
       }; 
@@ -113,7 +113,7 @@ describe('teachersController.js\n', function () {
         method: 'GET',
         path: '/api/teachers/getClassList',
         headers: {
-          'access_token': 'CAAKNYLZBjIKEBAJH4D4TVqXZAZBQtqOvqy4tO0hlKvuoiwtWajPScXxdbF5cas5jD1TuA6vuZBCcjWuhLyP5qzANfBSvKVgO7yZA74M3qxp4w9N5TXQ1hrx3N7FzjUJXoUHDke9tnEI7aQU5rlvtqw10mDbWSoIfw0n62lFEb5X2GZBKxMbyNpZBkiuxQcSAaRLMSNpEUK7rhhNU8kNNgS5jNgpDG4mLUsZD',
+          'access_token': 'CAAUQJumeHtoBAMTNjcDLgPuu3ftoZCDWmybLzQ0rtTarUrDKY1QVmHW5ovmkaMU4uqJ10c08Q4gZA3WakjNdn475McTfOE0hwkCjQIwlGyK8tpJqCiiLqtQEZBUgXofFfLdXEhEKQ6NO5JjV3HXosQsWPzNDxcL3CZB0XnSPbvAvNKQ4fKs7xrbk2K2V8BLfIYyLVIZAY3FGBHCZBlqUIFXFucCu1Sqm8ZD',
           'user_role': 'teacher'
         }
       };

@@ -1,5 +1,6 @@
 var Classes = require('../classes/classesModel.js');
 var Students = require('./studentsModel.js');
+var Teachers = require('../teachers/teachersModel.js');
 var Q    = require('q');
 var jwt  = require('jwt-simple');
 var mongoose = require('mongoose');
@@ -17,6 +18,7 @@ module.exports = function (socketio) {
     Students.findOne({email: req.user.email}, function(err, data) {
       if(data) {
         Classes.find({classID: { $in: data.classIDs}}, function(err, data) {
+          console.log(data,"Class List Data");
           res.status(200).send(data);
         });
       }
