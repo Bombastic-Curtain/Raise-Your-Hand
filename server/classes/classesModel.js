@@ -9,6 +9,7 @@ var ClassSchema = new Schema({
   name: String,
   classID: String, 
   teacher: String,
+  teacherPic: String,
   students: Array
 });
 
