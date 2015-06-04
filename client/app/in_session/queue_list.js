@@ -22,11 +22,13 @@ angular.module('queup.queue_list', [])
   $scope.handleClick = function(student, index) {
     // Call on student, send id and index in the queue so it can
     // be returned/confirmed as received, then removed from queue
-    socket.emit('callOnStudent', {email: student.name, index: index, classID: currentClass.classID});
+    clearInterval(student.timerID);
+    socket.emit('callOnStudent', {email: student.email, index: index, classID: currentClass.classID});
   };
 
   var removeFromQueue = function(student) {
     $scope.queue.splice(student.index,1);
+    
     if($scope.queue.length === 0) {
       $scope.hasQuestions = false;
       $scope.noQuestions = true;
@@ -35,7 +37,15 @@ angular.module('queup.queue_list', [])
 
   var addStudentToList = function(data) {
     console.log('** data from handRaise **', data);
-    $scope.queue.push({name:data.email});
+    data.timer = 0;
+    data.timerID = setInterval(function ($scope) {
+      var self = this
+      $scope.$apply(function () {
+        self.timer++;
+      });
+    }.bind(data, $scope), 60000);
+
+    $scope.queue.push(data);
     // send confirmation to student that they were added to list
     socket.emit('studentAddedToQueue', data)
     $scope.hasQuestions = true;

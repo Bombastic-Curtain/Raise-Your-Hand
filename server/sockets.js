@@ -50,7 +50,7 @@ module.exports = function(socketio) {
 
         // find teacher socket and send event to teacher
         if(socketDirectory.lookup('teachers', data.classID)) {
-          socketio.to(socketDirectory.lookup('teachers', data.classID)).emit('studentRaisedHand', {email: data.email, classID: data.classID});
+          socketio.to(socketDirectory.lookup('teachers', data.classID)).emit('studentRaisedHand', data);
         } else {
           console.log('** error finding teacher socket id **');
         }

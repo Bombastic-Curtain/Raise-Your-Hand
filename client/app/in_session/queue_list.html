@@ -20,7 +20,7 @@
         <td><img src="{{ student.fbPicture }}" class="studentPic"></td>
         <td>{{ student.name }}</td>
         <td><button class="btn btn-default" ng-click="handleClick(student,$index)">Call</button></td>
-        <td>4min 34sec</td>
+        <td>{{ student.timer }} Min</td>
       </tr>
     </tbody>
   </table>
