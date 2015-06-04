@@ -1,9 +1,10 @@
 angular.module('queup.auth', [])
 
-.controller('AuthController', function($scope, $state, teacherData){
+.controller('AuthController', function($scope, $state, teacherData, auth){
 
   $scope.logout =  function(){
     FB.logout();
+    auth.loggedIn = false;
     $state.go('signin')
   }
 
@@ -27,15 +28,17 @@ angular.module('queup.auth', [])
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      testAPI();
+      //testAPI();
       var access_token =   FB.getAuthResponse()['accessToken'];
-    console.log("******************** ACCESS TOKEN ***********" + access_token);
-    window.localStorage.setItem( 'clientToken', access_token);
-    teacherData.update().then(function() {
-      $scope.dataLoaded = teacherData.get('loaded')
-    }).then(function(){
-      $state.go('q.before_session.class_list')
-    });
+      window.localStorage.setItem( 'clientToken', access_token);
+
+      // Load teacher data into teacherData service, then go to Class List state
+      teacherData.update().then(function() {
+        $scope.dataLoaded = teacherData.get('loaded')
+      }).then(function(){
+        auth.loggedIn = true;
+        $state.go('q.before_session.class_list')
+      });
 
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
