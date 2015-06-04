@@ -1,6 +1,7 @@
 angular.module('queup', [
   'queup.factory',
   'socket.io',
+  'queup.sinch',
   'queup.auth',
   'queup.before',
   'queup.class_info',
