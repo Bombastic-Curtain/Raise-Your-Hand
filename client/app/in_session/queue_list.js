@@ -1,6 +1,6 @@
 angular.module('queup.queue_list', [])
 
-.controller('Queue_listController', function($state, $scope, socket, teacherData){
+.controller('Queue_listController', function($state, $scope, socket, teacherData, sinch){
 
   var currentClass = teacherData.get('currentClass');
   console.log(currentClass);
@@ -24,6 +24,7 @@ angular.module('queup.queue_list', [])
     // be returned/confirmed as received, then removed from queue
     clearInterval(student.timerID);
     socket.emit('callOnStudent', {email: student.email, index: index, classID: currentClass.classID});
+    sinch.call('user3')
   };
 
   var removeFromQueue = function(student) {

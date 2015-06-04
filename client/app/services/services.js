@@ -150,6 +150,41 @@ angular.module('socket.io', [])
       }
     }
   }
- 
 });
+
+angular.module('queup.sinch', [])
+.factory('sinch', function(){
+
+  var sinchClient = new SinchClient({
+    applicationKey: 'ccdeeb0b-5733-4bcb-9f44-4b2a7a70dbfe',
+    capabilities: {calling: true},
+    startActiveConnection: true, /* NOTE: This is required if application is to receive calls / instant messages. */ 
+    //Note: For additional loging, please uncomment the three rows below
+    onLogMessage: function(message) {
+      console.log(message);
+    },
+  });
+
+  sinchClient.start({username:'user1', password:'user2'})
+    .then(function(){
+      console.log('**********sinchClient started********');
+    })
+
+  return {
+    call: function(userID) {
+      var callListeners = {
+        onCallEstablished: function(currentCall) {
+          $('audio').attr('src', currentCall.incomingStreamURL);
+          currentCall.mute();
+          console.log("******call established*******");
+        }
+      };
+      
+      var callClient = sinchClient.getCallClient();
+      var newCall = callClient.callUser(userID);
+      newCall.addEventListener(callListeners);
+    }
+  }  
+
+})
 
