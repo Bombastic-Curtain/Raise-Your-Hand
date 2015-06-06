@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for teachers/teachersController.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">teachers/teachersController.js</span></h1>
+    <h2>
+        Statements: <span class="metric">12.31% <small>(8 / 65)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">12.31% <small>(8 / 65)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">teachers/</a> &#187; teachersController.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var Classes = require('../classes/classesModel.js');
+var Teachers = require('./teachersModel.js');
+var Students = require('../students/studentsModel.js');
+var Q    = require('q');
+var jwt  = require('jwt-simple');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+&nbsp;
+&nbsp;
+module.exports = {
+  //Add a class to the database
+  addClass: <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >      console.log("************** adding class to DBs *************");</span>
+<span class="cstat-no" title="statement not covered" >      console.log(req.body.classTitle);</span>
+      //var ObjectId = mongoose.Types.ObjectId;
+      //var myObjectId = ObjectId.fromString(req.body.classTitle);
+<span class="cstat-no" title="statement not covered" >      console.log("----------------&gt; req", req.user);</span>
+<span class="cstat-no" title="statement not covered" >      var create = Q.nbind(Classes.create, Classes);</span>
+<span class="cstat-no" title="statement not covered" >      var teacherID = req.user.email;</span>
+<span class="cstat-no" title="statement not covered" >      var teacherPic = req.user.fbPicture;</span>
+<span class="cstat-no" title="statement not covered" >      console.log("-----------&gt; user email " + teacherID);</span>
+      //--------------------------------- THIS WILL BE REFACTORED -------------------------------
+<span class="cstat-no" title="statement not covered" >      var makeid = <span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >          var text = "";</span>
+<span class="cstat-no" title="statement not covered" >          var possible = "abcdefghijklmnopqrstuvwxyz0123456789";</span>
+<span class="cstat-no" title="statement not covered" >          for( var i=0; i &lt; 4; i++ )</span>
+<span class="cstat-no" title="statement not covered" >              text += possible.charAt(Math.floor(Math.random() * possible.length));</span>
+<span class="cstat-no" title="statement not covered" >          return text;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      var classId = makeid();</span>
+<span class="cstat-no" title="statement not covered" >      var newClass = {</span>
+        name: req.body.classTitle,
+        teacher: teacherID,
+        teacherPic: teacherPic,
+        classID: classId
+      };
+<span class="cstat-no" title="statement not covered" >      create(newClass)</span>
+      .then(<span class="fstat-no" title="function not covered" >function (classObj) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log("!!!!!!!!!!!! USER IS !!!!!!!!!!!!!!!" + classObj);</span>
+        // next();
+<span class="cstat-no" title="statement not covered" >        res.status(201).json(classObj);</span>
+      })
+      .fail(<span class="fstat-no" title="function not covered" >function (error) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log("******* ERROR ******  " + error);</span>
+      });
+&nbsp;
+    
+  },
+&nbsp;
+  // Remove a class from the database
+  removeClass: <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
+    
+  },
+&nbsp;
+  // Gets classes for a teacher from the database
+  getClasses: <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log('**********Inside Teachers Controller - get class')</span>
+<span class="cstat-no" title="statement not covered" >    console.log("req.user: ", req.user)</span>
+<span class="cstat-no" title="statement not covered" >    console.log("req.user.email: ", req.user.email)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Classes.find({teacher : req.user.email }, <span class="fstat-no" title="function not covered" >function(err, dbData){</span></span>
+<span class="cstat-no" title="statement not covered" >      if(!err){</span>
+<span class="cstat-no" title="statement not covered" >        console.log("-------found teacher access token in class collection, dbData below---------");</span>
+<span class="cstat-no" title="statement not covered" >        console.log(dbData)</span>
+        
+<span class="cstat-no" title="statement not covered" >        var classes = [];</span>
+<span class="cstat-no" title="statement not covered" >        for(var i = 0; i &lt; dbData.length; i++){</span>
+<span class="cstat-no" title="statement not covered" >          classes.push(dbData[i])</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        res.json(classes);</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        throw err;</span>
+      }
+    })
+  },
+&nbsp;
+  // Gets class name and id for a class by class name
+  getClassInfo: <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log('**********Inside Teachers Controller - Get Class Info')</span>
+<span class="cstat-no" title="statement not covered" >    console.log("req.body.className: ", req.body.className)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Classes.findOne({name : req.body.className }, <span class="fstat-no" title="function not covered" >function(err, dbData){</span></span>
+<span class="cstat-no" title="statement not covered" >      if(!err){</span>
+<span class="cstat-no" title="statement not covered" >        console.log("-------found className in classes collection, dbData below---------");</span>
+<span class="cstat-no" title="statement not covered" >        console.log(dbData)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var result = {</span>
+          className: dbData.name,
+          classID: dbData.classID
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        res.json(result);</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        throw err;</span>
+      }
+    })
+  },
+&nbsp;
+  getStudentList: <span class="fstat-no" title="function not covered" >function(req, res, next){</span>
+<span class="cstat-no" title="statement not covered" >    console.log("**********Inside Teachers Controller - In Session - Student List - GET request")</span>
+<span class="cstat-no" title="statement not covered" >    console.log("req.query: ", req.query);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Classes.findOne({classID : req.query.classid }, <span class="fstat-no" title="function not covered" >function(err, dbData){</span></span>
+<span class="cstat-no" title="statement not covered" >      if(dbData){</span>
+<span class="cstat-no" title="statement not covered" >        console.log("-------found className in classes collection, dbData below---------");</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        res.json({results: dbData.students});</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        throw err;</span>
+      }
+    })
+  },
+&nbsp;
+  // Gets the name, email, picture and classes for the teacher
+  getTeacherData: <span class="fstat-no" title="function not covered" >function(req,res,next) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log('***** getTeacherData controller ******');</span>
+<span class="cstat-no" title="statement not covered" >    Teachers.findOne({email: req.user.email}, <span class="fstat-no" title="function not covered" >function(err, dbData) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if(!err) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        Classes.find({teacher: req.user.email}, <span class="fstat-no" title="function not covered" >function(err, classes) {</span></span>
+<span class="cstat-no" title="statement not covered" >          console.log('**** here are classes ****', classes)</span>
+<span class="cstat-no" title="statement not covered" >          var classesList = classes;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        console.log('***** found teacher, '+ req.user.email +' returning data ****');</span>
+<span class="cstat-no" title="statement not covered" >        var teacherData = {</span>
+          name: dbData.name,
+          email: dbData.email,
+          fbPicture: dbData.fbPicture,
+          classes: classesList
+        };
+<span class="cstat-no" title="statement not covered" >        res.json(teacherData);</span>
+          
+        });
+      } else {
+<span class="cstat-no" title="statement not covered" >        throw err;</span>
+      }
+    });
+  }
+};
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 05 2015 11:39:20 GMT-0700 (PDT)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

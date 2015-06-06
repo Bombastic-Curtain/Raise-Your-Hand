@@ -7,7 +7,7 @@ module.exports = function (app, express) {
   /*
     to get socket.io to work , i used app.listen fron index.js to here
   */
-  var port = process.env.PORT || 8000;
+  var port = process.env.PORT || 3003;
   var server = app.listen(port);
   var socketio = require('socket.io').listen(server);
 
