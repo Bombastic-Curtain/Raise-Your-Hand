@@ -20,9 +20,19 @@
         <td><img src="{{ student.fbPicture }}" class="studentPic"></td>
         <td>{{ student.name }}</td>
         <td><button class="btn btn-default" ng-click="handleClick(student,$index)">Call</button></td>
+
         <td>{{ student.timer }} Min</td>
       </tr>
     </tbody>
   </table>
+
+  <div id="aModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <img src="{{ modal.fbPicture }}" class="studentPicBig"> <span> {{ modal.name }} is speaking...</span>
+      </div>
+    </div>
+  </div>
+
   <audio autoplay></audio>
 </div>
