@@ -16,15 +16,34 @@ angular.module('queup.queue_list', [])
 
   // Queue currently contains dummy data unless overwritten by an update from the server (.on 'queueList')
   $scope.queue = [];
-  $scope.hasQuestions = false;
-  $scope.noQuestions = true;
+  // score.queue dummy data: 
+  // {name:"Rocky", timer:0, fbPicture:'http://img1.wikia.nocookie.net/__cb20141026105607/p__/protagonist/images/2/28/200px-Orville_Simpson.png'}, {name:"Kenny", timer:0, fbPicture:'http://www.toughpenguin.com/pictures/baby_penguin.jpg'},{name:"John", timer:0, fbPicture:'http://www.toughpenguin.com/pictures/baby_penguin.jpg'},{name:"Cheng", timer:0, fbPicture:'http://cornforthimages.com/wp-content/uploads/2013/02/Right-Whale-Bay-King-Penguin-1.jpg'}
+  $scope.hasQuestions = true;
+  $scope.noQuestions = false;
+
+  $scope.modal = {
+    name: "",
+    fbPicture: "",
+    email: "",
+    timer: 0
+  };
 
   $scope.handleClick = function(student, index) {
     // Call on student, send id and index in the queue so it can
     // be returned/confirmed as received, then removed from queue
+    $scope.modal = {
+      name: student.name,
+      fbPicture: student.fbPicture,
+      email: student.email,
+      timer: student.timer
+    };
+    
     clearInterval(student.timerID);
     socket.emit('callOnStudent', {email: student.email, index: index, classID: currentClass.classID});
-    sinch.call('user3')
+
+    $('#aModal').modal('toggle');
+    // sinch to call on student email
+    sinch.call(student.email)
   };
 
   var removeFromQueue = function(student) {
