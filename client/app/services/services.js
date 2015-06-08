@@ -2,7 +2,7 @@ angular.module('queup.factory', [])
 
 .factory('queupFactory', function($http, $rootScope){
 
-  $rootScope.serverURL = 'http://localhost:8000'; // 'http://queup.io';
+  $rootScope.serverURL = 'http://queup.io'; // 'http://localhost:8000';
 
   var addNewClass = function(newClassName){
     console.log(newClassName)
@@ -84,7 +84,7 @@ angular.module('queup.factory', [])
       
       return $http({
         method: 'GET',
-        url: 'http://localhost:8000/api/teachers/getTeacherData',
+        url: $rootScope.serverURL + '/api/teachers/getTeacherData',
         headers: {
           user_role: 'teacher',
           access_token: token

@@ -35,7 +35,7 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '718396624937121', // '1425134197808858', queup.io
+    appId      : '1425134197808858', // '718396624937121', localhost
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page

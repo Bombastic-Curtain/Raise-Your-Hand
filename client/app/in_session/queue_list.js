@@ -15,7 +15,9 @@ angular.module('queup.queue_list', [])
   $scope.currentClass = {id: currentClass.classID, name: currentClass.name};
 
   // Queue currently contains dummy data unless overwritten by an update from the server (.on 'queueList')
-  $scope.queue = [{name:"Rocky", timer:0, fbPicture:'http://img1.wikia.nocookie.net/__cb20141026105607/p__/protagonist/images/2/28/200px-Orville_Simpson.png'}, {name:"Kenny", timer:0, fbPicture:'http://www.toughpenguin.com/pictures/baby_penguin.jpg'},{name:"John", timer:0, fbPicture:'http://www.toughpenguin.com/pictures/baby_penguin.jpg'},{name:"Cheng", timer:0, fbPicture:'http://cornforthimages.com/wp-content/uploads/2013/02/Right-Whale-Bay-King-Penguin-1.jpg'}];
+  $scope.queue = [];
+  // score.queue dummy data: 
+  // {name:"Rocky", timer:0, fbPicture:'http://img1.wikia.nocookie.net/__cb20141026105607/p__/protagonist/images/2/28/200px-Orville_Simpson.png'}, {name:"Kenny", timer:0, fbPicture:'http://www.toughpenguin.com/pictures/baby_penguin.jpg'},{name:"John", timer:0, fbPicture:'http://www.toughpenguin.com/pictures/baby_penguin.jpg'},{name:"Cheng", timer:0, fbPicture:'http://cornforthimages.com/wp-content/uploads/2013/02/Right-Whale-Bay-King-Penguin-1.jpg'}
   $scope.hasQuestions = true;
   $scope.noQuestions = false;
 
