@@ -43,7 +43,7 @@ angular.module('queup.queue_list', [])
 
     $('#aModal').modal('toggle');
     // sinch to call on student email
-    // sinch.call('user3')
+    sinch.call(student.email)
   };
 
   var removeFromQueue = function(student) {
