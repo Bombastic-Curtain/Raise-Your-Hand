@@ -2,7 +2,7 @@ angular.module('queup.factory', [])
 
 .factory('queupFactory', function($http, $rootScope){
 
-  $rootScope.serverURL = 'http://queup.io'; // 'http://localhost:8000';
+  $rootScope.serverURL = 'http://q-up.io'; // 'http://localhost:8000';
 
   var addNewClass = function(newClassName){
     console.log(newClassName)
@@ -42,7 +42,7 @@ angular.module('queup.factory', [])
   return auth;
 })
 
-.factory('teacherData', function($http, queupFactory) {
+.factory('teacherData', function($http, queupFactory, $rootScope) {
   // private data for teacher information (name, email, classes, etc.)
   var _data = {
     name: null,
