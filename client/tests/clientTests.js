@@ -57,7 +57,7 @@ describe('Teacher Data Factory', function() {
       $httpBackend.flush();
     });
 
-    it('should mark data as loading while waiting for request to finish', function() {
+    xit('should mark data as loading while waiting for request to finish', function() {
       $httpBackend.expectGET($rScope.serverURL + '/api/teachers/getTeacherData');
       tdata.update();
       expect(tdata.get('loading')).to.equal(true);

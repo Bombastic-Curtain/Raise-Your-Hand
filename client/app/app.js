@@ -15,19 +15,6 @@ angular.module('queup', [
 ])
 .config(function($stateProvider, $urlRouterProvider){
   
-  // var authenticate = function($q, auth) {
-  //   var deferred = $q.defer();
-  //   if(auth.loggedIn) {
-  //     deferred.resolve();
-  //     console.log('logged in')
-  //   } else {
-  //     deferred.reject('Not Logged In');
-  //     console.log('not logged in')
-  //   }
-  //   console.log(deferred.promise)
-  //   return deferred.promise;
-  // };
-
   $stateProvider
     .state('signin', {
       url: '/signin',
@@ -46,9 +33,16 @@ angular.module('queup', [
           controller: 'AuthController'
         }
       },
-      // resolve: {
-      //   authenticate: authenticate
-      // }
+      resolve: {
+        authenticate: function(auth) {
+          console.log('calling auth.checkLoginState')
+          return auth.checkLoginState();
+        },
+        dataLoaded: function(teacherData) {
+          console.log('is this also promise?', teacherData.get('loading'));
+          return teacherData.update('resolve');
+        }
+      }
     })
     .state('q.before_session', {
       url: '/before_session', 
@@ -147,23 +141,28 @@ angular.module('queup', [
       var access_token =   FB.getAuthResponse()['accessToken'];
       $window.localStorage.setItem( 'clientToken', access_token);
 
-      // Load teacher data into teacherData service, then go to Class List state
-      teacherData.update().then(function() {
-        //$scope.dataLoaded = teacherData.get('loaded')
-      }).then(function(){
-        auth.loggedIn = true;
-        $state.go('q.before_session.class_list')
-      });
+      if(teacherData.get('loaded')) {
+        $state.go('q.before_session.class_list');
+      } else {
+        // Load teacher data into teacherData service, then go to Class List state
+        teacherData.update('FB').then(function() {
+          //$scope.dataLoaded = teacherData.get('loaded')
+        }).then(function(){
+          //auth.loggedIn = true;
+          $state.go('q.before_session.class_list')
+        });
+      }
+      
 
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      // document.getElementById('status').innerHTML = 'Please log ' +
+      //   'into this app.';
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      // document.getElementById('status').innerHTML = 'Please log ' +
+      //   'into Facebook.';
     }
   }
 
@@ -177,25 +176,25 @@ angular.module('queup', [
   }
 
   $window.fbAsyncInit = function() {
-    FB.init({
-     appId      : '718396624937121', // '1425134197808858' localhost
-     cookie     : true,  // enable cookies to allow the server to access the session
-     xfbml      : true,  // parse social plugins on this page
-     version    : 'v2.3' // use version 2.2
-    });
+    // FB.init({
+    //  appId      : '718396624937121', // '1425134197808858' localhost
+    //  cookie     : true,  // enable cookies to allow the server to access the session
+    //  xfbml      : true,  // parse social plugins on this page
+    //  version    : 'v2.3' // use version 2.2
+    // });
 
-
+    console.log('FB calling FB.getLoginStatus')
     FB.getLoginStatus(function(response) {
      $window.statusChangeCallback(response);
     });
 
   };
 
-  (function(d, s, id) {
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) return;
-   js = d.createElement(s); js.id = id;
-   js.src="https://connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+  // (function(d, s, id) {
+  //  var js, fjs = d.getElementsByTagName(s)[0];
+  //  if (d.getElementById(id)) return;
+  //  js = d.createElement(s); js.id = id;
+  //  js.src="https://connect.facebook.net/en_US/sdk.js";
+  //  fjs.parentNode.insertBefore(js, fjs);
+  // }(document, 'script', 'facebook-jssdk'));
 });

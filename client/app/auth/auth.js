@@ -14,7 +14,12 @@ angular.module('queup.auth', [])
     });
   }
 
-  $scope.teacherName = teacherData.get('name');
-  $scope.teacherPic = teacherData.get('fbPicture');
+  $scope.teacherName = '';
+  $scope.teacherPic = '';
+
+  if(teacherData.get('loaded')) {
+    $scope.teacherName = teacherData.get('name');
+    $scope.teacherPic = teacherData.get('fbPicture');
+  }
 
 });

@@ -36,26 +36,40 @@ angular.module('queup.factory', [])
   }
 })
 
-.factory('auth', function() {
+.factory('auth', function($q) {
   var auth = {};
   auth.loggedIn = false;
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  auth.testAPI = function () {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
+  FB.init({
+   appId      : '718396624937121', // '1425134197808858' localhost
+   cookie     : true,  // enable cookies to allow the server to access the session
+   xfbml      : true,  // parse social plugins on this page
+   version    : 'v2.3' // use version 2.2
+  });
 
-
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  auth.checkLoginState = function () {
+    var deferred = $q.defer();
+    // var FB = FB || null;
+    // if(!FB) return true;
+    FB.getLoginStatus(function(response) {
+      if(response.status === 'connected') {
+        console.log('facebook says you be logged in');
+        deferred.resolve('Logged In');
+      } else {
+        console.log('facebook say you not logged in');
+        deferred.reject(response.status)
+      }
     });
+    return deferred.promise;
   }
+
   return auth;
 })
 
-.factory('teacherData', function($http, queupFactory, $rootScope) {
+.factory('teacherData', function($http, queupFactory, $rootScope, $q) {
   // private data for teacher information (name, email, classes, etc.)
   var _data = {
     name: null,
@@ -91,31 +105,40 @@ angular.module('queup.factory', [])
       return dataCopy;
     },
 
-    update: function() {
+    update: function(caller) {
       var token = window.localStorage.getItem('clientToken');
-      _data.loading = true;
-      
-      return $http({
-        method: 'GET',
-        url: $rootScope.serverURL + '/api/teachers/getTeacherData',
-        headers: {
-          user_role: 'teacher',
-          access_token: token
-        }
-      })
-      .success(function(data) {
-        _data.name = data.name;
-        _data.email = data.email;
-        _data.fbPicture = data.fbPicture;
-        _data.classes = data.classes;
-        _data.loaded = true;
-        _data.loading = false;
-        console.log('successfully loaded teacherData', _data);
-      })
-      .error(function(data, status) {
-        console.log('error in teacherData.update function')
-        _data.loading = false;
-      })
+
+      var deferred = $q.defer();
+
+      if(_data.loading === false) {
+        _data.loading = deferred.promise;
+        console.log('making get request thanks to:', caller)
+        return $http({
+          method: 'GET',
+          url: $rootScope.serverURL + '/api/teachers/getTeacherData',
+          headers: {
+            user_role: 'teacher',
+            access_token: token
+          }
+        })
+        .success(function(data) {
+          _data.name = data.name;
+          _data.email = data.email;
+          _data.fbPicture = data.fbPicture;
+          _data.classes = data.classes;
+          _data.loaded = true;
+          deferred.resolve('loaded teacher data');
+          _data.loading = false;
+          console.log('successfully loaded teacherData', _data);
+        })
+        .error(function(data, status) {
+          console.log('error in teacherData.update function');
+          _data.loading.reject('failure to load teacher data');
+          _data.loading = false;
+        })
+      } else {
+        return _data.loading;
+      }
     }
   }
 })
