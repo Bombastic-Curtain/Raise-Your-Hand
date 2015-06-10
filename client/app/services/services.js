@@ -2,7 +2,7 @@ angular.module('queup.factory', [])
 
 .factory('queupFactory', function($http, $rootScope){
 
-  $rootScope.serverURL = 'http://localhost:8000'; // 'http://q-up.io';
+  $rootScope.serverURL = 'http://q-up.io'; // 'http://localhost:8000'; //
 
   var addNewClass = function(newClassName){
     console.log(newClassName)
