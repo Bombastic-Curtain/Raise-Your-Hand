@@ -23,7 +23,7 @@ body {
   background-color: #FFFFFF;
 }
 .classList{
-  padding-top: 40px;
+  padding-top: 10px;
   padding-right: 90px;
   padding-left: 90px;
 }
@@ -51,12 +51,12 @@ body {
 }
 .page_header{
   padding: 20px;
-  height: 20vh;
+  height: 30vh;
   background-color: #F7FAFB;
 }
 .page_header_inSession{
   padding: 20px;
-  height: 30vh;
+  height: 40vh;
   background-color: #F7FAFB;
 }
 
