@@ -79,6 +79,9 @@ describe('Queup Factory', function() {
   var queup, $httpBackend, response;
 
   beforeEach(module('queup'));
+  beforeEach(module(function ($urlRouterProvider) {
+      $urlRouterProvider.deferIntercept();
+  }));
   beforeEach(inject(function($injector) {
     queup = $injector.get('queupFactory');
     $httpBackend = $injector.get('$httpBackend');
@@ -89,13 +92,13 @@ describe('Queup Factory', function() {
       expect(queup.addNewClass).to.be.a('function');
     });
 
-    // it('should add a class', function(){
-    //   $httpBackend.expectPOST($rScope.serverURL + '/api/teachers/addClass', '{"classTitle":"class name"}').respond(201, 'OK')      
-    //   queup.addNewClass('class name').then(function(data){
-    //     expect(data.data).to.equal('OK');
-    //   })
-    //   $httpBackend.flush();
-    // })
+    it('should add a class', function(){
+      $httpBackend.expectPOST($rScope.serverURL + '/api/teachers/addClass', '{"classTitle":"class name"}').respond(201, 'OK')      
+      queup.addNewClass('class name').then(function(data){
+        expect(data.data).to.equal('OK');
+      })
+      $httpBackend.flush();
+    })
   });
 });
 
