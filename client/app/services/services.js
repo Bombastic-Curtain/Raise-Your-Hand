@@ -2,7 +2,7 @@ angular.module('queup.factory', [])
 
 .factory('queupFactory', function($http, $rootScope){
 
-  $rootScope.serverURL = 'http://localhost:8000'; // http://q-up.io
+  $rootScope.serverURL = 'http://localhost:8000'; // 'http://queup.io';
 
   var addNewClass = function(newClassName){
     console.log(newClassName)
@@ -39,6 +39,19 @@ angular.module('queup.factory', [])
 .factory('auth', function() {
   var auth = {};
   auth.loggedIn = false;
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  auth.testAPI = function () {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+
+
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
   return auth;
 })
 
