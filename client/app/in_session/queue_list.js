@@ -41,9 +41,12 @@ angular.module('queup.queue_list', [])
     clearInterval(student.timerID);
     socket.emit('callOnStudent', {email: student.email, index: index, classID: currentClass.classID});
 
-    $('#aModal').modal('toggle');
-    // sinch to call on student email
-    sinch.call(student.email)
+    var toggle = function(){
+      $('#aModal').modal('toggle');
+    }
+
+    toggle();
+    sinch.call(student.email, toggle)
   };
 
   var removeFromQueue = function(student) {
