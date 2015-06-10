@@ -43,7 +43,7 @@ describe('Teacher Data Factory', function() {
       expect(tdata.get('currentClass').name).to.equal('Class Name');
     });
 
-    xit('should return copies of property values, not the values themselves', function() {
+    it('should return copies of property values, not the values themselves', function() {
       var classObj = {name:'Math 53'};
       tdata.set('currentClass', classObj);
       expect(tdata.get('currentClass')).to.not.equal(classObj);
@@ -57,10 +57,10 @@ describe('Teacher Data Factory', function() {
       $httpBackend.flush();
     });
 
-    xit('should mark data as loading while waiting for request to finish', function() {
+    it('should return a promise when data is already loading', function() {
       $httpBackend.expectGET($rScope.serverURL + '/api/teachers/getTeacherData');
       tdata.update();
-      expect(tdata.get('loading')).to.equal(true);
+      expect(tdata.get('loading').then).to.be.a('function');
       $httpBackend.flush();
     });
 

@@ -4,7 +4,6 @@ angular.module('queup.auth', [])
 
   $scope.logout =  function(){
     FB.logout();
-    auth.loggedIn = false;
     $state.go('signin');
   }
 

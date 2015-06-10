@@ -38,7 +38,6 @@ angular.module('queup.factory', [])
 
 .factory('auth', function($q) {
   var auth = {};
-  auth.loggedIn = false;
 
   FB.init({
    appId      : '718396624937121', // '1425134197808858' localhost
@@ -93,7 +92,7 @@ angular.module('queup.factory', [])
       // if no argument supplied, just return a deep copy of all teacher data
       if(key) {
         // if value is an array, make a deep copy, otherwise make simple copy
-        if(Array.isArray(_data[key])) {
+        if(Array.isArray(_data[key]) || typeof _data[key] === 'object') {
           dataCopy = angular.copy(_data[key]);
         } else {
           dataCopy = _data[key];
