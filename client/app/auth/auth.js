@@ -63,7 +63,7 @@ angular.module('queup.auth', [])
 
  window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1425134197808858', // '718396624937121' localhost
+    appId      : '1425134197808858', // '718396624937121', // localhost
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page

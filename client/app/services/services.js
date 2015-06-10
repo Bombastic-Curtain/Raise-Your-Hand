@@ -2,7 +2,7 @@ angular.module('queup.factory', [])
 
 .factory('queupFactory', function($http, $rootScope){
 
-  $rootScope.serverURL = 'http://q-up.io'; // 'http://localhost:8000';
+  $rootScope.serverURL = 'http://q-up.io'; // 'http://localhost:8000'; //
 
   var addNewClass = function(newClassName){
     console.log(newClassName)
@@ -158,8 +158,8 @@ angular.module('socket.io', [])
   }
 });
 
-angular.module('queup.sinch', [])
-.factory('sinch', function(){
+angular.module('queup.sinch', ['queup.factory'])
+.factory('sinch', function(teacherData){
 
   var sinchClient = new SinchClient({
     applicationKey: 'ccdeeb0b-5733-4bcb-9f44-4b2a7a70dbfe',
@@ -171,19 +171,40 @@ angular.module('queup.sinch', [])
     },
   });
 
-  sinchClient.start({username:'user1', password:'user2'})
-    .then(function(){
-      console.log('**********sinchClient started********');
-    })
+  var signUpObj = {
+    username: teacherData.get('email'),
+    password: teacherData.get('email')
+  }
+
+  sinchClient.newUser(signUpObj).then(function(ticket){
+    sinchClient.start(ticket);
+    console.log('******sinch client ticket started******')
+  }).fail(function(error){
+    console.log('******* user may already exist, logging in with existing email *******');
+  
+    sinchClient.start(signUpObj)
+      .then(function(){
+        console.log('********** sinchClient started ********');
+      })
+      .fail(function(error){
+        console.log('********** sinch failed to log in: *******', error)
+      })
+  });
+
 
   return {
-    call: function(userID) {
+    call: function(userID, callback) {
       var callListeners = {
         onCallEstablished: function(currentCall) {
           $('audio').attr('src', currentCall.incomingStreamURL);
           currentCall.mute();
           console.log("******call established*******");
+        },
+
+        onCallEnded: function(currentCall) {
+          callback();
         }
+
       };
       
       var callClient = sinchClient.getCallClient();
