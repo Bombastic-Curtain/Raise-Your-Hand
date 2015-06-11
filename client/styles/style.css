@@ -176,10 +176,28 @@ body {
 .main {
   padding: 20px;
 }
+
+.signinbox {
+  margin: 10% auto;
+  width: 60%;
+  height: 40%;
+  padding: 3%;
+  font-size: 20px;
+  border: 1px solid #9b59b6;
+  border-radius: 20px;
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   .main {
     padding-right: 40px;
     padding-left: 40px;
+  }
+
+  .signinbox {
+    width: 25%;
+    height: 30%;
+    padding: 3%;
   }
 }
 .main .page-header {
@@ -291,5 +309,6 @@ body {
   color: white;
   font-size: 18px;
 }
+
 
 
