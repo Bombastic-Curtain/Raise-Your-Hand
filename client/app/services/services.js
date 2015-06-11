@@ -2,7 +2,7 @@ angular.module('queup.factory', [])
 
 .factory('queupFactory', function($http, $rootScope){
 
-  $rootScope.serverURL = 'http://q-up.io'; // 'http://localhost:8000'; //
+  $rootScope.serverURL = 'http://localhost:8000'; // http://q-up.io
 
   var addNewClass = function(newClassName){
     console.log(newClassName)
@@ -193,18 +193,13 @@ angular.module('queup.sinch', ['queup.factory'])
 
 
   return {
-    call: function(userID, callback) {
+    call: function(userID) {
       var callListeners = {
         onCallEstablished: function(currentCall) {
           $('audio').attr('src', currentCall.incomingStreamURL);
           currentCall.mute();
           console.log("******call established*******");
-        },
-
-        onCallEnded: function(currentCall) {
-          callback();
         }
-
       };
       
       var callClient = sinchClient.getCallClient();

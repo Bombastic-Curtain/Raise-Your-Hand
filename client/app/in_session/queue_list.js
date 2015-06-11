@@ -41,17 +41,13 @@ angular.module('queup.queue_list', [])
     clearInterval(student.timerID);
     socket.emit('callOnStudent', {email: student.email, index: index, classID: currentClass.classID});
 
-    var toggle = function(){
-      $('#aModal').modal('toggle');
-    }
-
-    toggle();
-    sinch.call(student.email, toggle)
+    $('#aModal').modal('toggle');
+    sinch.call(student.email)
   };
 
   var removeFromQueue = function(student) {
     $scope.queue.splice(student.index,1);
-    
+    $('#aModal').modal('toggle');
     if($scope.queue.length === 0) {
       $scope.hasQuestions = false;
       $scope.noQuestions = true;
