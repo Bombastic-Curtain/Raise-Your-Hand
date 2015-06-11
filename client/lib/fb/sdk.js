@@ -153,3 +153,11 @@ __d("legacy:fb.versioned-sdk",["sdk.Runtime"],function(a,b,c,d,e,f,g){b.__markCo
 
 }).call({}, window.inDapIF ? parent.window : window);
 } catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1779180","message":"'+e.message+'"}}');}
+
+// FB Initialize SDK with our settings
+FB.init({
+ appId      : '718396624937121', // '1425134197808858' localhost
+ cookie     : true,  // enable cookies to allow the server to access the session
+ xfbml      : true,  // parse social plugins on this page
+ version    : 'v2.3' // use version 2.2
+});

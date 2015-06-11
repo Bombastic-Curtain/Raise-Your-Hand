@@ -170,18 +170,13 @@ angular.module('queup', [
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
   $window.checkLoginState = function checkLoginState() {
+
     FB.getLoginStatus(function(response) {
       $window.statusChangeCallback(response);
     });
   }
 
   $window.fbAsyncInit = function() {
-    // FB.init({
-    //  appId      : '718396624937121', // '1425134197808858' localhost
-    //  cookie     : true,  // enable cookies to allow the server to access the session
-    //  xfbml      : true,  // parse social plugins on this page
-    //  version    : 'v2.3' // use version 2.2
-    // });
 
     console.log('FB calling FB.getLoginStatus')
     FB.getLoginStatus(function(response) {
