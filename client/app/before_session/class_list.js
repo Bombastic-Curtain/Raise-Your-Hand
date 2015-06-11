@@ -1,8 +1,25 @@
 angular.module('queup.class_list', [])
 
-.controller('Class_listController', function($scope, queupFactory, $state, teacherData){
+.controller('Class_listController', function($rootScope, $scope, queupFactory, $state, teacherData){
   $scope.classes = teacherData.get('classes');
   console.log('*** classes data **', $scope.classes)
+
+  if($rootScope.queue !== undefined) {
+    $scope.numberOfQuestions = $rootScope.queue.length
+  } else {
+    $scope.numberOfQuestions = 0;
+  }
+
+  $scope.numberOfClasses = $scope.classes.length;
+
+  console.log($scope.classes)
+
+  $scope.numberOfParticipants = 0
+
+  for(var i = 0; i < $scope.classes.length; i++) {
+    $scope.numberOfParticipants += $scope.classes[i].students.length
+  } 
+
 
   // If teacher has no classes, set variables to show No Classes div
   $scope.hasClasses = ($scope.classes.length>0) ? true : false ;
