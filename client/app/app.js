@@ -82,9 +82,6 @@ angular.module('queup', [
     })
     .state('q.in_session', {
       url: '/in_session',
-      data: {
-        data1: "hello"
-      },
       views: {
         'nav': {
           templateUrl: 'in_session/in_session.html',
@@ -94,9 +91,6 @@ angular.module('queup', [
     })
     .state('q.in_session.queue_list', {
       url: '/queue_list',
-      data: {
-        data1: "world"
-      },
       views: {
         'sub': {
           templateUrl: 'in_session/queue_list.html',
