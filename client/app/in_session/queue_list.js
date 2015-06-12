@@ -1,6 +1,6 @@
 angular.module('queup.queue_list', [])
 
-.controller('Queue_listController', function($rootScope, $state, $scope, socket, teacherData, sinch){
+.controller('Queue_listController', function($state, $scope, socket, teacherData, sinch){
 
   var currentClass = teacherData.get('currentClass');
   console.log(currentClass);
