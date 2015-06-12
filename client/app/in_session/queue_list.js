@@ -57,9 +57,6 @@ angular.module('queup.queue_list', [])
   };
 
 
-// console.log('in queue list state all $state data: ', $state);
-
-
   var addStudentToList = function(data) {
     console.log('** data from handRaise **', data);
     data.timer = 0;
@@ -73,9 +70,6 @@ angular.module('queup.queue_list', [])
     $scope.queue.push(data);
     
     $('.questions').html($scope.queue.length);
-
-    $state.current.data.queueLength++;
-
     
     // send confirmation to student that they were added to list
     socket.emit('studentAddedToQueue', data)

@@ -1,6 +1,6 @@
 angular.module('queup.in_session', [])
 
-.controller('In_sessionController', function($rootScope, $scope, teacherData, $state){
+.controller('In_sessionController', function($rootScope, $scope, teacherData){
   $scope.currentClassname = teacherData.get('currentClass').name;
 
   $scope.classes = teacherData.get('classes');
