@@ -45,8 +45,11 @@ angular.module('queup.queue_list', [])
   };
 
   var removeFromQueue = function(student) {
-    $scope.queue.splice(student.index,1);
-    if($scope.queue.length === 0) {
+    $rootScope.queue.splice(student.index,1);
+    
+    $('.questions').html($rootScope.queue.length);
+
+    if($rootScope.queue.length === 0) {
       $scope.hasQuestions = false;
       $scope.noQuestions = true;
     }
@@ -66,11 +69,11 @@ angular.module('queup.queue_list', [])
         self.timer++;
       });
     }.bind(data, $scope), 60000);
-    
+
     $rootScope.queue.push(data);
     
     $('.questions').html($rootScope.queue.length);
-      
+
     $state.current.data.queueLength++;
 
     
