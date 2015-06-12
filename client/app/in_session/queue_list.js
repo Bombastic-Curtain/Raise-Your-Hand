@@ -53,6 +53,10 @@ angular.module('queup.queue_list', [])
     $('#aModal').modal('hide');
   };
 
+
+// console.log('in queue list state all $state data: ', $state);
+
+
   var addStudentToList = function(data) {
     console.log('** data from handRaise **', data);
     data.timer = 0;
@@ -62,9 +66,14 @@ angular.module('queup.queue_list', [])
         self.timer++;
       });
     }.bind(data, $scope), 60000);
-
+    
     $rootScope.queue.push(data);
-    console.log('$rootscope.queue length: ', $rootScope.queue.length)
+    
+    $('.questions').html($rootScope.queue.length);
+      
+    $state.current.data.queueLength++;
+
+    
     // send confirmation to student that they were added to list
     socket.emit('studentAddedToQueue', data)
     $scope.hasQuestions = true;
