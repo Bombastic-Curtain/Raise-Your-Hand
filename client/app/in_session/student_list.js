@@ -1,7 +1,10 @@
 angular.module('queup.student_list', [])
 
+// Student List Controller
+// -----------------------
+
+// Shows all students enrolled in the current class
 .controller('Student_listController', function($scope, queupFactory, $state, teacherData){
-  console.log('******* In student list controller *****')
   $scope.students = [];
   $scope.noStudents = true;
   $scope.hasStudents = false;
@@ -19,10 +22,4 @@ angular.module('queup.student_list', [])
       }
     }
   });
-
-  $scope.handleClick = function(student){
-
-  }
-
-
 });

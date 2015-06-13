@@ -6,13 +6,11 @@ angular.module('queup', [
   'queup.sinch',
   'queup.auth',
   'queup.before',
-  'queup.class_info',
   'queup.class_list',
   'queup.new_class',
   'queup.in_session',
   'queup.queue_list',
   'queup.student_list',
-  'queup.class_settings',
   'ui.router'
 ])
 .config(function($stateProvider, $urlRouterProvider){
@@ -186,12 +184,4 @@ angular.module('queup', [
     });
 
   };
-
-  // (function(d, s, id) {
-  //  var js, fjs = d.getElementsByTagName(s)[0];
-  //  if (d.getElementById(id)) return;
-  //  js = d.createElement(s); js.id = id;
-  //  js.src="https://connect.facebook.net/en_US/sdk.js";
-  //  fjs.parentNode.insertBefore(js, fjs);
-  // }(document, 'script', 'facebook-jssdk'));
 });

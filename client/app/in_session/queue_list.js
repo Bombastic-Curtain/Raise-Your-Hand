@@ -1,22 +1,23 @@
 angular.module('queup.queue_list', [])
 
+// Queue List Controller
+// ---------------------
+
+// Monitors current queue state, and manages socket interaction between teacher and server
 .controller('Queue_listController', function($state, $scope, socket, teacherData, sinch){
 
   var currentClass = teacherData.get('currentClass');
-  console.log(currentClass);
   // If there is no current class, redirect to class list 
   // so things don't break due to undefined currentClass
   if( currentClass.id === null) { $state.go('q.before_session.class_list'); return; }
 
-  // emit event to register class id with socket id on server (for routing socket messages from students to teacher)
+  // Emit event to register class id with socket id on server (for routing socket messages from students to teacher)
   socket.emit('classReady', {classID: currentClass.classID});
 
   // Get current class info to display, and for sending on server reqs
   $scope.currentClass = {id: currentClass.classID, name: currentClass.name};
 
-  // Queue currently contains dummy data unless overwritten by an update from the server (.on 'queueList')
   $scope.queue = [];
-  // dummy data: {name:"Rocky", timer:0, fbPicture:'http://img1.wikia.nocookie.net/__cb20141026105607/p__/protagonist/images/2/28/200px-Orville_Simpson.png'}, {name:"Kenny", timer:0, fbPicture:'http://www.toughpenguin.com/pictures/baby_penguin.jpg'},{name:"John", timer:0, fbPicture:'http://www.toughpenguin.com/pictures/baby_penguin.jpg'},{name:"Cheng", timer:0, fbPicture:'http://cornforthimages.com/wp-content/uploads/2013/02/Right-Whale-Bay-King-Penguin-1.jpg'}
   $scope.hasQuestions = true;
   $scope.noQuestions = false;
 
@@ -26,10 +27,9 @@ angular.module('queup.queue_list', [])
     email: "",
     timer: 0
   };
-
+  
+  // Call on student, send id and index in the queue so it can be returned/confirmed as received
   $scope.handleClick = function(student, index) {
-    // Call on student, send id and index in the queue so it can
-    // be returned/confirmed as received, then removed from queue
     $scope.modal = {
       name: student.name,
       fbPicture: student.fbPicture,
@@ -58,7 +58,6 @@ angular.module('queup.queue_list', [])
 
 
   var addStudentToList = function(data) {
-    console.log('** data from handRaise **', data);
     data.timer = 0;
     data.timerID = setInterval(function ($scope) {
       var self = this
