@@ -88,6 +88,7 @@ angular.module('queup.factory', [])
     loading: false
   };
 
+
   return {
 
     set: function(key, value) {
