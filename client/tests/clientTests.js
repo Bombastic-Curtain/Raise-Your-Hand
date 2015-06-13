@@ -1,3 +1,5 @@
+// Front End Testing
+// --------------------
 describe('Teacher Data Factory', function() {
   
   var tData, $httpBackend;
@@ -74,7 +76,7 @@ describe('Teacher Data Factory', function() {
   });
 });
 
-describe('Queup Factory', function() {
+describe('New Class Factory', function() {
 
   var queup, $httpBackend, response;
 

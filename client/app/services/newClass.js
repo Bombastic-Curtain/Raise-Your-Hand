@@ -1,7 +1,10 @@
-angular.module('queup.factory', [])
+// New Class Factory
+// --------------------
+angular.module('queup.newClass', [])
 
 .factory('queupFactory', function($http, $rootScope){
 
+  // Change server URL when setting up for deployment
   $rootScope.serverURL = 'http://localhost:8000'; // 'http://queup.io';
 
   var addNewClass = function(newClassName){

@@ -1,3 +1,5 @@
+// Teacher Data Factory
+// ------------------------
 angular.module('queup.teacher', [])
 
 .factory('teacherData', function($http, queupFactory, $rootScope, $q) {
@@ -11,7 +13,6 @@ angular.module('queup.teacher', [])
     loaded: false,
     loading: false
   };
-
 
   return {
 
@@ -36,7 +37,7 @@ angular.module('queup.teacher', [])
 
       return dataCopy;
     },
-
+    
     update: function(caller) {
       var token = window.localStorage.getItem('clientToken');
 

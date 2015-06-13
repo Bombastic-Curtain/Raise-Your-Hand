@@ -1,3 +1,5 @@
+// Students Controller
+// ------------------------
 var Classes = require('../classes/classesModel.js');
 var Students = require('./studentsModel.js');
 var Teachers = require('../teachers/teachersModel.js');
@@ -8,7 +10,6 @@ var Schema = mongoose.Schema;
 
 module.exports = function (socketio) {
   var module = {};
-  // note: .find({_id:new ObjectId("id here")})
 
   module.raiseHand = function (req, res, next) {
     console.log("Hand Raised.");
@@ -103,9 +104,6 @@ module.exports = function (socketio) {
           res.status(500).send('studentDatabaseError');
         }
       });
-
-
-            
   }
   return module;
 };
