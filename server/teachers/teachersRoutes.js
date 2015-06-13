@@ -9,5 +9,4 @@ module.exports = function (app) {
   
   app.post('/getClassInfo', teacherController.getClassInfo);
   app.post('/addClass', teacherController.addClass);
-  app.post('/removeClass', teacherController.removeClass);
 };
