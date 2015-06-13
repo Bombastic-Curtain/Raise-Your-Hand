@@ -1,4 +1,4 @@
-// =====
+// Facebook API keys
 module.exports = {
 	'facebookAuth' : {
 		'clientID' : '718396624937121', // '1425134197808858', for queup.io

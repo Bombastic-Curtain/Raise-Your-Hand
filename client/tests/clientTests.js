@@ -1,3 +1,5 @@
+// Front End Testing
+// --------------------
 describe('Teacher Data Factory', function() {
   
   var tData, $httpBackend;
@@ -74,7 +76,7 @@ describe('Teacher Data Factory', function() {
   });
 });
 
-describe('Queup Factory', function() {
+describe('New Class Factory', function() {
 
   var queup, $httpBackend, response;
 
@@ -101,30 +103,4 @@ describe('Queup Factory', function() {
     })
   });
 });
-
-// describe('Socket Factory', function() {
-
-//   var socket;
-
-//   beforeEach(module('queup'));
-//   beforeEach(inject(function ($injector) {
-//     socket = $injector.get('socket');
-//   }));
-
-//   describe('socket factory functionality', function() {
-
-
-//     it("should emit and call its call back", function(){
-//       // var callback = sinon.spy();
-//       // var proxy = queup.addNewClass(callback);
-//       // var className = "testing class";
-
-//       // proxy.call()
-
-//       // assert(callback.called);
-//     });
-//   })
-// });
-
-
 

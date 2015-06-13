@@ -1,5 +1,8 @@
 angular.module('queup.auth', [])
-
+// Sign-in Controller
+// __________________
+     
+// Provides login and logout interface for Facebook authorization
 .controller('AuthController', function($scope, $state, teacherData, auth, $window){
 
   $scope.logout =  function(){
