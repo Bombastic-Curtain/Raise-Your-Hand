@@ -1,4 +1,4 @@
-angular.module('queup.auth', [])
+angular.module('queup.authFB', [])
 // Sign-in Controller
 // __________________
      

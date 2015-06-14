@@ -4,6 +4,7 @@ angular.module('queup', [
   'queup.newClass',
   'queup.teacher',
   'queup.auth',
+  'queup.authFB',
   'socket.io',
   'queup.sinch',
   'queup.auth',
@@ -55,15 +56,6 @@ angular.module('queup', [
         }
       }
     })
-    .state('q.before_session.class_info', {
-      url: '/class_info',
-      views: {
-        'sub': {
-          templateUrl: 'before_session/class_info.html',
-          controller: 'Class_infoController',
-        }
-      }
-    })
     .state('q.before_session.class_list', {
       url: '/class_list',
       views: {
@@ -106,15 +98,6 @@ angular.module('queup', [
         'sub': {
           templateUrl: 'in_session/student_list.html',
           controller: 'Student_listController'
-        }
-      }
-    })
-    .state('q.in_session.class_settings', {
-      url: '/class_settings',
-      views: {
-        'sub': {
-          templateUrl: 'in_session/class_settings.html',
-          controller: 'Class_settingsController'
         }
       }
     })
