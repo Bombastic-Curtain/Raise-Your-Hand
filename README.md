@@ -4,7 +4,7 @@
 Q-Up is a web and mobile application that allows students to ask questions on their phone and have their questions broadcasted throughout the entire lecture hall from the professor's speakers.
 For the mobile app repo, please see: https://github.com/Bombastic-Curtain/Mobile-Raise-Your-Hand
 
-To visit the web app, please to go http://q-up.io/
+To visit the web app, please go to http://q-up.io/
 
 ## Improving the **lecture hall experience**
 In a lecture hall with 300 students it is difficult for professors to keep track of which students have questions, causing students to keep their hands raised for an extended period of time. Additionally, when students speak it is often hard for the professor and the rest of the lecture hall to hear them. 
@@ -41,14 +41,29 @@ In the below GIF, you will see our app in action. The left side of the screen re
 <li> When the professor calls on a student, the student may speak on his/her phone and have his/her question broadcasted through the professor's speakers, making their question audible to the whole lecture hall.  
 </ol>
 
-## Client-Side Testing
+## Documentation
+For documentation and comments on our source code please open the html files under: docs
+
+![documentation gif]()
+
+##Testing
+**Client-side Testing**
 Q-Up uses Karma, Mocha, and Chai for client-side testing.
 
 To run client-side testing, from the root directory run:
 ```
 karma start
 ```
+<br><br>
 
+**Back end Testing**
+Q-Up uses Mocha and Should.js for back end testing.
+Back end tests are in the server/tests/teacherTests.js file
+
+To run back end testing, from the tests file run:
+```
+mocha teacherTests.js
+```
 
 ## Technology Stack:
 <ul>
