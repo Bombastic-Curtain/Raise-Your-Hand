@@ -42,7 +42,7 @@ In the below GIF, you will see our app in action. The left side of the screen re
 </ol>
 
 ## Documentation
-For documentation and comments on our source code please open the html files under: docs
+For documentation and comments on our source code please open the html files within: docs
 
 ![documentation gif]()
 
