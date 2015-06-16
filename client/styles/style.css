@@ -1,3 +1,102 @@
+/* more css overwrite */
+body {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+}
+.que_list_sub_header{
+  padding-top: 30px;
+  text-align: center;
+  font-size: .8em;
+}
+.btn-lg, .btn-group-lg > .btn {
+  padding: 10px 36px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #9b59b6;
+  border-color: #9b59b6;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #FFFFFF;
+}
+.classList{
+  padding-top: 10px;
+  padding-right: 90px;
+  padding-left: 90px;
+}
+.sub-header{
+  margin-top: 5px; 
+  margin-bottom: 30px;
+  letter-spacing: 4.8px;
+  font-size: 1.4em;
+}
+.sub-header_inSession{
+  margin-top: 8px; 
+  margin-bottom: 30px;
+  letter-spacing: 4.8px;
+  font-size: 1.6em;
+}
+.class_info{
+  text-align: center;
+}
+.big_number{
+  font-size: 3em;
+}
+.center {
+    margin: 0 auto;
+    width: 80%;
+}
+.page_header{
+  padding: 20px;
+  height: 30vh;
+  background-color: #F7FAFB;
+}
+.page_header_inSession{
+  padding: 20px;
+  height: 40vh;
+  background-color: #F7FAFB;
+}
+
+.header_content{
+  text-align: center;
+  font-weight: 10px;
+  color: #2F2F2F;
+}
+.no_padding{
+  padding-right: 0px;
+    padding-left: 0px;
+
+}
+.content_temp{
+  position: relative;
+  margin-left: 220px;
+  height: 100vh;
+  overflow-y: scroll;
+  display: flex;
+}
+.logo {
+  margin-top: 40px;
+  height: 25px;
+  margin-bottom: 10px;
+}
+.teachName{
+  margin-top: 10px;
+
+}
+.rightHandNav{
+  margin-top: 90px;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.8em;
+  letter-spacing: 2.8px;
+}
+
 /* Change sidebar display to block for top nav menu */
 .sidebar {
   display: block;
@@ -17,6 +116,15 @@
   height: 50px;
   border-radius: 25px;
 }
+.studentPicBig {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
 .addClass {
   padding: 15px;
   background: #f5f5f5;
@@ -29,17 +137,21 @@
   margin-bottom: 0;
   border: 0;
 }
+.navbar-default {
+  background-color: #9b59b6;
+  border: none;
+}
 @media (min-width: 768px) {
   .sidebar {
-    position: fixed;
+    height: 100vh;
+    width: 250px
     top: 0px;
     bottom: 0;
     left: 0;
     z-index: 1000;
-    display: block;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
+    background-color: #9b59b6;
     border-right: 1px solid #eee;
   }
 }
@@ -64,10 +176,34 @@
 .main {
   padding: 20px;
 }
+
+.signinbox {
+  margin: 10% auto;
+  width: 60%;
+  height: 40%;
+  padding: 5%;
+  font-size: 20px;
+  border: 3px solid #9b59b6;
+  border-radius: 20px;
+  text-align: center;
+  background: #BD82D5;
+}
+
+.signinImage {
+  width: 75%;
+  margin-bottom: 20px;
+}
+
 @media (min-width: 768px) {
   .main {
     padding-right: 40px;
     padding-left: 40px;
+  }
+
+  .signinbox {
+    width: 25%;
+    height: 30%;
+    padding: 2%;
   }
 }
 .main .page-header {
@@ -100,12 +236,12 @@
     display: block;
   }
   .teacherInfo {
-    background: #333;
+    background: #9b59b6;
     text-align: center;
     padding-top: 15px;
     padding-bottom: 15px;
     margin: 0;
-    color: #ccc;
+    color: #FFF;
   }
   .navbar {
     padding: 0;
@@ -114,16 +250,18 @@
     background: #dedede;
   }
   .sidebar {
+    position: absolute;
     padding: 0;
     border: none;
+    width:220px;
   }
   .sidebar-header {
     font-size: 24px;
     text-align: center;
     padding-top: 8px;
     padding-bottom: 8px;
-    background: #ccc;
-    color: #333;
+    background: #9b59b6;
+    color: #FFF;
   }
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
@@ -145,15 +283,35 @@
   }
   #queueTable th {
     font-size: 1.2em;
+    border-bottom: 1px solid #E9E9E9;
   }
   #queueTable tr {
     height: 50px;
+    border-bottom: 1px solid #E9E9E9;
+
   }
   #queueTable td {
     font-size: 1.2em;
     color: #555;
     vertical-align: middle;
+    border-bottom: 1px solid #E9E9E9;
+
   }
 }
 
+.modal-content {
+  display: block;
+  top: 35%;
+  width: 70%;
+  text-align: center;
+  left: 10%;
+  background-color: black;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 50px;
+}
 
+.modal-content span {
+  color: white;
+  font-size: 18px;
+}

@@ -1,5 +1,5 @@
-<h2 class="sub-header">These People Have Questions:</h2>
-<div class="table-responsive">
+<h2 class="sub-header que_list_sub_header">Students in Q:</h2>
+<div class="table-responsive classList">
   <table id="queueTable" class="table table-striped">
     <thead>
       <tr>
@@ -12,7 +12,7 @@
     <tbody>
       <tr ng-if="noQuestions">
         <td></td>
-        <td>No Questions Yet</td>
+        <td>No students in Q yet</td>
         <td></td>
         <td></td>
       </tr>
@@ -20,8 +20,19 @@
         <td><img src="{{ student.fbPicture }}" class="studentPic"></td>
         <td>{{ student.name }}</td>
         <td><button class="btn btn-default" ng-click="handleClick(student,$index)">Call</button></td>
-        <td>4min 34sec</td>
+
+        <td>{{ student.timer }} Min</td>
       </tr>
     </tbody>
   </table>
+
+  <div id="aModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <img src="{{ modal.fbPicture }}" class="studentPicBig"> <span> {{ modal.name }} is speaking...</span>
+      </div>
+    </div>
+  </div>
+
+  <audio autoplay></audio>
 </div>

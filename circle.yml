@@ -1,0 +1,10 @@
+test:
+  pre:
+    - npm install -g karma-mocha
+    - npm install -g karma-chai
+    - npm install -g karma-sinon
+    - npm install -g karma-phantomjs-launcher
+    - npm install -g bower
+    - bower install
+  override:
+    - karma start karma.conf.js --single-run

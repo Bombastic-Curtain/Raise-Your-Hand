@@ -1,3 +1,5 @@
+// Back end Testing
+// ------------------
 var should = require('should');
 var mongoose = require('mongoose');
 var Classes = require('../classes/classesModel.js');
@@ -19,7 +21,7 @@ describe('teachersController.js\n', function () {
         headers: {
           'Content-Type': 'application/json',
           // replace with tester's own FB access token (look in browser console when logging in)
-          'access_token': 'CAAKNYLZBjIKEBAJH4D4TVqXZAZBQtqOvqy4tO0hlKvuoiwtWajPScXxdbF5cas5jD1TuA6vuZBCcjWuhLyP5qzANfBSvKVgO7yZA74M3qxp4w9N5TXQ1hrx3N7FzjUJXoUHDke9tnEI7aQU5rlvtqw10mDbWSoIfw0n62lFEb5X2GZBKxMbyNpZBkiuxQcSAaRLMSNpEUK7rhhNU8kNNgS5jNgpDG4mLUsZD',
+          'access_token': 'CAAUQJumeHtoBACBSYx7aD5FMDvS62FDdKZAS70olI9sENWhbHra5L2MVjIYpZCHoSkz2vJ8JPyylG3faHVuO88omGUUu8YLj1qqw9YFAMHitdkpJnfcUVmTD3Q0TYZA5ZCFk7V4tKhmo3T9YfY0ZCtXC4t9UlJoC1fhWE32Rcy8ZBwt5Dn6SrcWWHKZB0RJg8SOkQyCtvJrlSrpzcamD3YnS8G38cfCzUcZD',
           'user_role': 'teacher'
         }
       }; 
@@ -62,7 +64,7 @@ describe('teachersController.js\n', function () {
         path: '/api/teachers/removeClass',
         headers: {
           'Content-Type': 'application/json',
-          'access_token': 'CAAUQJumeHtoBAMTNjcDLgPuu3ftoZCDWmybLzQ0rtTarUrDKY1QVmHW5ovmkaMU4uqJ10c08Q4gZA3WakjNdn475McTfOE0hwkCjQIwlGyK8tpJqCiiLqtQEZBUgXofFfLdXEhEKQ6NO5JjV3HXosQsWPzNDxcL3CZB0XnSPbvAvNKQ4fKs7xrbk2K2V8BLfIYyLVIZAY3FGBHCZBlqUIFXFucCu1Sqm8ZD',
+          'access_token': 'CAAUQJumeHtoBACBSYx7aD5FMDvS62FDdKZAS70olI9sENWhbHra5L2MVjIYpZCHoSkz2vJ8JPyylG3faHVuO88omGUUu8YLj1qqw9YFAMHitdkpJnfcUVmTD3Q0TYZA5ZCFk7V4tKhmo3T9YfY0ZCtXC4t9UlJoC1fhWE32Rcy8ZBwt5Dn6SrcWWHKZB0RJg8SOkQyCtvJrlSrpzcamD3YnS8G38cfCzUcZD',
           'user_role': 'teacher'
         }
       };
@@ -96,7 +98,7 @@ describe('teachersController.js\n', function () {
         path: '/api/teachers/addclass',
         headers: {
           'Content-Type': 'application/json',
-          'access_token': 'CAAUQJumeHtoBAMTNjcDLgPuu3ftoZCDWmybLzQ0rtTarUrDKY1QVmHW5ovmkaMU4uqJ10c08Q4gZA3WakjNdn475McTfOE0hwkCjQIwlGyK8tpJqCiiLqtQEZBUgXofFfLdXEhEKQ6NO5JjV3HXosQsWPzNDxcL3CZB0XnSPbvAvNKQ4fKs7xrbk2K2V8BLfIYyLVIZAY3FGBHCZBlqUIFXFucCu1Sqm8ZD',
+          'access_token': 'CAAUQJumeHtoBACBSYx7aD5FMDvS62FDdKZAS70olI9sENWhbHra5L2MVjIYpZCHoSkz2vJ8JPyylG3faHVuO88omGUUu8YLj1qqw9YFAMHitdkpJnfcUVmTD3Q0TYZA5ZCFk7V4tKhmo3T9YfY0ZCtXC4t9UlJoC1fhWE32Rcy8ZBwt5Dn6SrcWWHKZB0RJg8SOkQyCtvJrlSrpzcamD3YnS8G38cfCzUcZD',
           'user_role': 'teacher'
         }
       }; 
@@ -113,7 +115,7 @@ describe('teachersController.js\n', function () {
         method: 'GET',
         path: '/api/teachers/getClassList',
         headers: {
-          'access_token': 'CAAUQJumeHtoBAMTNjcDLgPuu3ftoZCDWmybLzQ0rtTarUrDKY1QVmHW5ovmkaMU4uqJ10c08Q4gZA3WakjNdn475McTfOE0hwkCjQIwlGyK8tpJqCiiLqtQEZBUgXofFfLdXEhEKQ6NO5JjV3HXosQsWPzNDxcL3CZB0XnSPbvAvNKQ4fKs7xrbk2K2V8BLfIYyLVIZAY3FGBHCZBlqUIFXFucCu1Sqm8ZD',
+          'access_token': 'CAAUQJumeHtoBACBSYx7aD5FMDvS62FDdKZAS70olI9sENWhbHra5L2MVjIYpZCHoSkz2vJ8JPyylG3faHVuO88omGUUu8YLj1qqw9YFAMHitdkpJnfcUVmTD3Q0TYZA5ZCFk7V4tKhmo3T9YfY0ZCtXC4t9UlJoC1fhWE32Rcy8ZBwt5Dn6SrcWWHKZB0RJg8SOkQyCtvJrlSrpzcamD3YnS8G38cfCzUcZD',
           'user_role': 'teacher'
         }
       };
@@ -162,7 +164,7 @@ describe('teachersController.js\n', function () {
           path: '/api/teachers/getTeacherData',
           headers: {
             'Content-Type': 'application/json',
-            'access_token': 'CAAKNYLZBjIKEBAJH4D4TVqXZAZBQtqOvqy4tO0hlKvuoiwtWajPScXxdbF5cas5jD1TuA6vuZBCcjWuhLyP5qzANfBSvKVgO7yZA74M3qxp4w9N5TXQ1hrx3N7FzjUJXoUHDke9tnEI7aQU5rlvtqw10mDbWSoIfw0n62lFEb5X2GZBKxMbyNpZBkiuxQcSAaRLMSNpEUK7rhhNU8kNNgS5jNgpDG4mLUsZD',
+            'access_token': 'CAAUQJumeHtoBACBSYx7aD5FMDvS62FDdKZAS70olI9sENWhbHra5L2MVjIYpZCHoSkz2vJ8JPyylG3faHVuO88omGUUu8YLj1qqw9YFAMHitdkpJnfcUVmTD3Q0TYZA5ZCFk7V4tKhmo3T9YfY0ZCtXC4t9UlJoC1fhWE32Rcy8ZBwt5Dn6SrcWWHKZB0RJg8SOkQyCtvJrlSrpzcamD3YnS8G38cfCzUcZD',
             'user_role': 'teacher'
           }
         };
@@ -188,7 +190,6 @@ describe('teachersController.js\n', function () {
       teacher.should.be.an.Object;
     });
     it('Object should have a name, email, picture and classes property', function (done) {
-      console.log('OKOK')
       should.exist(teacher.name);
       should.exist(teacher.email);
       should.exist(teacher.fbPicture);

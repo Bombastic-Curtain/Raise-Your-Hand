@@ -2,17 +2,60 @@
   
   <div class="placeholders">
 
-    <div class="col-xs-12 col-sm-12 placeholder">
-      <div class="panel panel-default">
-          <div class="panel-body"><h1>{{ currentClassname }}</h1></div> 
-          <div class="panel-footer clearfix">
-              <div class="pull-right">
-                  <a ui-sref="q.in_session.queue_list" class="btn btn-default"><span class="spacer"><i class="ion ion-help"></i></span>Queue</a>
-                  <a ui-sref="q.in_session.student_list" class="btn btn-default"><span class="spacer"><i class="ion ion-person-stalker"></i></span>Students</a>
-              </div>
+
+
+<div class="page_header_inSession">
+
+
+  <div class="header_content">
+      <h2 class="sub-header_inSession">{{ currentClassname }}</h2>
+  </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+
+          <div class="col-sm-4 class_info">
+            <span class="big_number"> {{ numberOfClasses }} </span><br>
+            <span>classes</span>
           </div>
+          <div class="col-sm-4 class_info">
+            <span class="big_number"> {{ studentsInClass }} </span><br>
+            <span>participants</span>      
+          </div>
+          <div class="col-sm-4 class_info">
+            <span class="big_number questions"> 0 </span><br>
+            <span>questions</span>      
+          </div>
+        </div>
+  </div>
+
+  <br>
+  <br>
+
+
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+
+      <div class="col-sm-12 class_info">
+
+          <a ui-sref="q.in_session.queue_list" class="btn btn-primary btn-md"><span class="spacer"><i class="ion ion-help"></i></span>Queue</a>
+          <span>&nbsp &nbsp</span>
+          <a ui-sref="q.in_session.student_list" class="btn btn-primary btn-md"><span class="spacer"><i class="ion ion-person-stalker"></i></span>Students</a>
+
       </div>
+
     </div>
+  </div>
+
+
+</div>
+
+
+
+
+
   </div>
 </div>
 

@@ -19,7 +19,8 @@ module.exports = function(config) {
       './node_modules/angular-mocks/angular-mocks.js',
       './client/lib/angular-ui-router/release/angular-ui-router.js',
       './client/app/**/*.js',
-      './client/tests/*.js'
+      './client/tests/*.js',
+      './client/lib/fb/sdk.js'
     ],
 
 
