@@ -42,9 +42,15 @@ In the below GIF, you will see our app in action. The left side of the screen re
 </ol>
 
 ## Documentation
-For documentation and comments on our source code please open the html files within: docs
+For documentation and comments on our source code please open the html files in docs:
 
-![documentation gif]()
+For front end documentation: docs/clientDocs.html
+Example:
+![front end documentation]()
+
+For back end documentation: docs/serverDocs.html
+Example:
+![back end documentation]()
 
 ##Testing
 **Client-side Testing**
