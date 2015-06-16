@@ -30,9 +30,17 @@ angular.module('queup.queue_list', [])
   
   // Call on student, send id and index in the queue so it can be returned/confirmed as received
   $scope.handleClick = function(student, index) {
+    var bigFBpicture;
+
+    for(var i = 0; i < currentClass.students.length; i++ ){
+      if(currentClass.students[i].email === student.email) {
+        bigFBpicture = currentClass.students[i].fbPicture;
+      }
+    }
+
     $scope.modal = {
       name: student.name,
-      fbPicture: student.fbPicture,
+      fbPicture: bigFBpicture,
       email: student.email,
       timer: student.timer
     };

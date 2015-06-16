@@ -156,7 +156,7 @@ __d("legacy:fb.versioned-sdk",["sdk.Runtime"],function(a,b,c,d,e,f,g){b.__markCo
 
 // FB Initialize SDK with our settings
 FB.init({
- appId      : '718396624937121', // '1425134197808858' localhost
+ appId      : '1425134197808858', // '718396624937121', localhost
  cookie     : true,  // enable cookies to allow the server to access the session
  xfbml      : true,  // parse social plugins on this page
  version    : 'v2.3' // use version 2.2

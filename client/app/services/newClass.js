@@ -5,7 +5,7 @@ angular.module('queup.newClass', [])
 .factory('queupFactory', function($http, $rootScope){
 
   // Change server URL when setting up for deployment
-  $rootScope.serverURL = 'http://localhost:8000'; // 'http://queup.io';
+  $rootScope.serverURL = 'http://q-up.io'; //'http://localhost:8000'; // 
 
   var addNewClass = function(newClassName){
     console.log(newClassName)
