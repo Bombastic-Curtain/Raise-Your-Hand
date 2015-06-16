@@ -48,15 +48,15 @@ For documentation and comments on our source code please open the html files und
 
 ##Testing
 **Client-side Testing**
+<br>
 Q-Up uses Karma, Mocha, and Chai for client-side testing.
 
 To run client-side testing, from the root directory run:
 ```
 karma start
 ```
-<br><br>
-
 **Back end Testing**
+<br>
 Q-Up uses Mocha and Should.js for back end testing.
 Back end tests are in the server/tests/teacherTests.js file
 
@@ -81,3 +81,4 @@ mocha teacherTests.js
 <li> Karma
 <li> CircleCI
 </ul>
+
