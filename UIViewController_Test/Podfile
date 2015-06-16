@@ -1,0 +1,12 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '6.0'
+
+target 'UIViewController_Test' do
+pod 'SinchRTC'
+end
+
+target 'UIViewController_TestTests' do
+pod 'SinchRTC'
+
+end
+

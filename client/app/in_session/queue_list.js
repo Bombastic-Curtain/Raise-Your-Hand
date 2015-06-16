@@ -1,41 +1,83 @@
 angular.module('queup.queue_list', [])
 
-.controller('Queue_listController', function($state, $scope, socket, teacherData){
+// Queue List Controller
+// ---------------------
+
+// Monitors current queue state, and manages socket interaction between teacher and server
+.controller('Queue_listController', function($state, $scope, socket, teacherData, sinch){
 
   var currentClass = teacherData.get('currentClass');
-  console.log(currentClass);
   // If there is no current class, redirect to class list 
   // so things don't break due to undefined currentClass
   if( currentClass.id === null) { $state.go('q.before_session.class_list'); return; }
 
-  // emit event to register class id with socket id on server (for routing socket messages from students to teacher)
+  // Emit event to register class id with socket id on server (for routing socket messages from students to teacher)
   socket.emit('classReady', {classID: currentClass.classID});
 
   // Get current class info to display, and for sending on server reqs
   $scope.currentClass = {id: currentClass.classID, name: currentClass.name};
 
-  // Queue currently contains dummy data unless overwritten by an update from the server (.on 'queueList')
   $scope.queue = [];
-  $scope.hasQuestions = false;
-  $scope.noQuestions = true;
+  $scope.hasQuestions = true;
+  $scope.noQuestions = false;
 
+  $scope.modal = {
+    name: "",
+    fbPicture: "",
+    email: "",
+    timer: 0
+  };
+  
+  // Call on student, send id and index in the queue so it can be returned/confirmed as received
   $scope.handleClick = function(student, index) {
-    // Call on student, send id and index in the queue so it can
-    // be returned/confirmed as received, then removed from queue
-    socket.emit('callOnStudent', {email: student.name, index: index, classID: currentClass.classID});
+    var bigFBpicture;
+
+    for(var i = 0; i < currentClass.students.length; i++ ){
+      if(currentClass.students[i].email === student.email) {
+        bigFBpicture = currentClass.students[i].fbPicture;
+      }
+    }
+
+    $scope.modal = {
+      name: student.name,
+      fbPicture: bigFBpicture,
+      email: student.email,
+      timer: student.timer
+    };
+    
+    clearInterval(student.timerID);
+    socket.emit('callOnStudent', {email: student.email, index: index, classID: currentClass.classID});
+
+    $('#aModal').modal('show');
+    sinch.call(student.email)
   };
 
   var removeFromQueue = function(student) {
     $scope.queue.splice(student.index,1);
+
+    $('.questions').html($scope.queue.length);
+
     if($scope.queue.length === 0) {
       $scope.hasQuestions = false;
       $scope.noQuestions = true;
     }
+    $('#aModal').modal('hide');
   };
 
+
   var addStudentToList = function(data) {
-    console.log('** data from handRaise **', data);
-    $scope.queue.push({name:data.email});
+    data.timer = 0;
+    data.timerID = setInterval(function ($scope) {
+      var self = this
+      $scope.$apply(function () {
+        self.timer++;
+      });
+    }.bind(data, $scope), 60000);
+
+    $scope.queue.push(data);
+    
+    $('.questions').html($scope.queue.length);
+    
     // send confirmation to student that they were added to list
     socket.emit('studentAddedToQueue', data)
     $scope.hasQuestions = true;

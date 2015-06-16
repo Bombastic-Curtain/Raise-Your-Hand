@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-3 col-md-2 sidebar">
+      <div class="sidebar">
           <nav class="sidebar-nav">
             <div class="navbar navbar-default" role="navigation">
               <div class="navbar-header">
@@ -13,42 +13,27 @@
                 <span class="visible-xs navbar-brand">Sidebar menu</span>
               </div>
               <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                <div class="sidebar-header hideonmobile">Q-Up</div>
+                <div class="sidebar-header hideonmobile">
+                  <img class="logo" src="../styles/qUpVector_white7.png">
+                </div>
                 <div class="teacherInfo hideonmobile">
                   <img class="studentPic" src="{{ teacherPic }}">
-                  <div>{{ teacherName }}</div>
+                  <div class ="teachName">{{ teacherName }}</div>
                 </div>
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav rightHandNav">
                   <li><a ui-sref="q.before_session.class_list">Class List</a></li>
                   <li><a ui-sref="q.before_session.new_class">Add Class</a></li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
-                      <li class="divider"></li>
-                      <li class="dropdown-header">Nav header</li>
-                      <li><a href="#">Separated link</a></li>
-                      <li><a href="#">One more separated link</a></li>
-                    </ul>
-                  </li>
                   <li ng-click="logout()"><a href="#/signin">Log Out</a></li>
                 </ul>
-              </div><!--/.nav-collapse -->
+              </div>
             </div>
           </nav>
         </div>
 
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <div class="col-xs-12 col-sm-8">
+      <div class="content_temp">
+        <div class="col-xs-12 col-sm-12 no_padding">
           <div ui-view="nav"></div>
         </div>
-
-        <div class="col-xs-12 col-sm-4">
-        <div ui-view="panel">
-        </div>
-
       </div>
     </div>
   </div>

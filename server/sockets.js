@@ -1,9 +1,13 @@
+// Sockets Controller
+// -------------------
 module.exports = function(socketio) {
   // Create socket in-memory data storage for teacher and student socket ids
   // and helper functions for checking and saving ids
   var socketDirectory = {
-    teachers: {},  // sample data: {classID: socketID}
-    students: {},  // sample data: {student email: socketID}
+    // sample data: {classID: socketID}
+    teachers: {},
+    // sample data: {student email: socketID}
+    students: {}, 
     save: function(role, key, id) {
       if(this[role][key]) {
           if(this[role][key] !== id) {
@@ -22,7 +26,6 @@ module.exports = function(socketio) {
       if(this[role][key]) {
         return this[role][key];
       } else {
-        // not found
         console.log('**** did not find '+ role +' in socketDirectory');
         return null;
       }
@@ -32,36 +35,27 @@ module.exports = function(socketio) {
   // Create reference to where current socket connections are stored
   var connectedSockets = socketio.sockets.connected;
 
-
   socketio.on('connection', function(socket) {
-    console.log('kennys socket ********* id:', socket.id);
 
-    // Student Socket Listeners ( Coming from student )
-    // ------------------------------------------------
-
-    // Student pressed raise hand button
+    // Socket listener for when a student presses the 'raise hand' button
     socket.on('handraise', function(data) {
-      console.log('** student raised hand **', data);
-      console.log('** student socket id **', socket.id);
-      console.log(socketDirectory.students, ' ', socketDirectory.teachers);
       if(data) {
-        // save student socketid and email info to in-memory storage if not there, othewise confirm/update
+        // save student Socket id and email info to in-memory storage if it's not there,
+        // otherwise confirm and update info.
         socketDirectory.save('students', data.email, socket.id);
 
         // find teacher socket and send event to teacher
         if(socketDirectory.lookup('teachers', data.classID)) {
-          socketio.to(socketDirectory.lookup('teachers', data.classID)).emit('studentRaisedHand', {email: data.email, classID: data.classID});
+          socketio.to(socketDirectory.lookup('teachers', data.classID)).emit('studentRaisedHand', data);
         } else {
           console.log('** error finding teacher socket id **');
         }
-        
       } else {
-        // no data in emit from student
+        console.log('no data in emit from student');
       }
     });
 
-
-    // Student received notification of Teacher calling on them
+    // Socket confirmation for when Student received notification that the Professor called him/her.
     socket.on('studentReceivedCall', function(data) {
       console.log('student received teacher call, passing back data:', data);
       // send message to teacher
@@ -73,21 +67,18 @@ module.exports = function(socketio) {
       }
     });
 
-
-    // Teacher Socket Listeners ( Coming from teacher )
-    // ------------------------------------------------
-
-    // Teacher is ready for students to raise hands
+    // Socket listener for when the Teacher is ready for Students to raise their hands
     socket.on('classReady', function(data) {
       console.log('** teacher connected **', data);
       console.log('** teacher socket id **', socket.id);
       if(data) {
-        // save teacher socketid and email info to in-memory storage if not there, othewise confirm/update
+        // Save teacher Socket id and email info to in-memory storage if it doesn't exist, otherwise confirm and update
         socketDirectory.save('teachers', data.classID, socket.id);
       }
     });
 
-    // Teacher has received the student hand raise, now send the student confirmation it was received
+    // Socket listener for when the teacher has received a student hand raise notification
+    //  and sends the student confirmation that notification was received.
     socket.on('studentAddedToQueue', function(data) {
       var studentSocket = socketDirectory.lookup('students', data.email);
       if(studentSocket) {
@@ -95,14 +86,15 @@ module.exports = function(socketio) {
       }
     });
 
-    // Teacher is calling on student. Make sure student is connected, tell student they were called on
+    // Socket listener for when the teacher is calling on student.
+    // Then we tell student they were called on by emitting a 'calledOn' event.
+    // Atfer this function, the teacher waits for a confirmation from the student.
     socket.on('callOnStudent', function(data) {
-      // teacher called on student, send event to student, wait for response, emit confirmation to teacher
-      console.log('teacher called on student with email: ', data.email);
-      console.log(Object.keys(socketio.sockets.connected)); // log current connection ids
+      // Logs current connection ids
+      console.log(Object.keys(socketio.sockets.connected)); 
 
-      // send message to student
       var studentSocket = socketDirectory.lookup('students', data.email);
+      // Make sure the student is connected to the socket
       if(studentSocket) {
         socketio.to(studentSocket).emit('calledOn',data);
       } else {
